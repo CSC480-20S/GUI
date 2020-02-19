@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
+  <style>
+    WebFont.load( {
+        google: {
+          families: ['Roboto Mono:400,700', 'Nunito Sans: 200,300,400,600,700,800,900']
+        }
+      }
+
+    );
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 100 %;
+      height: auto;
+      clear: both;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    p {
+      max-width: 400px;
+      min-width: 10px;
+    }
+  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
   <script>
-    WebFont.load({
-      google: {
-        families: ['Roboto Mono:400,700', 'Nunito Sans: 200,300,400,600,700,800,900']
+    var imgs = ["https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage1.png",
+      "https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage2.jpg", "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage3.jpg?raw=true",
+      "https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage4.jpg", "https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage5.JPG",
+      "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage6.JPG?raw=true", "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage7.JPG?raw=true",
+      "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage8.JPG?raw=true", "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage9.JPG?raw=true",
+      "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage10.JPG?raw=true", "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage11.JPG?raw=true",
+      "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage12.JPG?raw=true", "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage13.JPG?raw=true",
+      "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage14.jpg?raw=true"
+    ];
+
+    function changeImage(dir) {
+      var img = document.getElementById("imgClickAndChange");
+      img.src = imgs[imgs.indexOf(img.src) + (dir || 1)] || imgs[dir ? imgs.length - 1 : 0];
+    }
+
+    document.onkeydown = function(e) {
+      e = e || window.event;
+      if (e.keyCode == '37') {
+        changeImage(-1) //left <- show Prev image
+      } else if (e.keyCode == '39') {
+        // right -> show next image
+        changeImage()
       }
-    });
+    }
   </script>
   <link href="https://www.findingfive.com/css/normalize.css" rel="stylesheet" type="text/css">
   <link href="https://www.findingfive.com/css/skeleton.css" rel="stylesheet" type="text/css">
@@ -27,6 +71,7 @@
 <title>Study Store</title>
 
 <body>
+
   <!-- Header -->
   <header id="header" class="box-shadow-down">
     <section id="logo" class="">
@@ -42,12 +87,75 @@
       </a>
       <div class="dropdown">
         <a href="" class="top-level-link dropdown-trigger"><b>
-            <font size="3">20 Store Credits</font>
+            <font face="Nunito-Sans" size="3">20 Store Credits</font>
           </b></a>
-        <a href="https://www.findingfive.com/logout/" class="top-level-link" title="Sign out"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        <a href="https://www.findingfive.com/account/" class="top-level-link" title="Sign out">
+          <i class="fa fa-user-circle" aria-hidden="true"></i>
+        </a>
       </div>
     </section>
   </header>
   <!-- -->
+
+  <!-- Images/Description -->
+  <div id="main" class="container" align="center">
+    <div id="Images" class="row" align="center">
+      <div id="Images" class="column" align="center">
+        <div id="slideshow">
+          <img alt="slideshow" src="https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage14.jpg" id="imgClickAndChange" onclick="changeImage()" width="600" height="500" align="right" class:"center" />
+        </div>
+      </div>
+      <div id="Description" class="column" align="right">
+        <h1>Pacer Test, 1982</h1>
+        <p>The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets
+          faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before
+          the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.
+          <br class="para" />
+          <br class="para" />
+          <br class="para" align: />Author: Tommy Hanley
+          <br class="para" />
+          College: Oswego State
+          <br class="para" />
+          Time to complete: 25 Minutes</p>
+      </div>
+    </div>
+  </div>
+  <!-- -->
+
+  <!-- Footer-->
+  <footer id="footer" class="">
+    <section class="">
+      2019 &copy; FindingFive. All rights reserved.
+    </section>
+    <section class="">
+      <div class="section-header fwt-700">About</div>
+      <ul>
+        <li><a href="https://news.findingfive.com/our-mission-at-findingfive/" target="_blank">Mission</a></li>
+        <li><a href="https://news.findingfive.com/directory/" target="_blank">People</a></li>
+        <li><a href="https://news.findingfive.com/donoros-sponsors/" target="_blank">Donors</a></li>
+        <li><a href="https://help.findingfive.com/tos.html">Terms of Service</a></li>
+        <li><a href="https://help.findingfive.com/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </section>
+    <section class="">
+      <div class="section-header fwt-700">Researcher Resources</div>
+      <ul>
+        <li><a target="_blank" href="https://news.findingfive.com/2019/03/26/crash-course-part-1-building-your-study/">Crash Course</a></li>
+        <li><a href="https://news.findingfive.com/category/tutorial/" target="_blank">Tutorials</a></li>
+        <li><a target="_blank" href="https://help.findingfive.com/api/">Grammar Reference</a></li>
+      </ul>
+    </section>
+    <section class="">
+      <div class="section-header fwt-700">Connect</div>
+      <ul>
+        <li><a href="https://www.facebook.com/findingfive/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.twitter.com/updateff/" target="_blank">Twitter</a></li>
+        <li><a href="mailto:feedback@findingfive.com">Contact</a></li>
+      </ul>
+    </section>
+  </footer>
+  <!-- -->
+
 </body>
+
 </html>
