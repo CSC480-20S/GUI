@@ -1,0 +1,82 @@
+WebFont.load( {
+    google: {
+      families: ['Roboto Mono:400,700', 'Nunito Sans: 200,300,400,600,700,800,900']
+    }
+  }
+
+);
+
+p {
+  display: block;
+  max-width: 400px;
+  min-width: 10px;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 400px 50px auto;
+  grid-gap: 50px;
+  background-color: #2196F3;
+  padding: 60px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 5px 0;
+  font-size: 30px;
+}
+
+.item1 {
+  grid-row: 1 / 4;
+  height: 400px;
+  width: 400px;
+}
+
+.item2 {
+  height: 400px;
+  width: 40px;
+}
+
+h1{
+  font-size: 32px;
+}
+
+.form-group {
+    margin:0;
+    padding:20px ;
+
+    &:first-child { border-color: transparent; }
+}
+
+.form-control {
+  padding: 0px 10px 0 20px;
+  margin-top: 10px;
+  color: #333;
+  font-size: 28px;
+  font-weight: 500;
+    border: 3px solid #555;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    min-height:60px;
+    height: auto;
+    border-radius: 50px 0  0 50px !important;
+}
+.form-control :focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: transparent;
+
+    }
+    i {
+        font-size: 1rem;
+        color: #000;
+        top: .75rem;
+        left: .75rem
+    }
+
+    input {
+        padding-left: 2.5rem;
+    }
+}
