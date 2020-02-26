@@ -6,77 +6,77 @@ WebFont.load( {
 
 );
 
-p {
+.desc {
   display: block;
-  max-width: 400px;
+  max-width: 20px;
   min-width: 10px;
+  margin-right: 40px;
+  font-size: 15px;
 }
 
+.btn {
+  background-color: #FFFFFF;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.heading {
+  font-size: 25px;
+  font-weight: 700;
+  color: #2f4249;
+}
+
+.author{
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.form-control :focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+
+i {
+  font-size: 1rem;
+  top: .75rem;
+  left: .75rem;
+}
+
+cloud {
+  font-size: 1rem;
+  top: .75rem;
+  left: .75rem;
+  -webkit-text-fill-color: whi;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+input {
+  padding-left: 2.5rem;
+}
+.item1 { grid-area: image; }
+.item2 { grid-area: main; }
+.item3 { grid-area: image2; }
+.item4 { grid-area: reviews; }
 
 .grid-container {
   display: grid;
-  grid-template-columns: 400px 50px auto;
-  grid-gap: 50px;
-  background-color: #2196F3;
-  padding: 60px;
+  grid-template:
+    'image image main main main'
+    'image2 image2 main main main'
+    'reviews reviews reviews reviews reviews';
+  grid-gap: 35px;
+  padding: 130px;
+  padding-top: 25px;
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 5px 0;
-  font-size: 30px;
-}
+  text-align: left;
+  padding: px 0;
+  font-family: Roboto Mono;
 
-.item1 {
-  grid-row: 1 / 4;
-  height: 400px;
-  width: 400px;
-}
-
-.item2 {
-  height: 400px;
-  width: 40px;
-}
-
-h1{
-  font-size: 32px;
-}
-
-.form-group {
-    margin:0;
-    padding:20px ;
-
-    &:first-child { border-color: transparent; }
-}
-
-.form-control {
-  padding: 0px 10px 0 20px;
-  margin-top: 10px;
-  color: #333;
-  font-size: 28px;
-  font-weight: 500;
-    border: 3px solid #555;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    min-height:60px;
-    height: auto;
-    border-radius: 50px 0  0 50px !important;
-}
-.form-control :focus {
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border-color: transparent;
-
-    }
-    i {
-        font-size: 1rem;
-        color: #000;
-        top: .75rem;
-        left: .75rem
-    }
-
-    input {
-        padding-left: 2.5rem;
-    }
 }
