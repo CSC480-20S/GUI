@@ -3,31 +3,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <head>
-  <style>
-    WebFont.load( {
-        google: {
-          families: ['Roboto Mono:400,700', 'Nunito Sans: 200,300,400,600,700,800,900']
-        }
-      }
-
-    );
-
-    img {
-      display: block;
-      margin: 0 auto;
-      width: 100 %;
-      height: auto;
-      clear: both;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    p {
-      max-width: 401px;
-      min-width: 10px;
-    }
-  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
   <script>
     var imgs = ["https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage1.png",
@@ -39,6 +14,7 @@
       "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage12.JPG?raw=true", "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage13.JPG?raw=true",
       "https://github.com/CSC480-20S/GUI/blob/master/Study_Store/TestingPhotos/RandomImage14.jpg?raw=true"
     ];
+
 
     function changeImage(dir) {
       var img = document.getElementById("imgClickAndChange");
@@ -54,7 +30,27 @@
         changeImage()
       }
     }
+
+
+    function textSwap(t) {
+      var x = document.getElementById("text");
+      if (t === "Summary") {
+        x.innerHTML = "<b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum quam sit amet aliquet."
+        +" Phasellus tempor nisi eget tellus venenatis tempus. Aliquam dapibus porttitor convallis. "
+        +"Praesent pretium luctus orci, quis ullamcorper lacus lacinia a. Integer eget molestie purus."
+        +" Vestibulum porta mollis tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </b><p></p>"
+        +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum quam sit amet aliquet. Phasellus tempor nisi eget tellus venenatis"
+        +" tempus. Aliquam dapibus porttitor convallis. Praesent pretium luctus orci, quis ullamcorper lacus lacinia a. Integer eget molestie purus. Vestibulum "
+        +"porta mollis tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, "
+        +"per inceptos himenaeos. ";
+      } else {
+        x.innerHTML = "Description!";
+      }
+    }
+
   </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet" type="text/css">
   <link href="https://www.findingfive.com/css/normalize.css" rel="stylesheet" type="text/css">
   <link href="https://www.findingfive.com/css/skeleton.css" rel="stylesheet" type="text/css">
   <link href="https://www.findingfive.com/css/poppie.css" rel="stylesheet" type="text/css">
@@ -77,25 +73,27 @@
     <section id="logo" class="">
       <a href="https://www.findingfive.com/home/"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
     </section>
-    <section id="top-levels" class="">
+    <section id="top-levels">
       <a class="top-level">
         <form id="search-form" class="form-inline" role="form" method="post" action="//www.google.com/search" target="_blank">
           <div class="position-relative">
-            <i class="fa fa-search"></i>
             <input class="input-field" type="text">
+            <button class="btn">
+              <Font color="black">Upload </Font>
+              <cloud class="fa fa-cloud" />
+            </button>
           </div>
         </form>
       </a>
       <div class="dropdown"></b></a>
-        <font size="+1" color="white">|</font>
         <a href="" class="top-level-link dropdown-trigger"><b>
-            <font face="Nunito-Sans" size="3">20 Store Credits</font>
+            <font face="Nunito-Sans" size="3">20 Store Credits <i class="fas fa-wallet fa-lg"></i></font>
           </b></a>
-        <font size="+1" color="white">|</font>
+        <font size="+3" color="white">|</font>
         <a href="https://www.findingfive.com/profile/#account-settings" class="top-level-link" title="Account">
-          <i class="fa fa-user-circle" aria-hidden="true"></i>
+          <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
         </a></b></a>
-        <font size="+1" color="white">|</font>
+        <font size="+3" color="white">|</font>
         <a href="https://www.findingfive.com/logout/" class="top-level-link" title="Account">
           <i class="fa fa-sign-out" aria-hidden="true"></i>
         </a>
@@ -105,30 +103,46 @@
   <!-- -->
 
   <!-- Images/Description -->
-  <div id="main" class="container" align="center">
-    <div id="Images" class="row" align="center">
-      <div id="Images" class="column" align="center">
-        <div id="slideshow">
-          <img alt="slideshow" src="https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage14.jpg" id="imgClickAndChange" onclick="changeImage()" width="600" height="500" align="right" class:"center" />
-        </div>
-      </div>
-      <div id="Description" class="column" align="right">
-        <h1>Pacer Test, 1982</h1>
-        <p>The FitnessGram™ Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues. The 20 meter pacer test will begin in 30 seconds. Line up at the start. The running speed starts slowly, but gets
-          faster each minute after you hear this signal. [beep] A single lap should be completed each time you hear this sound. [ding] Remember to run in a straight line, and run as long as possible. The second time you fail to complete a lap before
-          the sound, your test is over. The test will begin on the word start. On your mark, get ready, start.
-          <br class="para" />
-          <br class="para" />
-          <br class="para" />
-          Author: Tommy Hanley
-          <br class="para" />
-          College: Oswego State
-          <br class="para" />
-          Time to complete: 25 Minutes</p>
+  <div class="grid-container">
+    <div class="item1">
+      <div id="slideshow">
+        <img alt="slideshow" src="https://raw.githubusercontent.com/CSC480-20S/GUI/master/Study_Store/TestingPhotos/RandomImage14.jpg" id="imgClickAndChange" onclick="changeImage()" width="600" height="600" align="right" class:"center" />
       </div>
     </div>
-  </div>
-  <!-- -->
+    <div class="item2">
+      <div class="heading">
+        <font face="Nunito-Sans">
+          Individual Differences In Reading 2
+        </font>
+      </div>
+      <p style="margin-right:5em;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum quam sit amet aliquet. Phasellus tempor nisi eget tellus venenatis tempus. Aliquam dapibus porttitor convallis. Praesent pretium luctus
+        orci, quis ullamcorper lacus lacinia a. Integer eget molestie purus. Vestibulum porta mollis tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </p>
+      <p></p>
+      <img src="Group2230.jpg" />
+      <p></p>
+      <img src="Group 2229.jpg" />
+      <p></p>
+      <div class="author">Author: Professor Alexander Gosline, Phd, M.D. Prof. of XYZ.</div>
+      <p></p>
+      <div class="author">College: State University of New York at Oswego</div>
+      <p></p>
+      <img src="Group 2225.jpg" />
+      <p></p>
+      <img src="Group 2226.jpg" />
+      <p></p>
+      <div class="dropdown"></b></a>
+        <a class="top-level-link dropdown-trigger"><b>
+            <font face="Nunito-Sans" size="5" color="#2f4249" onclick="textSwap('Summary')">Summary</font>
+          </b></a>
+      </div>
+      <div class="dropdown"></b></a>
+        <a class="top-level-link dropdown-trigger"><b>
+            <font face="Nunito-Sans" size="5" color="#2f4249" padding-left="3px" onclick="textSwap('Description')">Details</font>
+          </b></a>
+      </div><p></p>
+      <p id="text"></p>
+    </div>
+  </div <!-- -->
 
   <!-- Footer-->
   <footer id="footer" class="">
