@@ -35,19 +35,18 @@
     function textSwap(t) {
       var x = document.getElementById("text");
       if (t === "Summary") {
-        x.innerHTML = "<b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum quam sit amet aliquet."
-        +" Phasellus tempor nisi eget tellus venenatis tempus. Aliquam dapibus porttitor convallis. "
-        +"Praesent pretium luctus orci, quis ullamcorper lacus lacinia a. Integer eget molestie purus."
-        +" Vestibulum porta mollis tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </b><p></p>"
-        +"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum quam sit amet aliquet. Phasellus tempor nisi eget tellus venenatis"
-        +" tempus. Aliquam dapibus porttitor convallis. Praesent pretium luctus orci, quis ullamcorper lacus lacinia a. Integer eget molestie purus. Vestibulum "
-        +"porta mollis tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, "
-        +"per inceptos himenaeos. ";
+        x.innerHTML = "<b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum quam sit amet aliquet." +
+          " Phasellus tempor nisi eget tellus venenatis tempus. Aliquam dapibus porttitor convallis. " +
+          "Praesent pretium luctus orci, quis ullamcorper lacus lacinia a. Integer eget molestie purus." +
+          " Vestibulum porta mollis tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. </b><p></p>" +
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia vestibulum quam sit amet aliquet. Phasellus tempor nisi eget tellus venenatis" +
+          " tempus. Aliquam dapibus porttitor convallis. Praesent pretium luctus orci, quis ullamcorper lacus lacinia a. Integer eget molestie purus. Vestibulum " +
+          "porta mollis tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, " +
+          "per inceptos himenaeos. ";
       } else {
         x.innerHTML = "Description!";
       }
     }
-
   </script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link href="style.css" rel="stylesheet" type="text/css">
@@ -132,17 +131,19 @@
       <p></p>
       <div class="dropdown"></b></a>
         <a class="top-level-link dropdown-trigger"><b>
-            <font face="Nunito-Sans" size="5" color="#2f4249" onclick="textSwap('Summary')">Summary</font>
+            <font face="Nunito-Sans" size="5" color="#2f4249" onclick="textSwap('Summary')">Abstract</font>
           </b></a>
       </div>
       <div class="dropdown"></b></a>
         <a class="top-level-link dropdown-trigger"><b>
             <font face="Nunito-Sans" size="5" color="#2f4249" padding-left="3px" onclick="textSwap('Description')">Details</font>
           </b></a>
-      </div><p></p>
+      </div>
+      <p></p>
       <p id="text"></p>
     </div>
-  </div <!-- -->
+  </div>
+   <!-- -->
 
   <!-- Footer-->
   <footer id="footer" class="">
