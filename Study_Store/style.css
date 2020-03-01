@@ -56,14 +56,13 @@ cloud {
 }
 
 input {
-    width: 350px;
-    padding: 5px;
-    margin: 10px !important;
-    height: 25px;
-    background-repeat: no-repeat;
-    background-position: right;
+  width: 350px;
+  padding: 5px;
+  margin: 10px !important;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-position: right;
 }
-
 
 .item1 {
   grid-area: image;
@@ -107,24 +106,23 @@ input {
   text-decoration: none;
   display: inline-block;
   font-size: 25px;
-  margin-left:100px;
+  margin-left: 100px;
 }
 
-.purchaseButton:active{
-    background: #2f4249;
+.purchaseButton:active {
+  background: #2f4249;
 }
 
-.purchaseButton:foucs{
-    background: #2f4249;
+.purchaseButton:foucs {
+  background: #2f4249;
 }
 
-
-.btn:active{
-    background: #2f4249;
+.btn:active {
+  background: #2f4249;
 }
 
-.btn:foucs{
-    background: #2f4249;
+.btn:foucs {
+  background: #2f4249;
 }
 
 .button1 {
@@ -178,15 +176,15 @@ input {
   border-style: solid;
 }
 
-a{
+a {
   font-family: 'Nunito Sans' !important;
 }
 
-font{
+font {
   font-family: 'Nunito Sans' !important;
 }
 
-p.contain{
+p.contain {
   margin-right: 80px;
 }
 
@@ -195,16 +193,16 @@ p.contain{
   background: white;
 }
 
-#button-holder{
-    cursor:pointer;
-    float:left;
-    height:27px;
-    margin:11px 0 0px 0;
-    text-align:center;
-    width:50px;
+#button-holder {
+  cursor: pointer;
+  float: left;
+  height: 27px;
+  margin: 11px 0 0px 0;
+  text-align: center;
+  width: 50px;
 }
 
-#button-holder i{
-    margin:4px;
-    width:20px;
+#button-holder i {
+  margin: 4px;
+  width: 20px;
 }
