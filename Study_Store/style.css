@@ -1,11 +1,3 @@
-WebFont.load( {
-    google: {
-      families: ['Nunito Sans: 200,300,400,600,700,800,900']
-    }
-  }
-
-);
-
 .desc {
   display: block;
   max-width: 20px;
@@ -22,11 +14,12 @@ WebFont.load( {
   font-size: 19px;
   cursor: pointer;
 }
-
+￼
+￼
 .heading {
-  font-size: 25px;
-  font-weight: 700;
-  color: #2f4249;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+  color: #2f4249 !important;
 }
 
 .author {
@@ -44,15 +37,6 @@ i {
   font-size: 1rem;
   top: .75rem;
   left: .75rem;
-}
-
-cloud {
-  font-size: 1rem;
-  top: .75rem;
-  left: .75rem;
-  -webkit-text-fill-color: whi;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
 }
 
 input {
