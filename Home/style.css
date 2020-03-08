@@ -1,0 +1,245 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font: 1rem sans-serif;
+}
+
+body {
+  /*height: 100vh;*/
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
+}
+
+.container {
+  margin: auto;
+  width: 96%;
+  padding: 1rem;
+}
+
+.instruction {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #343434;
+}
+
+/*
+.progress_bar {
+  background-color: yellow;
+}
+*/
+
+.dot {
+  height: 2rem;
+  width: 2rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: auto;
+}
+
+.wrapper_one {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 20% 1fr;
+  /* grid-template-rows: minmax(1rem, auto); */
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #ebebeb;
+  color: #444;
+  border-radius: 5px;
+  
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.title{
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background-color: #fff;
+  color: #444;
+  border-radius: 0.2rem;
+  box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.study_cards {
+  display: grid;
+
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+}
+
+/*
+.category_name{
+  margin-bottom: 1rem;
+}
+*/
+
+.multiple_cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 2rem;
+}
+
+.author,
+.university {
+  display: flex;
+  justify-content: flex-start;
+  /* background-color: DodgerBlue; */
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.flex-container>.author_icon,
+.author_name .flex-container>.university_icon .university_name {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+.author_icon,
+.university_icon {
+  margin-right: 0.7rem;
+  height: 1.5rem;
+}
+
+.author_name,
+.university_name {
+  font-size: 1rem;
+}
+
+.study_title {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.study_description {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #707070;
+}
+
+.card_info {
+  margin: 0.6rem;
+}
+
+.credits {
+  background-color: #FF8E43;
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 0rem;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  grid-auto-rows: minmax(1rem, auto);
+  background-color: rgb(3, 3, 3);
+  justify-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.one {
+  grid-column: 1 / 1;
+  grid-row: 1;
+
+}
+
+.two {
+  grid-column: 2 / 2;
+  grid-row: 1;
+
+}
+
+.three {
+  grid-column: 3/3;
+  grid-row: 1;
+}
+
+.four {
+  grid-column: 4/4;
+  grid-row: 1;
+}
+
+.property {
+  background-color: rgb(250, 190, 190, 0.3);
+  border-style: solid;
+  border-color: rgb(22, 16, 13);
+}
+
+.horizontal-line {
+  width: auto;
+  height: 1rem;
+  background-color: silver;
+}
+
+/* Category Menu Styling */
+
+#vertical-menu {
+  padding: 0px;
+  margin-top: 0px;
+  width: auto;
+  list-style: outside none none;
+  font-family: "nunito sans";
+  color: #2F4249;
+  height: 400px;
+  /* overflow-y: scroll; */
+  font-size: 1rem;
+}
+
+#vertical-menu li {
+  list-style: none;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+#vertical-menu li a {
+  display: block;
+  border-bottom: 1px solid #DCDCDC;
+  border-radius: 1px;
+  padding: 10px 15px;
+  background: none;
+  text-decoration: none;
+  color: #2F4249;
+}
+
+#vertical-menu li a:hover,
+#nav li a.enable {
+  background: #FF8E43;
+  color: #ffffff;
+}
+
+#vertical-menu li ul {
+  background: none;
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  color: #2F4249;
+  display: none;
+  margin: 0;
+}
+
+#vertical-menu li ul li a {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background: none;
+  border-bottom: medium none;
+}
+
+/* --------------- */
