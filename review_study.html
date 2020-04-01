@@ -77,15 +77,14 @@
       </div>
     </div>
 
-<!--
-    <div id="overlay_instruction">
+    <div id="instruction" >
       <div class="popup">
-        <div id="text-main">Intruction</div>
+        <div id="text-main">Instruction</div>
         <div id="text-desc">To mark a section as wrong, please click on the checkmark and write in why. Review all parts at the end and submit.</div>
-        <div id="text-desc2"><i onclick="on_intruction()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+        <div id="text-desc2"><i onclick="off_instruction()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
       </div>
     </div>
--->
+
     <!----- Overlay -------->
 
     <div class="form_wrapper">
@@ -113,45 +112,27 @@
 
           <!-- <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" required /> -->
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" />
+            <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" readonly onclick="openCommentForm()"/>
             <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <label for="reference">Reference</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" />
+            <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" readonly/>
             <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <label for="tags">Purpose of the study</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" />
+            <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" readonly/>
             <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <label for="tags">Categories</label><br>
 
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
-              <select name="category" class="required-entry selection_shadow" id="category"
-                onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
-                <option value="">Category</option>
-                <option value="Categorization">Categorization</option>
-                <option value="Knowledge representation">Knowledge representation</option>
-                <option value="Language">Language</option>
-                <option value="Memory">Memory</option>
-                <option value="Perception">Perception</option>
-                <option value="Cognition">Cognition</option>
-              </select>
+              <input type="text" oninput="this.className = ''" name="tags" placeholder="Categories" readonly/>
             </div>
             <div class="sub_category_div category_wrapper_item" id="sub_category_div">
-              <script type="text/javascript" language="JavaScript">
-                document.write(
-                  '<select name="subcategory" id="subcategory" class="selection_shadow"><option value="">Subcategory</option></select>'
-                )
-              </script>
-              <noscript>
-                <select name="subcategory" id="subcategory" class="selection_shadow">
-                  <option value="">Subcategory</option>
-                </select>
-              </noscript>
+              <input type="text" oninput="this.className = ''" name="tags" placeholder="Subcategory" readonly/>
             </div>
             <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
           </div>
@@ -159,7 +140,7 @@
 
           <label for="tags">Keywords</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" />
+            <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" readonly/>
             <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
           </div>
 
@@ -278,22 +259,7 @@
     <script src="category.js"></script>
     <script src="pop_up.js"></script>
     <script src="check.js"></script>
-    <script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
-    <script>
-      function openColorBox(){
-        $.colorbox({iframe:true, scalePhotos:true, href: "popup.html"});
-      }
-      function countDown(){
-        seconds--
-        $("#seconds").text(seconds);
-        if (seconds === 0){
-          openColorBox();
-          clearInterval(i);
-        }
-      }
-      var seconds = 1,
-          i = setInterval(countDown, 1000);
-    </script>
+    <script src="review_study.js"></script>
   </main>
 </body>
 
