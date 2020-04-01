@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Upload</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="upload.css">
+  <link rel="stylesheet" href="style-b.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <main>
+    <!-- Header start -->
+    <header id="header" class="box-shadow-down">
+      <ul class="menu">
+        <li>
+          <section id="logo" class="push">
+            <a href="home.html"><img
+                src="https://www.findingfive.com/images/logo-small-white.png"></a>
+          </section>
+          <!--<a class="active" href="#home">Home</a></li>-->
+        <li class="push">
+          <div class="search_bar">
+            <input type="text" placeholder="Search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </div>
+        </li>
+        <li>
+          <div class="upload-btn-wrapper">
+            <button class="btn" onclick="window.location.href = 'upload.html';">Upload</button>
+            <!--<button onclick="window.location.href = 'https://w3docs.com';">Click Here</button>-->
+            <!--<input type="file" name="myfile" />-->
+          </div>
+        </li>
+        <li><div class="vl line_1"></div></li>
+        <li><div class=" ">20 Credits</div></li>
+        <li><div class="vl line_2"></div></li>
+        <li>          
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#home">Juliana Santy<br>
+              Master's Student / Researcher</a>
+              <a href="#about">Account Profile</a>
+              <a href="#contact">Contact Finding Five</a>
+              <a href="#contact">Logout</a>
+            </div>
+          </div>
+          
+          
+          </li>
+        <li><div class="vl line_3"></div></li>
+        <li><div class=" "><i class="fa fa-sign-out" aria-hidden="true"></i>
+        </div></li>
+      </ul>
+    </header><!-- Header end -->
+
+
+    <div id="overlay">
+      <div class="popup">
+        <div id="text-main">Completed!</div>
+        <div id="text-desc">Congratulations, study is submitted successfully for review.</div>
+        <div id="text-desc2"><i onclick="off()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </div>
+    </div>
+    <!----- Overlay -------->
+
+    <div class="form_wrapper">
+      <form id="msform">
+        <div class="instruction">
+          <p>Upload your study here</p>
+        </div>
+
+        <div>
+          <ul id="progressbar">
+            <li class="step"></li>
+            <li class="step"></li>
+            <li class="step"></li>
+            <li class="step"></li>
+            <li class="step"></li>
+          </ul>
+        </div>
+
+        <div class="tab">
+          <!------------------ Step_1 ------------------------------>
+          <h2 class="fs-title">Study Information</h2>
+          <label for="title">Title</label><br>
+
+          <!-- <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" required /> -->
+          <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" />
+          <label for="reference">Reference</label><br>
+          <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" />
+          <label for="tags">Purpose of the study</label><br>
+          <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" />
+          <label for="tags">Categories</label><br>
+
+          <!--
+        <ul class="category_items">
+          <li>
+            <p>
+              <label for="standard-dropdown">Categories</label><br />
+              <select id="standard-dropdown" name="standard-dropdown" class="custom-class1 custom-class2">
+                <option value="6">Categorization</option>
+                <option value="7">Knowledge Representation</option>
+                <option value="8">Language</option>
+                <option value="9">Memory</option>
+                <option value="10">Perception</option>
+                <option value="11">Cognition</option>
+              </select>
+            </p>
+          </li>
+          <li>
+            <p>
+              <label for="standard-dropdown">Sub-categories</label><br />
+              <select id="standard-dropdown" name="standard-dropdown" class="custom-class1 custom-class2">
+
+                <option value="6">Language Aquisition</option>
+                <option value="7">Language Processing</option>
+                <option value="8">Linquistic Grammar</option>
+                <option value="9">Phonetics Phonology</option>
+                <option value="10">Perception</option>
+                <option value="11">Cognition</option>
+
+              </select>
+            </p>
+          </li>
+        </ul>
+
+-->
+
+          <div class="category_wrapper">
+            <div class="category_div category_wrapper_item" id="category_div">
+              <select name="category" class="required-entry selection_shadow" id="category"
+                onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
+                <option value="">Category</option>
+                <option value="Categorization">Categorization</option>
+                <option value="Knowledge representation">Knowledge representation</option>
+                <option value="Language">Language</option>
+                <option value="Memory">Memory</option>
+                <option value="Perception">Perception</option>
+                <option value="Cognition">Cognition</option>
+              </select>
+            </div>
+            <div class="sub_category_div category_wrapper_item" id="sub_category_div">
+              <script type="text/javascript" language="JavaScript">
+                document.write(
+                  '<select name="subcategory" id="subcategory" class="selection_shadow"><option value="">Subcategory</option></select>'
+                )
+              </script>
+              <noscript>
+                <select name="subcategory" id="subcategory" class="selection_shadow">
+                  <option value="">Subcategory</option>
+                </select>
+              </noscript>
+            </div>
+          </div>
+          <!--Categoty_wrapper-->
+
+          <label for="tags">Keywords</label><br>
+          <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" />
+
+        </div>
+
+        <div class="tab">
+          <!------------------ Step_2 ------------------------------>
+          <h2 class="fs-title">Study Methods</h2>
+          <label for="abstract">Abstract</label><br>
+
+          <!--<textarea name="message" rows="10" cols="30" oninput="this.className = ''" placeholder="Abstract of the study"
+          required></textarea> -->
+          <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
+            placeholder="Abstract of the study"></textarea>
+
+          <div class="methods">
+            <div class="method_item">
+              <label for="stimuli">No. of Stimuli</label><br>
+              <!--<input type="number" oninput="this.className = ''" name="stimuli" min="1" max="5" placeholder="No. of Stimuli"
+              required />-->
+              <input type="number" oninput="this.className = ''" name="stimuli" placeholder="No. of Stimuli" />
+            </div>
+            <div class="method_item">
+              <label for="tags">Duration of Study</label><br>
+              <input type="number" oninput="this.className = ''" name="title" placeholder="Duration of Study" />
+            </div>
+            <div class="method_item">
+              <label for="tags">No. of Responses</label><br>
+              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Responses" />
+            </div>
+            <div class="method_item">
+              <label for="tags">No. of Trials</label><br>
+              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Trials" />
+            </div>
+          </div>
+
+
+          <p>Randomized?</p>
+
+          <div class="radio">
+            <input type="radio" id="yes" name="option" value="yes">
+            <label for="Yes">Yes</label>
+            <input type="radio" id="no" name="option" value="no">
+            <label for="No">No</label>
+          </div>
+
+        </div>
+
+
+        <!---------- tab -------->
+        <div class="tab">
+          <!------------------ Step_3 ------------------------------>
+          <h2 class="fs-title">Images / Videos</h2>
+          <h3 class="fs-subtitle">Upload Document</h3>
+          <div id="drop">Drag & drop
+            <p>or browse your files</p>
+            <input type="file">
+          </div>
+          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
+            please update your browser.<br>
+            Maximum file upload limit is 2MB</p>
+
+          <!------ Image Upload Progress ----->
+          <div class="img_uploader">
+            <div class="img_icon">
+              <i class="fa fa-file-image-o fa-4x" aria-hidden="true"></i>
+
+            </div>
+            <div class="file_name">images.png</div>
+            <div class="close_icon">
+              <i class="fa fa-times" aria-hidden="true"></i>
+
+            </div>
+            <div class="spacing"></div>
+            <div class="progress_perc">10% Done</div>
+            <div class="file_size">300KB/sec</div>
+          </div>
+
+
+
+
+        </div>
+
+
+
+
+        <div class="tab">
+          <!------------------ Step_4 ------------------------------>
+          <h2 class="fs-title">Upload Json Document</h2>
+          <h3 class="fs-subtitle">Upload Document</h3>
+          <div id="drop">Drag & drop
+            <p>or browse your files</p>
+            <input type="file">
+          </div>
+          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
+            please update your browser.<br>
+            Maximum file upload limit is 2MB</p>
+        </div>
+
+
+        <div class="tab">
+          <!------------------ Step_5 ------------------------------>
+          <h2 class="fs-title">Preview</h2>
+          <div class="preview_img"></div>
+        </div>
+
+        <div>
+          <div class="bottom_buttons">
+            <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrev(1)">Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="progressbar.js"></script>
+    <script src="category.js"></script>
+    <script src="pop_up.js"></script>
+  </main>
+</body>
+
+</html>

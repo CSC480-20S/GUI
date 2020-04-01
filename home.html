@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-b.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="https://use.fontawesome.com/9595edcb50.js"></script>
+  <script src="profile.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#vertical-menu > li > a').click(function () {
+        if ($(this).attr('class') != 'enable') {
+          $('#vertical-menu li ul').slideUp();
+          $(this).next().slideToggle();
+          $('#vertical-menu li a').removeClass('enable');
+          $(this).addClass('enable');
+        }
+      });
+    });
+  </script>
+<script src="card.js"></script>
+
+</head>
+
+<body>
+  <main>
+
+
+    <!-- Header start -->
+    <header id="header" class="box-shadow-down">
+      <ul class="menu">
+        <li>
+          <section id="logo" class="push">
+            <a href="home.html"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
+          </section>
+          <!--<a class="active" href="#home">Home</a></li>-->
+        <li class="push">
+          <div class="search_bar">
+            <input type="text" placeholder="Search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </div>
+        </li>
+        <li>
+          <div class="upload-btn-wrapper">
+            <button class="btn" onclick="window.location.href = 'upload.html';">Upload</button>
+          </div>
+        </li>
+        <li>
+          <div class="vl line_1"></div>
+        </li>
+        <li>
+          <div class=" ">20 Credits</div>
+        </li>
+        <li>
+          <div class="vl line_2"></div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#home">Juliana Santy<br>
+                Master's Student / Researcher</a>
+              <a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
+              <a href="#contact">Contact Finding Five</a>
+              <a href="#contact">Logout</a>
+            </div>
+          </div>
+
+
+        </li>
+        <li>
+          <div class="vl line_3"></div>
+        </li>
+        <li>
+          <div class=" "><i class="fa fa-sign-out" aria-hidden="true"></i>
+          </div>
+        </li>
+      </ul>
+    </header><!-- Header end -->
+
+
+    <div class="container">
+
+      <div class="wrapper_one">
+        <div class="box left_nav">
+          <p class="title">Categories</p>
+
+          <div class="box category">
+            <ul id="vertical-menu">
+              <li>
+                <a href="#">Categorization</a>
+                <ul>
+                  <li><a href="#">Induction and acquisition</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Judgement and classification</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Representation and structure</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Similarity</a></li>
+                  <div id="horizontal-line-categories"></div>
+                </ul>
+              </li>
+              <li><a href="#">Knowledge Representation</a>
+                <ul>
+                  <li><a href="#">Induction and acquisition</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Judgement and classification</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Representation and structure</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Similarity</a></li>
+                  <div id="horizontal-line-categories"></div>
+                </ul>
+              </li>
+              <li><a href="#">Language</a>
+                <ul>
+                  <li><a href="#">Induction and acquisition</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Judgement and classification</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Representation and structure</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Similarity</a></li>
+                  <div id="horizontal-line-categories"></div>
+                </ul>
+              </li>
+              <li><a href="#">Memory</a>
+                <ul>
+                  <li><a href="#">Induction and acquisition</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Judgement and classification</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Representation and structure</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Similarity</a></li>
+                  <div id="horizontal-line-categories"></div>
+                </ul>
+              </li>
+              <li><a href="#">Perception</a>
+                <ul>
+                  <li><a href="#">Induction and acquisition</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Judgement and classification</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Representation and structure</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Similarity</a></li>
+                  <div id="horizontal-line-categories"></div>
+                </ul>
+              </li>
+              <li><a href="#">Cognition</a>
+                <ul>
+                  <li><a href="#">Induction and acquisition</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Judgement and classification</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Representation and structure</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a href="#">Similarity</a></li>
+                  <div id="horizontal-line-categories"></div>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- Category Choices END -->
+
+
+
+
+        </div>
+
+        <div class="box study_cards">
+          <p class="title">Top Rated Studies</p>
+          <div id="myData" onclick="window.location.href = 'preview.html';"></div>
+        </div>
+        
+      </div>
+  </main>
+</body>
+
+</html>
