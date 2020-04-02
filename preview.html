@@ -11,6 +11,38 @@
 	<link rel="stylesheet" href="style-b.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function () {
+      $.ajax({
+        url: 'http://pi.cs.oswego.edu:12100/studyPreview',
+        dataType: 'json',
+        success: function (json) {
+							document.getElementById('costInCredits').innerHTML = "Credits: $" +json[1].costInCredits;
+              document.getElementById('author').innerHTML = "Author: " + json[1].author;
+							document.getElementById('abst').innerHTML = json[1].abstract;
+              document.getElementById('duration').innerHTML = "Duration of the study: "+json[1].duration + " minutes.";
+              document.getElementById('institution').innerHTML = "College: " + json[1].institution;
+							document.getElementById('title').innerHTML = json[1].title;
+							document.getElementById('purpose').innerHTML = json[1].purpose;
+							document.getElementById('responses').innerHTML = "No. of responses: " + json[1].num_responses;
+							document.getElementById('stimuli').innerHTML = "No. of stimuli: " + json[1].num_stimuli;
+							document.getElementById('categories').innerHTML = "Categories: <button class='pill'>" + json[1].categories + "</button>";
+							document.getElementById('keywords').innerHTML = "Keywords: <button class='pill'>" + json[1].keywords + "</button>";
+							if(json[1].randomize){
+								document.getElementById('random').innerHTML = "Randomized the study?: Yes";
+							}
+							else{
+								document.getElementById('random').innerHTML = "Randomized the study?: No";
+							}
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -22,7 +54,6 @@
 					<section id="logo" class="push">
 						<a href="home.html"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
 					</section>
-					<!--<a class="active" href="#home">Home</a></li>-->
 				<li class="push">
 					<div class="search_bar">
 						<input type="text" placeholder="Search">
@@ -31,16 +62,14 @@
 				</li>
 				<li>
 					<div class="upload-btn-wrapper">
-						<button class="btn" onclick="window.location.href = 'upload.html';">Upload</button>
-						<!--<button onclick="window.location.href = 'https://w3docs.com';">Click Here</button>-->
-						<!--<input type="file" name="myfile" />-->
+						<button class="buhtan" onclick="window.location.href = 'upload.html';">Upload</button>
 					</div>
 				</li>
 				<li>
 					<div class="vl line_1"></div>
 				</li>
 				<li>
-					<div class=" ">20 Credits</div>
+					<div>20 Credits</div>
 				</li>
 				<li>
 					<div class="vl line_2"></div>
@@ -56,9 +85,7 @@
 							<a href="#contact">Logout</a>
 						</div>
 					</div>
-
-
-				</li>
+			</li>
 				<li>
 					<div class="vl line_3"></div>
 				</li>
@@ -103,16 +130,14 @@
 
 			<div class="preview_info">
 				<div class="pre_row_1">
-					<h2 class="study_title">Individual Differences in Reading</h2>
+					<h2 class="study_title" id="title"></h2>
 					<div class="wishlist">
 						<p>Add to wishlist</p>
 						<i class="fa fa-bookmark-o" aria-hidden="true"></i>
 					</div>
 				</div><!-- pre_row_1 -->
 				<div class="pre_row_2">
-					<p>Compare the performance of your Digital Customer Experience program
-						against industry peers and best-in-class organizations delivering superior
-						digital customer experiences.</p>
+					<p id="purpose"></p>
 					<div class="review">
 						<p>Ratings: </p>
 						<i class="fa fa-star" aria-hidden="true"></i>
@@ -122,24 +147,13 @@
 						<i class="fa fa-star" aria-hidden="true"></i>
 					</div>
 					<div class="credit_buy">
-						<p>Credits: $20</p>
+						<p id="costInCredits"></p>
 						<button class="primary_btn">Buy Now</button>
 					</div>
-					<p>Author: Prof. Alexander Gosline, Phd, M.D. Prof. of XYZ. </p>
-					<p>College: State University of New York at Oswego</p>
-					<div class="category_keywords">
-						<p>Categories: </p>
-						<button class="pill">Performance</button>
-						<button class="pill">Digital Customer</button>
-						<button class="pill">Program</button>
-					</div>
-					<div class="category_keywords">
-						<p>Keywords: </p>
-						<button class="pill">Performance</button>
-						<button class="pill">Digital Customer</button>
-						<button class="pill">Lorem</button>
-						<button class="pill">Lorem</button>
-					</div>
+					<p id="author"></p>
+					<p id="institution">College: </p>
+					<div class="category_keywords" id="categories"></div>
+					<div class="category_keywords" id="keywords"></div>
 				</div><!-- pre_row_2 -->
 
 
@@ -155,31 +169,15 @@
 					</ul>
 
 					<div id="tabs-1">
-						<p>
-							Measuring your digital customer experience over time provides a valuable insight
-							into performance trends. But comparing your results against those of your peers
-							provides even deeper insights into how well your organization is meeting the expectations
-							of customers across the market.</p>
-						<p>
-							Customer Ratings – Digital from the XM Institute help you clearly understand the leaders
-							delivering the best customer experiences in each industry and identify how your organization
-							compares. These results can be included within your Qualtrics CX dashboards to provide an
-							ongoing comparison, and to help prioritize customer experience activities and investments.
-						</p>
+						<p id="abst"></p>
 					</div>
 					<div id="tabs-2">
-						<p>
-							No. of Stimuli: 20
+						<p id="stimuli">
 						</p>
-						<p>
-							No. of Responses: 4
+						<p id="responses">
 						</p>
-						<p>
-							Duration of the study: 20 main
-						</p>
-						<p>
-							Randomized the study?: Yes
-						</p>
+						<p id="duration"></p>
+						<p id="random"></p>
 					</div>
 
 
@@ -197,8 +195,51 @@
 		</div><!-- preview_container -->
 
 
-
-
+		<div class="bs-example">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Carousel indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+				<!-- Wrapper for carousel items -->
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<div class="card">
+							<div class="contain">
+								<h4><b>John Doe</b></h4>
+								<p><b>Architect & Engineer<b></p>
+									<p>Le lundi matin, mon père travaille au bureau, ma mère reste à la maison, ma petite sœur va à l'école, et je vais à l'université. Le mardi, le mercredi, le jeudi, et finalement le vendredi, nous faisons la même chose. Mais le week-end, il est assez différent. Pendant le week-end, nous ne sommes pas très occupés comme les autres jours. Le samedi matin, mon père qui est très sportif fait de la natation, et ma mère fait la cuisine parce que chaque samedi, mes parents invitent ma tante à dîner avec nous. Enfin, le dimanche d'habitude nous ne faisons pas grand-chose; quelques fois, mon père fait du bricolage si nécessaire.</p>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="card">
+							<div class="contain">
+								<h4><b>John Doe</b></h4>
+								<p>Architect & Engineer</p>
+							</div>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<div class="card">
+							<div class="contain">
+								<h4><b>John Doe</b></h4>
+								<p>Architect & Engineer</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Carousel controls -->
+				<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+					<span class="carousel-control-prev-icon"></span>
+				</a>
+				<a class="carousel-control-next" href="#myCarousel" data-slide="next">
+					<span class="carousel-control-next-icon"></span>
+				</a>
+			</div>
+		</div>
 
 
 
@@ -209,10 +250,10 @@
 
 			// Hover states on the static widgets
 			$("#dialog-link, #icons li").hover(
-				function () {
+				function() {
 					$(this).addClass("ui-state-hover");
 				},
-				function () {
+				function() {
 					$(this).removeClass("ui-state-hover");
 				}
 			);
@@ -222,10 +263,10 @@
 
 			// Hover states on the static widgets
 			$("#dialog-link, #icons li").hover(
-				function () {
+				function() {
 					$(this).addClass("ui-state-hover");
 				},
-				function () {
+				function() {
 					$(this).removeClass("ui-state-hover");
 				}
 			);
