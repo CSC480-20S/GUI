@@ -126,6 +126,7 @@
 
         <div class="tab">
           <!------------------ Step_1 ------------------------------>
+          <!--Title-->
           <h2 class="fs-title">Study Information</h2>
           <label for="title">Title</label><br>
           <div class="check_mark">
@@ -134,18 +135,24 @@
           </div>
           <p id="title_feedback" class="string_feedback"></p>
 
+          <!--Reference-->
           <label for="reference">Reference</label><br>
           <div class="check_mark">
             <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" readonly/>
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <i onclick="changeCheck(this,'reference_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="reference_feedback" class="string_feedback"></p>
+
+          <!--Purpose-->
           <label for="tags">Purpose of the study</label><br>
           <div class="check_mark">
             <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" readonly/>
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <i onclick="changeCheck(this,'purpose_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
-          <label for="tags">Categories</label><br>
+          <p id="purpose_feedback" class="string_feedback"></p>
 
+          <!--Categories-->
+          <label for="tags">Categories</label><br>
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
               <input type="text" oninput="this.className = ''" name="tags" placeholder="Categories" readonly/>
@@ -153,27 +160,32 @@
             <div class="sub_category_div category_wrapper_item" id="sub_category_div">
               <input type="text" oninput="this.className = ''" name="tags" placeholder="Subcategory" readonly/>
             </div>
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <i onclick="changeCheck(this,'categories_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="categories_feedback" class="string_feedback"></p>
           <!--Categoty_wrapper-->
 
+          <!--Keywords-->
           <label for="tags">Keywords</label><br>
           <div class="check_mark">
             <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" readonly/>
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="keywords_feedback" class="string_feedback"></p>
 
         </div>
 
         <div class="tab">
           <!------------------ Step_2 ------------------------------>
           <h2 class="fs-title">Study Methods</h2>
+          
+          <!--Abstract-->
           <label for="abstract">Abstract</label><br>
-
-          <!--<textarea name="message" rows="10" cols="30" oninput="this.className = ''" placeholder="Abstract of the study"
-          required></textarea> -->
-          <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
+          <div class="check_mark">
+            <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
             placeholder="Abstract of the study"></textarea>
+            <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          </div>
 
           <div class="methods">
             <div class="method_item">

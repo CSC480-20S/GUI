@@ -33,12 +33,12 @@ function openCommentForm(y) {
 }
 
 function off_comment() {
-    var x = getInputId();
-    setInputId("");
     if (!document.getElementById("input-comment").value){
       document.getElementById("message-comment").innerHTML="Comment is required";
       return;
     }
+    var x = getInputId();
+    setInputId("");
     document.getElementById("comment").style.display = "none";
     var comment = document.getElementById("input-comment").value;
     document.getElementById(x).innerHTML = comment;
