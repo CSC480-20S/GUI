@@ -183,40 +183,59 @@
           <label for="abstract">Abstract</label><br>
           <div class="check_mark">
             <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
-            placeholder="Abstract of the study"></textarea>
-            <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
+            placeholder="Abstract of the study" readonly></textarea>
+            <i onclick="changeCheck(this,'abstract_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="abstract_feedback" class="string_feedback"></p>
 
           <div class="methods">
+            <!--Stimuli-->
             <div class="method_item">
               <label for="stimuli">No. of Stimuli</label><br>
-              <!--<input type="number" oninput="this.className = ''" name="stimuli" min="1" max="5" placeholder="No. of Stimuli"
-              required />-->
               <input type="number" oninput="this.className = ''" name="stimuli" placeholder="No. of Stimuli" />
+              <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <br/>
+              <p id="stimuli_feedback" class="string_feedback"></p>
             </div>
+
+            <!--Duration-->
             <div class="method_item">
               <label for="tags">Duration of Study</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="Duration of Study" />
+              <input type="number" oninput="this.className = ''" name="title" placeholder="Duration of Study" readonly/>
+              <i onclick="changeCheck(this,'duration_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <br/>
+              <p id="duration_feedback" class="string_feedback"></p>
             </div>
+
+            <!--Response-->
             <div class="method_item">
               <label for="tags">No. of Responses</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Responses" />
+              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Responses" readonly/>
+              <i onclick="changeCheck(this,'response_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <br/>
+              <p id="response_feedback" class="string_feedback"></p>
             </div>
+            
+            <!--Trials-->
             <div class="method_item">
               <label for="tags">No. of Trials</label><br>
               <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Trials" />
+              <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <br/>
+              <p id="trials_feedback" class="string_feedback"></p>
             </div>
           </div>
 
-
+          <!--Randomized-->
           <p>Randomized?</p>
-
           <div class="radio">
             <input type="radio" id="yes" name="option" value="yes">
             <label for="Yes">Yes</label>
             <input type="radio" id="no" name="option" value="no">
             <label for="No">No</label>
+            <i onclick="changeCheck(this,'randomized_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
           </div>
+          <p id="randomized_feedback" class="string_feedback"></p>
 
         </div>
 
