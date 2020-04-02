@@ -13,7 +13,6 @@ function openInstruction() {
 function off_instruction() {
     document.getElementById("instruction").style.display = "none";
 }
-document.getElementById("form_wrapper").innerHTML = window.openInstruction();
 
 //------------------------- COMMENT FORM ---------------------------
 function changeCheck(x,y) {
@@ -57,3 +56,38 @@ function off_cancel() {
     document.getElementById(x).innerHTML = "";
     document.getElementById("cancel").style.display = "none";
 }
+
+//------------------------- PREVIEW ---------------------------
+function updatePreview(){
+    var fields_id = ["title_feedback","reference_feedback","purpose_feedback","categories_feedback","keywords_feedback","abstract_feedback","stimuli_feedback","duration_feedback","response_feedback","trials_feedback","randomized_feedback","image_videos_feedback","jsons_feedback"];
+    var fields_name = ["Title","Reference","Purpose","Categories","Keywords","Abstract","Stimuli","Duration","Response","Trials","Randomized","Images/Videos","JSON"];
+    var preview = "";
+    var accept = true;
+    for (i = 0; i < fields_id.length; i++) {
+        var feedback = document.getElementById(fields_id[i]).innerHTML;
+        if (feedback){
+            preview += '<h5 class="fs-subtitle">'+fields_name[i]+': '+feedback+'</h5>';
+            accept = false;       
+        }
+    }
+    if (accept){
+        document.getElementById("preview").innerHTML = '<h5 class="fs-subtitle">No any comment</h5>';
+    }
+    else{
+        document.getElementById("preview").innerHTML = preview;
+    }
+}
+
+function nextPrevReview(n) {
+    var x = document.getElementsByClassName("tab");
+    if (n == 1 && !validateForm()) return false;
+    x[currentTab].style.display = "none";
+    currentTab = currentTab + n;
+    if (currentTab >= x.length) {
+      document.getElementById("msform").submit();
+      return false;
+    }
+    showTab(currentTab);
+    console.log("Update Preview");
+    updatePreview();
+  }

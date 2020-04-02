@@ -277,14 +277,21 @@
 
         <div class="tab">
           <!------------------ Step_5 ------------------------------>
-          <h2 class="fs-title">Preview</h2>
-          <div class="preview_img"></div>
+          <h2 class="fs-title">Preview Feedback</h2>
+          <div id="preview">
+            <h5 class="fs-subtitle">Title: This is not suitable</h5>
+            <h5 class="fs-subtitle">Title: This is not suitable</h5>
+          </div>
+
+          
+
+
         </div>
 
         <div>
           <div class="bottom_buttons">
-            <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrev(1)">Next</button>
+            <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrevReview(-1)">Previous</button>
+            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrevReview(1)">Next</button>
           </div>
         </div>
       </form>
@@ -295,6 +302,7 @@
     <script src="review_study.js"></script>
 
     <script>
+      openInstruction();
       //View list of images and videos
       var img = ["assets/preview.png", "assets/preview_1.png", "assets/preview_2.png"];
       var content = ""
@@ -310,10 +318,7 @@
         content += '<hr><h5 class="fs-title">'+json_files[i]+'</h5><embed src="'+json_files[i]+'" width="800px" height="500px"/>'
       }
       document.getElementById("json_files").innerHTML = content;
-
-      
-            
-            
+                      
     </script>
   </main>
 </body>
