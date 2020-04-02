@@ -85,6 +85,25 @@
       </div>
     </div>
 
+    <div id="comment">
+      <form class="popup">
+        <div id="text-main">Provide a comment</div>
+        <div id="input-comment-container">
+          <textarea id="input-comment" type="text" oninput="this.className = ''" name="title" placeholder="Add comment ..." required></textarea>
+        </div>
+        <p id="message-comment"></p>
+        <div id="text-desc2"><i onclick="off_comment()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </form>
+    </div>
+
+    <div id="cancel">
+      <form class="popup">
+        <div id="text-main">The section is marked right.</div>
+        <p id="message-comment"></p>
+        <div id="text-desc2"><i onclick="off_cancel()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </form>
+    </div>
+
     <!----- Overlay -------->
 
     <div class="form_wrapper">
@@ -109,12 +128,12 @@
           <!------------------ Step_1 ------------------------------>
           <h2 class="fs-title">Study Information</h2>
           <label for="title">Title</label><br>
-
-          <!-- <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" required /> -->
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" readonly onclick="openCommentForm()"/>
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" readonly/>
+            <i onclick="changeCheck(this,'title_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="title_feedback" class="string_feedback"></p>
+
           <label for="reference">Reference</label><br>
           <div class="check_mark">
             <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" readonly/>
@@ -258,7 +277,6 @@
     <script src="progressbar.js"></script>
     <script src="category.js"></script>
     <script src="pop_up.js"></script>
-    <script src="check.js"></script>
     <script src="review_study.js"></script>
   </main>
 </body>
