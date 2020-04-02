@@ -130,7 +130,7 @@
           <h2 class="fs-title">Study Information</h2>
           <label for="title">Title</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" readonly/>
+            <input type="text" oninput="this.className = ''" name="title" value="Add the title" readonly/>
             <i onclick="changeCheck(this,'title_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="title_feedback" class="string_feedback"></p>
@@ -138,7 +138,7 @@
           <!--Reference-->
           <label for="reference">Reference</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" readonly/>
+            <input type="text" oninput="this.className = ''" name="reference" value="Reference of the study" readonly/>
             <i onclick="changeCheck(this,'reference_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="reference_feedback" class="string_feedback"></p>
@@ -146,7 +146,7 @@
           <!--Purpose-->
           <label for="tags">Purpose of the study</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" readonly/>
+            <input type="text" oninput="this.className = ''" name="tags" value="Purpose" readonly/>
             <i onclick="changeCheck(this,'purpose_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="purpose_feedback" class="string_feedback"></p>
@@ -155,10 +155,10 @@
           <label for="tags">Categories</label><br>
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
-              <input type="text" oninput="this.className = ''" name="tags" placeholder="Categories" readonly/>
+              <input type="text" oninput="this.className = ''" name="tags" value="Categories" readonly/>
             </div>
             <div class="sub_category_div category_wrapper_item" id="sub_category_div">
-              <input type="text" oninput="this.className = ''" name="tags" placeholder="Subcategory" readonly/>
+              <input type="text" oninput="this.className = ''" name="tags" value="Subcategory" readonly/>
             </div>
             <i onclick="changeCheck(this,'categories_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
@@ -168,7 +168,7 @@
           <!--Keywords-->
           <label for="tags">Keywords</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" readonly/>
+            <input type="text" oninput="this.className = ''" name="title" value="Seperate keywords by comma" readonly/>
             <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="keywords_feedback" class="string_feedback"></p>
@@ -183,7 +183,7 @@
           <label for="abstract">Abstract</label><br>
           <div class="check_mark">
             <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
-            placeholder="Abstract of the study" readonly></textarea>
+             readonly>Abstract of the study</textarea>
             <i onclick="changeCheck(this,'abstract_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="abstract_feedback" class="string_feedback"></p>
@@ -192,8 +192,8 @@
             <!--Stimuli-->
             <div class="method_item">
               <label for="stimuli">No. of Stimuli</label><br>
-              <input type="number" oninput="this.className = ''" name="stimuli" placeholder="No. of Stimuli" />
-              <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <input type="number" oninput="this.className = ''" name="stimuli" value="11" readonly/>
+              <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check" ></i>
               <br/>
               <p id="stimuli_feedback" class="string_feedback"></p>
             </div>
@@ -201,8 +201,8 @@
             <!--Duration-->
             <div class="method_item">
               <label for="tags">Duration of Study</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="Duration of Study" readonly/>
-              <i onclick="changeCheck(this,'duration_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <i onclick="changeCheck(this,'duration_feedback')" class="fa fa-check-circle fa-2x check"></i>
               <br/>
               <p id="duration_feedback" class="string_feedback"></p>
             </div>
@@ -210,8 +210,8 @@
             <!--Response-->
             <div class="method_item">
               <label for="tags">No. of Responses</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Responses" readonly/>
-              <i onclick="changeCheck(this,'response_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <i onclick="changeCheck(this,'response_feedback')" class="fa fa-check-circle fa-2x check"></i>
               <br/>
               <p id="response_feedback" class="string_feedback"></p>
             </div>
@@ -219,8 +219,8 @@
             <!--Trials-->
             <div class="method_item">
               <label for="tags">No. of Trials</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Trials" />
-              <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
+              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check" ></i>
               <br/>
               <p id="trials_feedback" class="string_feedback"></p>
             </div>
@@ -244,52 +244,36 @@
         <div class="tab">
           <!------------------ Step_3 ------------------------------>
           <h2 class="fs-title">Images / Videos</h2>
-          <h3 class="fs-subtitle">Upload Document</h3>
-          <div id="drop">Drag & drop
-            <p>or browse your files</p>
-            <input type="file">
+          
+          <div id="images_videos">    
           </div>
-          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
-            please update your browser.<br>
-            Maximum file upload limit is 2MB</p>
-
-          <!------ Image Upload Progress ----->
-          <div class="img_uploader">
-            <div class="img_icon">
-              <i class="fa fa-file-image-o fa-4x" aria-hidden="true"></i>
-
-            </div>
-            <div class="file_name">images.png</div>
-            <div class="close_icon">
-              <i class="fa fa-times" aria-hidden="true"></i>
-
-            </div>
-            <div class="spacing"></div>
-            <div class="progress_perc">10% Done</div>
-            <div class="file_size">300KB/sec</div>
-          </div>
-
-
-
-
+          <i onclick="changeCheck(this,'image_videos_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          <br/>
+          <p id="image_videos_feedback" class="string_feedback"></p>
         </div>
+        
 
 
 
 
         <div class="tab">
           <!------------------ Step_4 ------------------------------>
-          <h2 class="fs-title">Upload Json Document</h2>
-          <h3 class="fs-subtitle">Upload Document</h3>
-          <div id="drop">Drag & drop
-            <p>or browse your files</p>
-            <input type="file">
+          <h2 class="fs-title">Json Document</h2>
+          <div id="json_files"> 
+            <h5 class="fs-title">card.js</h5>
+            <embed src="card.js" width="800px" height="500px"/>
+            <hr>
+            <h5 class="fs-title">card.js</h5>
+            <embed src="card.js" width="800px" height="500px"/>
           </div>
-          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
-            please update your browser.<br>
-            Maximum file upload limit is 2MB</p>
+          <i onclick="changeCheck(this,'jsons_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          <br/>
+          <p id="jsons_feedback" class="string_feedback"></p>
+          
+
         </div>
 
+        
 
         <div class="tab">
           <!------------------ Step_5 ------------------------------>
@@ -309,6 +293,28 @@
     <script src="category.js"></script>
     <script src="pop_up.js"></script>
     <script src="review_study.js"></script>
+
+    <script>
+      //View list of images and videos
+      var img = ["assets/preview.png", "assets/preview_1.png", "assets/preview_2.png"];
+      var content = ""
+      for (i = 0; i < img.length; i++) {
+        content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
+      }
+      document.getElementById("images_videos").innerHTML = content;
+
+      //View list of json files
+      var json_files = ["card.js", "category.js", "jquery-ui.js"];
+      var content = ""
+      for (i = 0; i < json_files.length; i++) {
+        content += '<hr><h5 class="fs-title">'+json_files[i]+'</h5><embed src="'+json_files[i]+'" width="800px" height="500px"/>'
+      }
+      document.getElementById("json_files").innerHTML = content;
+
+      
+            
+            
+    </script>
   </main>
 </body>
 
