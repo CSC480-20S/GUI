@@ -77,15 +77,33 @@
       </div>
     </div>
 
-<!--
-    <div id="overlay_instruction">
+    <div id="instruction" >
       <div class="popup">
-        <div id="text-main">Intruction</div>
+        <div id="text-main">Instruction</div>
         <div id="text-desc">To mark a section as wrong, please click on the checkmark and write in why. Review all parts at the end and submit.</div>
-        <div id="text-desc2"><i onclick="on_intruction()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+        <div id="text-desc2"><i onclick="off_instruction()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
       </div>
     </div>
--->
+
+    <div id="comment">
+      <form class="popup">
+        <div id="text-main">Provide a comment</div>
+        <div id="input-comment-container">
+          <textarea id="input-comment" type="text" oninput="this.className = ''" name="title" placeholder="Add comment ..." required></textarea>
+        </div>
+        <p id="message-comment"></p>
+        <div id="text-desc2"><i onclick="off_comment()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </form>
+    </div>
+
+    <div id="cancel">
+      <form class="popup">
+        <div id="text-main">The section is marked right.</div>
+        <p id="message-comment"></p>
+        <div id="text-desc2"><i onclick="off_cancel()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </form>
+    </div>
+
     <!----- Overlay -------->
 
     <div class="form_wrapper">
@@ -108,103 +126,116 @@
 
         <div class="tab">
           <!------------------ Step_1 ------------------------------>
+          <!--Title-->
           <h2 class="fs-title">Study Information</h2>
           <label for="title">Title</label><br>
-
-          <!-- <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" required /> -->
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input type="text" oninput="this.className = ''" name="title" value="Add the title" readonly/>
+            <i onclick="changeCheck(this,'title_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="title_feedback" class="string_feedback"></p>
+
+          <!--Reference-->
           <label for="reference">Reference</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input type="text" oninput="this.className = ''" name="reference" value="Reference of the study" readonly/>
+            <i onclick="changeCheck(this,'reference_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="reference_feedback" class="string_feedback"></p>
+
+          <!--Purpose-->
           <label for="tags">Purpose of the study</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input type="text" oninput="this.className = ''" name="tags" value="Purpose" readonly/>
+            <i onclick="changeCheck(this,'purpose_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
-          <label for="tags">Categories</label><br>
+          <p id="purpose_feedback" class="string_feedback"></p>
 
+          <!--Categories-->
+          <label for="tags">Categories</label><br>
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
-              <select name="category" class="required-entry selection_shadow" id="category"
-                onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
-                <option value="">Category</option>
-                <option value="Categorization">Categorization</option>
-                <option value="Knowledge representation">Knowledge representation</option>
-                <option value="Language">Language</option>
-                <option value="Memory">Memory</option>
-                <option value="Perception">Perception</option>
-                <option value="Cognition">Cognition</option>
-              </select>
+              <input type="text" oninput="this.className = ''" name="tags" value="Categories" readonly/>
             </div>
             <div class="sub_category_div category_wrapper_item" id="sub_category_div">
-              <script type="text/javascript" language="JavaScript">
-                document.write(
-                  '<select name="subcategory" id="subcategory" class="selection_shadow"><option value="">Subcategory</option></select>'
-                )
-              </script>
-              <noscript>
-                <select name="subcategory" id="subcategory" class="selection_shadow">
-                  <option value="">Subcategory</option>
-                </select>
-              </noscript>
+              <input type="text" oninput="this.className = ''" name="tags" value="Subcategory" readonly/>
             </div>
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <i onclick="changeCheck(this,'categories_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="categories_feedback" class="string_feedback"></p>
           <!--Categoty_wrapper-->
 
+          <!--Keywords-->
           <label for="tags">Keywords</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input type="text" oninput="this.className = ''" name="title" value="Seperate keywords by comma" readonly/>
+            <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="keywords_feedback" class="string_feedback"></p>
 
         </div>
 
         <div class="tab">
           <!------------------ Step_2 ------------------------------>
           <h2 class="fs-title">Study Methods</h2>
+          
+          <!--Abstract-->
           <label for="abstract">Abstract</label><br>
-
-          <!--<textarea name="message" rows="10" cols="30" oninput="this.className = ''" placeholder="Abstract of the study"
-          required></textarea> -->
-          <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
-            placeholder="Abstract of the study"></textarea>
+          <div class="check_mark">
+            <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
+             readonly>Abstract of the study</textarea>
+            <i onclick="changeCheck(this,'abstract_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          </div>
+          <p id="abstract_feedback" class="string_feedback"></p>
 
           <div class="methods">
+            <!--Stimuli-->
             <div class="method_item">
               <label for="stimuli">No. of Stimuli</label><br>
-              <!--<input type="number" oninput="this.className = ''" name="stimuli" min="1" max="5" placeholder="No. of Stimuli"
-              required />-->
-              <input type="number" oninput="this.className = ''" name="stimuli" placeholder="No. of Stimuli" />
+              <input type="number" oninput="this.className = ''" name="stimuli" value="11" readonly/>
+              <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check" ></i>
+              <br/>
+              <p id="stimuli_feedback" class="string_feedback"></p>
             </div>
+
+            <!--Duration-->
             <div class="method_item">
               <label for="tags">Duration of Study</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="Duration of Study" />
+              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <i onclick="changeCheck(this,'duration_feedback')" class="fa fa-check-circle fa-2x check"></i>
+              <br/>
+              <p id="duration_feedback" class="string_feedback"></p>
             </div>
+
+            <!--Response-->
             <div class="method_item">
               <label for="tags">No. of Responses</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Responses" />
+              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <i onclick="changeCheck(this,'response_feedback')" class="fa fa-check-circle fa-2x check"></i>
+              <br/>
+              <p id="response_feedback" class="string_feedback"></p>
             </div>
+            
+            <!--Trials-->
             <div class="method_item">
               <label for="tags">No. of Trials</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Trials" />
+              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check" ></i>
+              <br/>
+              <p id="trials_feedback" class="string_feedback"></p>
             </div>
           </div>
 
-
+          <!--Randomized-->
           <p>Randomized?</p>
-
           <div class="radio">
             <input type="radio" id="yes" name="option" value="yes">
             <label for="Yes">Yes</label>
             <input type="radio" id="no" name="option" value="no">
             <label for="No">No</label>
+            <i onclick="changeCheck(this,'randomized_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
           </div>
+          <p id="randomized_feedback" class="string_feedback"></p>
 
         </div>
 
@@ -213,63 +244,54 @@
         <div class="tab">
           <!------------------ Step_3 ------------------------------>
           <h2 class="fs-title">Images / Videos</h2>
-          <h3 class="fs-subtitle">Upload Document</h3>
-          <div id="drop">Drag & drop
-            <p>or browse your files</p>
-            <input type="file">
+          
+          <div id="images_videos">    
           </div>
-          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
-            please update your browser.<br>
-            Maximum file upload limit is 2MB</p>
-
-          <!------ Image Upload Progress ----->
-          <div class="img_uploader">
-            <div class="img_icon">
-              <i class="fa fa-file-image-o fa-4x" aria-hidden="true"></i>
-
-            </div>
-            <div class="file_name">images.png</div>
-            <div class="close_icon">
-              <i class="fa fa-times" aria-hidden="true"></i>
-
-            </div>
-            <div class="spacing"></div>
-            <div class="progress_perc">10% Done</div>
-            <div class="file_size">300KB/sec</div>
-          </div>
-
-
-
-
+          <i onclick="changeCheck(this,'image_videos_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          <br/>
+          <p id="image_videos_feedback" class="string_feedback"></p>
         </div>
+        
 
 
 
 
         <div class="tab">
           <!------------------ Step_4 ------------------------------>
-          <h2 class="fs-title">Upload Json Document</h2>
-          <h3 class="fs-subtitle">Upload Document</h3>
-          <div id="drop">Drag & drop
-            <p>or browse your files</p>
-            <input type="file">
+          <h2 class="fs-title">Json Document</h2>
+          <div id="json_files"> 
+            <h5 class="fs-title">card.js</h5>
+            <embed src="card.js" width="800px" height="500px"/>
+            <hr>
+            <h5 class="fs-title">card.js</h5>
+            <embed src="card.js" width="800px" height="500px"/>
           </div>
-          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
-            please update your browser.<br>
-            Maximum file upload limit is 2MB</p>
+          <i onclick="changeCheck(this,'jsons_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          <br/>
+          <p id="jsons_feedback" class="string_feedback"></p>
+          
+
         </div>
 
+        
 
         <div class="tab">
           <!------------------ Step_5 ------------------------------>
-          <h2 class="fs-title">Preview</h2>
-          <div class="preview_img"></div>
+          <h2 class="fs-title">Preview Feedback</h2>
+          <div id="preview">
+            <h5 class="fs-subtitle">Title: This is not suitable</h5>
+            <h5 class="fs-subtitle">Title: This is not suitable</h5>
+          </div>
+
+          
+
+
         </div>
 
         <div>
           <div class="bottom_buttons">
-            <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrev(1)">Next</button>
+            <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrevReview(-1)">Previous</button>
+            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrevReview(1)">Next</button>
           </div>
         </div>
       </form>
@@ -277,22 +299,26 @@
     <script src="progressbar.js"></script>
     <script src="category.js"></script>
     <script src="pop_up.js"></script>
-    <script src="check.js"></script>
-    <script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
+    <script src="review_study.js"></script>
+
     <script>
-      function openColorBox(){
-        $.colorbox({iframe:true, scalePhotos:true, href: "popup.html"});
+      openInstruction();
+      //View list of images and videos
+      var img = ["assets/preview.png", "assets/preview_1.png", "assets/preview_2.png"];
+      var content = ""
+      for (i = 0; i < img.length; i++) {
+        content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
       }
-      function countDown(){
-        seconds--
-        $("#seconds").text(seconds);
-        if (seconds === 0){
-          openColorBox();
-          clearInterval(i);
-        }
+      document.getElementById("images_videos").innerHTML = content;
+
+      //View list of json files
+      var json_files = ["card.js", "category.js", "jquery-ui.js"];
+      var content = ""
+      for (i = 0; i < json_files.length; i++) {
+        content += '<hr><h5 class="fs-title">'+json_files[i]+'</h5><embed src="'+json_files[i]+'" width="800px" height="500px"/>'
       }
-      var seconds = 1,
-          i = setInterval(countDown, 1000);
+      document.getElementById("json_files").innerHTML = content;
+                      
     </script>
   </main>
 </body>
