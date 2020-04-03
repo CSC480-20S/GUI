@@ -297,7 +297,8 @@ body {
   width:100%;
   border-radius:3px;
   overflow:hidden;
-  padding:20px;  
+  padding-left:1rem; 
+  padding-right: 1rem; 
 }
 .panel{
   display:none;
@@ -320,14 +321,15 @@ body {
 }
 #one:checked ~ .panels #one-panel,
 #two:checked ~ .panels #two-panel,
-#three:checked ~ .panels #admin-panel
-{
+#three:checked ~ .panels #three-panel,
+#four:checked ~ .panels #four-panel{
   display:block
 }
 
 #one:checked ~ .tabs #one-tab,
 #two:checked ~ .tabs #two-tab,
-#three:checked ~ .tabs #admin-tab{
+#three:checked ~ .tabs #three-tab,
+#four:checked ~ .tabs #four-tab{
   background: #FF8E43;
   color: white;
   /*border-top: 3px solid #000;*/
