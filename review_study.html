@@ -258,14 +258,9 @@
 
         <div class="tab">
           <!------------------ Step_4 ------------------------------>
-          <h2 class="fs-title">Json Document</h2>
-          <div id="json_files"> 
-            <h5 class="fs-title">card.js</h5>
-            <embed src="card.js" width="800px" height="500px"/>
-            <hr>
-            <h5 class="fs-title">card.js</h5>
-            <embed src="card.js" width="800px" height="500px"/>
-          </div>
+          <h2 class="fs-title">File Document</h2>
+          <textarea id="json_files" name="message" rows="10" cols="30" oninput="this.className = ''"
+             readonly></textarea>
           <i onclick="changeCheck(this,'jsons_feedback')" class="fa fa-check-circle fa-2x check"></i>
           <br/>
           <p id="jsons_feedback" class="string_feedback"></p>
@@ -303,28 +298,14 @@
 
     <script>
       openInstruction();
-      //View list of images and videos
-      var img = ["assets/preview.png", "assets/preview_1.png", "assets/preview_2.png"];
-      var content = ""
-      for (i = 0; i < img.length; i++) {
-        content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
-      }
-      document.getElementById("images_videos").innerHTML = content;
-
-      //View list of json files
-      var json_files = ["card.js", "category.js", "jquery-ui.js"];
-      var content = ""
-      for (i = 0; i < json_files.length; i++) {
-        content += '<hr><h5 class="fs-title">'+json_files[i]+'</h5><embed src="'+json_files[i]+'" width="800px" height="500px"/>'
-      }
-      document.getElementById("json_files").innerHTML = content;
 
       //Get study_ID
       var url_string = window.location.href;
       var url = new URL(url_string);
       var study_id = url.searchParams.get("study");
       console.log(study_id);
-      var title;
+      
+      //Get information from server
       $(document).ready(function () {
         $.ajax({
           url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id='+study_id+'&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODYwMjc4MTUsImV4cCI6MTU5MDM1MTQxNSwic3ViIjoiMTIzNDUifQ.63mgTcstXa20HSMJ117CI2S_MHxEyKDK5ZUqpfvbhF0',
@@ -356,6 +337,17 @@
             else{
               document.getElementById("randomized_no_value").checked = true;
             }
+
+            //View list of images and videos
+            var img = json.images;
+            var content = ""
+            for (i = 0; i < img.length; i++) {
+              content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
+            }
+            document.getElementById("images_videos").innerHTML = content;
+
+            //View list of json files
+            document.getElementById("json_files").innerHTML = json.template;;
           }
         });
       });   
