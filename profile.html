@@ -170,22 +170,32 @@
               <div>Status</div>
             </div>
 
-            <a class="study_link" href="review_study.html">
-              <div class="admin_wrapper">
-                <div>Individual Differences In Reading</div>
-                <div>Ralph Reid</div>
-                <div>03/06/2020</div>
-                <div>Waiting for review</div>
-              </div>
-            </a>
-
-            <div class="admin_wrapper">
-              <div>Individual Differences In Reading</div>
-              <div>Ralph Reid</div>
-              <div>03/06/2020</div>
-              <div>Waiting for review</div>
-            </div>
-
+            <script type="text/javascript">
+              $(document).ready(function () {
+                $.ajax({
+                  url: 'http://pi.cs.oswego.edu:12100/getPending?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODU5MTI4ODYsImV4cCI6MTU5MDIzNjQ4Niwic3ViIjoiMTIzNDUifQ.lvHx61Le_PsyejI3oZMFBoTa2ENPGPEzxaSr_bdsD6M',
+                  dataType: 'json',
+                  success: function (json) {
+                    console.log("%j", json);
+                    var content = "";
+                    for (var i = 0; i < json.length; i++) {
+                      content +=
+                      '<a class="study_link" href="review_study.html?study='+json[i].studyID+'">'+
+                        '<div class="admin_wrapper">'+
+                          '<div>'+json[i].title+'</div>'+
+                          '<div>'+json[i].author+'</div>'+
+                          '<div>'+json[i].upload_date+'</div>'+
+                          '<div>Waiting for review</div>'+
+                        '</div>'+
+                      '</a>';
+                    }
+                    document.getElementById("listPending").innerHTML= content;
+                  }
+                });
+              });
+            </script>
+            <div id="listPending"></div>
+  
           </div>
           <div class="panel" id="four-panel">
             <div class="panel-title">Wishlist</div>

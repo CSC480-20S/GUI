@@ -77,15 +77,33 @@
       </div>
     </div>
 
-<!--
-    <div id="overlay_instruction">
+    <div id="instruction" >
       <div class="popup">
-        <div id="text-main">Intruction</div>
+        <div id="text-main">Instruction</div>
         <div id="text-desc">To mark a section as wrong, please click on the checkmark and write in why. Review all parts at the end and submit.</div>
-        <div id="text-desc2"><i onclick="on_intruction()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+        <div id="text-desc2"><i onclick="off_instruction()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
       </div>
     </div>
--->
+
+    <div id="comment">
+      <form class="popup">
+        <div id="text-main">Provide a comment</div>
+        <div id="input-comment-container">
+          <textarea id="input-comment" type="text" oninput="this.className = ''" name="title" placeholder="Add comment ..." required></textarea>
+        </div>
+        <p id="message-comment"></p>
+        <div id="text-desc2"><i onclick="off_comment()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </form>
+    </div>
+
+    <div id="cancel">
+      <form class="popup">
+        <div id="text-main">The section is marked right.</div>
+        <p id="message-comment"></p>
+        <div id="text-desc2"><i onclick="off_cancel()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </form>
+    </div>
+
     <!----- Overlay -------->
 
     <div class="form_wrapper">
@@ -108,103 +126,116 @@
 
         <div class="tab">
           <!------------------ Step_1 ------------------------------>
+          <!--Title-->
           <h2 class="fs-title">Study Information</h2>
           <label for="title">Title</label><br>
-
-          <!-- <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" required /> -->
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input id="title_value" type="text" oninput="this.className = ''" name="title" readonly/>
+            <i onclick="changeCheck(this,'title_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="title_feedback" class="string_feedback"></p>
+
+          <!--Reference-->
           <label for="reference">Reference</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input id="reference_value" type="text" oninput="this.className = ''" name="reference" readonly/>
+            <i onclick="changeCheck(this,'reference_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="reference_feedback" class="string_feedback"></p>
+
+          <!--Purpose-->
           <label for="tags">Purpose of the study</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input id="purpose_value" type="text" oninput="this.className = ''" name="tags" readonly/>
+            <i onclick="changeCheck(this,'purpose_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
-          <label for="tags">Categories</label><br>
+          <p id="purpose_feedback" class="string_feedback"></p>
 
+          <!--Categories-->
+          <label for="tags">Categories</label><br>
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
-              <select name="category" class="required-entry selection_shadow" id="category"
-                onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
-                <option value="">Category</option>
-                <option value="Categorization">Categorization</option>
-                <option value="Knowledge representation">Knowledge representation</option>
-                <option value="Language">Language</option>
-                <option value="Memory">Memory</option>
-                <option value="Perception">Perception</option>
-                <option value="Cognition">Cognition</option>
-              </select>
+              <input id="categories_value" type="text" oninput="this.className = ''" name="tags" readonly/>
             </div>
             <div class="sub_category_div category_wrapper_item" id="sub_category_div">
-              <script type="text/javascript" language="JavaScript">
-                document.write(
-                  '<select name="subcategory" id="subcategory" class="selection_shadow"><option value="">Subcategory</option></select>'
-                )
-              </script>
-              <noscript>
-                <select name="subcategory" id="subcategory" class="selection_shadow">
-                  <option value="">Subcategory</option>
-                </select>
-              </noscript>
+              <input id="subcategories_value" type="text" oninput="this.className = ''" name="tags" readonly/>
             </div>
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <i onclick="changeCheck(this,'categories_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="categories_feedback" class="string_feedback"></p>
           <!--Categoty_wrapper-->
 
+          <!--Keywords-->
           <label for="tags">Keywords</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" />
-            <i onclick="changeCheck(this)" class="fa fa-check-circle fa-2x check"></i>
+            <input id="keywords_value" type="text" oninput="this.className = ''" name="title" readonly/>
+            <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
+          <p id="keywords_feedback" class="string_feedback"></p>
 
         </div>
 
         <div class="tab">
           <!------------------ Step_2 ------------------------------>
           <h2 class="fs-title">Study Methods</h2>
+          
+          <!--Abstract-->
           <label for="abstract">Abstract</label><br>
-
-          <!--<textarea name="message" rows="10" cols="30" oninput="this.className = ''" placeholder="Abstract of the study"
-          required></textarea> -->
-          <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
-            placeholder="Abstract of the study"></textarea>
+          <div class="check_mark">
+            <textarea id="abstract_value" name="message" rows="10" cols="30" oninput="this.className = ''"
+             readonly></textarea>
+            <i onclick="changeCheck(this,'abstract_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          </div>
+          <p id="abstract_feedback" class="string_feedback"></p>
 
           <div class="methods">
+            <!--Stimuli-->
             <div class="method_item">
               <label for="stimuli">No. of Stimuli</label><br>
-              <!--<input type="number" oninput="this.className = ''" name="stimuli" min="1" max="5" placeholder="No. of Stimuli"
-              required />-->
-              <input type="number" oninput="this.className = ''" name="stimuli" placeholder="No. of Stimuli" />
+              <input id="stimuli_value" type="number" oninput="this.className = ''" name="stimuli" readonly/>
+              <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check" ></i>
+              <br/>
+              <p id="stimuli_feedback" class="string_feedback"></p>
             </div>
+
+            <!--Duration-->
             <div class="method_item">
               <label for="tags">Duration of Study</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="Duration of Study" />
+              <input id="duration_value" type="number" oninput="this.className = ''" name="title" readonly/>
+              <i onclick="changeCheck(this,'duration_feedback')" class="fa fa-check-circle fa-2x check"></i>
+              <br/>
+              <p id="duration_feedback" class="string_feedback"></p>
             </div>
+
+            <!--Response-->
             <div class="method_item">
               <label for="tags">No. of Responses</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Responses" />
+              <input id="responses_value" type="number" oninput="this.className = ''" name="title" readonly/>
+              <i onclick="changeCheck(this,'response_feedback')" class="fa fa-check-circle fa-2x check"></i>
+              <br/>
+              <p id="response_feedback" class="string_feedback"></p>
             </div>
+            
+            <!--Trials-->
             <div class="method_item">
               <label for="tags">No. of Trials</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Trials" />
+              <input id="trials_value" type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check" ></i>
+              <br/>
+              <p id="trials_feedback" class="string_feedback"></p>
             </div>
           </div>
 
-
+          <!--Randomized-->
           <p>Randomized?</p>
-
           <div class="radio">
-            <input type="radio" id="yes" name="option" value="yes">
-            <label for="Yes">Yes</label>
-            <input type="radio" id="no" name="option" value="no">
-            <label for="No">No</label>
+            <input type="radio" id="randomized_yes_value" name="option" value="yes">
+            <label for="randomized_yes_value">Yes</label>
+            <input type="radio" id="randomized_no_value" name="option" value="no">
+            <label for="randomized_no_value">No</label>
+            <i onclick="changeCheck(this,'randomized_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
           </div>
+          <p id="randomized_feedback" class="string_feedback"></p>
 
         </div>
 
@@ -213,63 +244,49 @@
         <div class="tab">
           <!------------------ Step_3 ------------------------------>
           <h2 class="fs-title">Images / Videos</h2>
-          <h3 class="fs-subtitle">Upload Document</h3>
-          <div id="drop">Drag & drop
-            <p>or browse your files</p>
-            <input type="file">
+          
+          <div id="images_videos">    
           </div>
-          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
-            please update your browser.<br>
-            Maximum file upload limit is 2MB</p>
-
-          <!------ Image Upload Progress ----->
-          <div class="img_uploader">
-            <div class="img_icon">
-              <i class="fa fa-file-image-o fa-4x" aria-hidden="true"></i>
-
-            </div>
-            <div class="file_name">images.png</div>
-            <div class="close_icon">
-              <i class="fa fa-times" aria-hidden="true"></i>
-
-            </div>
-            <div class="spacing"></div>
-            <div class="progress_perc">10% Done</div>
-            <div class="file_size">300KB/sec</div>
-          </div>
-
-
-
-
+          <i onclick="changeCheck(this,'image_videos_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          <br/>
+          <p id="image_videos_feedback" class="string_feedback"></p>
         </div>
+        
 
 
 
 
         <div class="tab">
           <!------------------ Step_4 ------------------------------>
-          <h2 class="fs-title">Upload Json Document</h2>
-          <h3 class="fs-subtitle">Upload Document</h3>
-          <div id="drop">Drag & drop
-            <p>or browse your files</p>
-            <input type="file">
-          </div>
-          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
-            please update your browser.<br>
-            Maximum file upload limit is 2MB</p>
+          <h2 class="fs-title">File Document</h2>
+          <textarea id="json_files" name="message" rows="10" cols="30" oninput="this.className = ''"
+             readonly></textarea>
+          <i onclick="changeCheck(this,'jsons_feedback')" class="fa fa-check-circle fa-2x check"></i>
+          <br/>
+          <p id="jsons_feedback" class="string_feedback"></p>
+          
+
         </div>
 
+        
 
         <div class="tab">
           <!------------------ Step_5 ------------------------------>
-          <h2 class="fs-title">Preview</h2>
-          <div class="preview_img"></div>
+          <h2 class="fs-title">Preview Feedback</h2>
+          <div id="preview">
+            <h5 class="fs-subtitle">Title: This is not suitable</h5>
+            <h5 class="fs-subtitle">Title: This is not suitable</h5>
+          </div>
+
+          
+
+
         </div>
 
         <div>
           <div class="bottom_buttons">
-            <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrev(1)">Next</button>
+            <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrevReview(-1)">Previous</button>
+            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrevReview(1)">Next</button>
           </div>
         </div>
       </form>
@@ -277,22 +294,63 @@
     <script src="progressbar.js"></script>
     <script src="category.js"></script>
     <script src="pop_up.js"></script>
-    <script src="check.js"></script>
-    <script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
+    <script src="review_study.js"></script>
+
     <script>
-      function openColorBox(){
-        $.colorbox({iframe:true, scalePhotos:true, href: "popup.html"});
-      }
-      function countDown(){
-        seconds--
-        $("#seconds").text(seconds);
-        if (seconds === 0){
-          openColorBox();
-          clearInterval(i);
-        }
-      }
-      var seconds = 1,
-          i = setInterval(countDown, 1000);
+      openInstruction();
+
+      //Get study_ID
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var study_id = url.searchParams.get("study");
+      console.log(study_id);
+      
+      //Get information from server
+      $(document).ready(function () {
+        $.ajax({
+          url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id='+study_id+'&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODYwMjc4MTUsImV4cCI6MTU5MDM1MTQxNSwic3ViIjoiMTIzNDUifQ.63mgTcstXa20HSMJ117CI2S_MHxEyKDK5ZUqpfvbhF0',
+          dataType: 'json',
+          success: function (json) {
+            console.log("%j", json);       
+            document.getElementById("title_value").value = json.title; 
+            document.getElementById("reference_value").value = json.references; 
+            document.getElementById("purpose_value").value = json.purpose; 
+            document.getElementById("categories_value").value = json.categories; 
+            document.getElementById("subcategories_value").value = json.subcategories; 
+
+            var keywords = "";
+            for (var i = 0; i < json.keywords.length; i++){
+              if (i!=0){
+                keywords += "; ";
+              }
+              keywords += json.keywords[i];
+            }
+            document.getElementById("keywords_value").value = keywords;  
+            document.getElementById("abstract_value").innerHTML = json.abstract; 
+            document.getElementById("stimuli_value").value = json.num_stimuli; 
+            document.getElementById("duration_value").value = json.duration; 
+            document.getElementById("responses_value").value = json.num_responses; 
+            document.getElementById("trials_value").value = json.num_trials; 
+            if (json.randomize){
+              document.getElementById("randomized_yes_value").checked = true;
+            }
+            else{
+              document.getElementById("randomized_no_value").checked = true;
+            }
+
+            //View list of images and videos
+            var img = json.images;
+            var content = ""
+            for (i = 0; i < img.length; i++) {
+              content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
+            }
+            document.getElementById("images_videos").innerHTML = content;
+
+            //View list of json files
+            document.getElementById("json_files").innerHTML = json.template;;
+          }
+        });
+      });   
     </script>
   </main>
 </body>
