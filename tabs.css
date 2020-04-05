@@ -42,6 +42,7 @@ body {
 
 .wishlist>p {
 	margin-right: 1rem;
+	font-size: 1.2rem;
 }
 
 /*
@@ -207,4 +208,14 @@ select {
 
 #tabs-2 > p{
 	margin-bottom: 1rem;
+}
+
+.wishlist_icon{
+	height: 1rem;
+	width: auto;
+	cursor: pointer;
+	color: #cccdce;
+}
+.orange_icon{
+	color: #FF6600;
 }
