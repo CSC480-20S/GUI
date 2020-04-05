@@ -130,7 +130,7 @@
           <h2 class="fs-title">Study Information</h2>
           <label for="title">Title</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" value="Add the title" readonly/>
+            <input id="title_value" type="text" oninput="this.className = ''" name="title" readonly/>
             <i onclick="changeCheck(this,'title_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="title_feedback" class="string_feedback"></p>
@@ -138,7 +138,7 @@
           <!--Reference-->
           <label for="reference">Reference</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="reference" value="Reference of the study" readonly/>
+            <input id="reference_value" type="text" oninput="this.className = ''" name="reference" readonly/>
             <i onclick="changeCheck(this,'reference_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="reference_feedback" class="string_feedback"></p>
@@ -146,7 +146,7 @@
           <!--Purpose-->
           <label for="tags">Purpose of the study</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="tags" value="Purpose" readonly/>
+            <input id="purpose_value" type="text" oninput="this.className = ''" name="tags" readonly/>
             <i onclick="changeCheck(this,'purpose_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="purpose_feedback" class="string_feedback"></p>
@@ -155,10 +155,10 @@
           <label for="tags">Categories</label><br>
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
-              <input type="text" oninput="this.className = ''" name="tags" value="Categories" readonly/>
+              <input id="categories_value" type="text" oninput="this.className = ''" name="tags" readonly/>
             </div>
             <div class="sub_category_div category_wrapper_item" id="sub_category_div">
-              <input type="text" oninput="this.className = ''" name="tags" value="Subcategory" readonly/>
+              <input id="subcategories_value" type="text" oninput="this.className = ''" name="tags" readonly/>
             </div>
             <i onclick="changeCheck(this,'categories_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
@@ -168,7 +168,7 @@
           <!--Keywords-->
           <label for="tags">Keywords</label><br>
           <div class="check_mark">
-            <input type="text" oninput="this.className = ''" name="title" value="Seperate keywords by comma" readonly/>
+            <input id="keywords_value" type="text" oninput="this.className = ''" name="title" readonly/>
             <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="keywords_feedback" class="string_feedback"></p>
@@ -182,8 +182,8 @@
           <!--Abstract-->
           <label for="abstract">Abstract</label><br>
           <div class="check_mark">
-            <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
-             readonly>Abstract of the study</textarea>
+            <textarea id="abstract_value" name="message" rows="10" cols="30" oninput="this.className = ''"
+             readonly></textarea>
             <i onclick="changeCheck(this,'abstract_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="abstract_feedback" class="string_feedback"></p>
@@ -192,7 +192,7 @@
             <!--Stimuli-->
             <div class="method_item">
               <label for="stimuli">No. of Stimuli</label><br>
-              <input type="number" oninput="this.className = ''" name="stimuli" value="11" readonly/>
+              <input id="stimuli_value" type="number" oninput="this.className = ''" name="stimuli" readonly/>
               <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check" ></i>
               <br/>
               <p id="stimuli_feedback" class="string_feedback"></p>
@@ -201,7 +201,7 @@
             <!--Duration-->
             <div class="method_item">
               <label for="tags">Duration of Study</label><br>
-              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <input id="duration_value" type="number" oninput="this.className = ''" name="title" readonly/>
               <i onclick="changeCheck(this,'duration_feedback')" class="fa fa-check-circle fa-2x check"></i>
               <br/>
               <p id="duration_feedback" class="string_feedback"></p>
@@ -210,7 +210,7 @@
             <!--Response-->
             <div class="method_item">
               <label for="tags">No. of Responses</label><br>
-              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <input id="responses_value" type="number" oninput="this.className = ''" name="title" readonly/>
               <i onclick="changeCheck(this,'response_feedback')" class="fa fa-check-circle fa-2x check"></i>
               <br/>
               <p id="response_feedback" class="string_feedback"></p>
@@ -219,7 +219,7 @@
             <!--Trials-->
             <div class="method_item">
               <label for="tags">No. of Trials</label><br>
-              <input type="number" oninput="this.className = ''" name="title" value="11" readonly/>
+              <input id="trials_value" type="number" oninput="this.className = ''" name="title" value="11" readonly/>
               <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check" ></i>
               <br/>
               <p id="trials_feedback" class="string_feedback"></p>
@@ -229,10 +229,10 @@
           <!--Randomized-->
           <p>Randomized?</p>
           <div class="radio">
-            <input type="radio" id="yes" name="option" value="yes">
-            <label for="Yes">Yes</label>
-            <input type="radio" id="no" name="option" value="no">
-            <label for="No">No</label>
+            <input type="radio" id="randomized_yes_value" name="option" value="yes">
+            <label for="randomized_yes_value">Yes</label>
+            <input type="radio" id="randomized_no_value" name="option" value="no">
+            <label for="randomized_no_value">No</label>
             <i onclick="changeCheck(this,'randomized_feedback')" class="fa fa-check-circle fa-2x check" readonly></i>
           </div>
           <p id="randomized_feedback" class="string_feedback"></p>
@@ -258,14 +258,9 @@
 
         <div class="tab">
           <!------------------ Step_4 ------------------------------>
-          <h2 class="fs-title">Json Document</h2>
-          <div id="json_files"> 
-            <h5 class="fs-title">card.js</h5>
-            <embed src="card.js" width="800px" height="500px"/>
-            <hr>
-            <h5 class="fs-title">card.js</h5>
-            <embed src="card.js" width="800px" height="500px"/>
-          </div>
+          <h2 class="fs-title">File Document</h2>
+          <textarea id="json_files" name="message" rows="10" cols="30" oninput="this.className = ''"
+             readonly></textarea>
           <i onclick="changeCheck(this,'jsons_feedback')" class="fa fa-check-circle fa-2x check"></i>
           <br/>
           <p id="jsons_feedback" class="string_feedback"></p>
@@ -303,22 +298,59 @@
 
     <script>
       openInstruction();
-      //View list of images and videos
-      var img = ["assets/preview.png", "assets/preview_1.png", "assets/preview_2.png"];
-      var content = ""
-      for (i = 0; i < img.length; i++) {
-        content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
-      }
-      document.getElementById("images_videos").innerHTML = content;
 
-      //View list of json files
-      var json_files = ["card.js", "category.js", "jquery-ui.js"];
-      var content = ""
-      for (i = 0; i < json_files.length; i++) {
-        content += '<hr><h5 class="fs-title">'+json_files[i]+'</h5><embed src="'+json_files[i]+'" width="800px" height="500px"/>'
-      }
-      document.getElementById("json_files").innerHTML = content;
-                      
+      //Get study_ID
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var study_id = url.searchParams.get("study");
+      console.log(study_id);
+      
+      //Get information from server
+      $(document).ready(function () {
+        $.ajax({
+          url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id='+study_id+'&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODYwMjc4MTUsImV4cCI6MTU5MDM1MTQxNSwic3ViIjoiMTIzNDUifQ.63mgTcstXa20HSMJ117CI2S_MHxEyKDK5ZUqpfvbhF0',
+          dataType: 'json',
+          success: function (json) {
+            console.log("%j", json);       
+            document.getElementById("title_value").value = json.title; 
+            document.getElementById("reference_value").value = json.references; 
+            document.getElementById("purpose_value").value = json.purpose; 
+            document.getElementById("categories_value").value = json.categories; 
+            document.getElementById("subcategories_value").value = json.subcategories; 
+
+            var keywords = "";
+            for (var i = 0; i < json.keywords.length; i++){
+              if (i!=0){
+                keywords += "; ";
+              }
+              keywords += json.keywords[i];
+            }
+            document.getElementById("keywords_value").value = keywords;  
+            document.getElementById("abstract_value").innerHTML = json.abstract; 
+            document.getElementById("stimuli_value").value = json.num_stimuli; 
+            document.getElementById("duration_value").value = json.duration; 
+            document.getElementById("responses_value").value = json.num_responses; 
+            document.getElementById("trials_value").value = json.num_trials; 
+            if (json.randomize){
+              document.getElementById("randomized_yes_value").checked = true;
+            }
+            else{
+              document.getElementById("randomized_no_value").checked = true;
+            }
+
+            //View list of images and videos
+            var img = json.images;
+            var content = ""
+            for (i = 0; i < img.length; i++) {
+              content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
+            }
+            document.getElementById("images_videos").innerHTML = content;
+
+            //View list of json files
+            document.getElementById("json_files").innerHTML = json.template;;
+          }
+        });
+      });   
     </script>
   </main>
 </body>
