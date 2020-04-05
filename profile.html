@@ -152,17 +152,6 @@
           </div>
           <div class="panel" id="two-panel">
             <div class="panel-title">Admin</div>
-            <p>Eget duis at tellus at. Mattis nunc sed blandit libero volutpat sed cras.
-              Vitae congue eu consequat ac felis donec et odio pellentesque.
-              Gravida in fermentum et sollicitudin. Felis bibendum ut tristique et egestas quis ipsum suspendisse.
-              Nunc aliquet bibendum enim facilisis gravida neque. Amet est placerat in egestas erat. Auctor eu augue
-              ut lectus arcu bibendum. Tempor orci dapibus ultrices in iaculis nunc sed augue. Magna sit amet
-              purus gravida quis blandit turpis cursus in. Bibendum neque egestas congue quisque. Sodales neque
-              sodales ut etiam sit amet nisl purus in. Morbi tristique senectus et netus et malesuada fames.
-              Nullam vehicula ipsum a arcu. Viverra mauris in aliquam sem fringilla ut morbi.
-              Placerat vestibulum lectus mauris ultrices eros.</p>
-          </div>
-          <div class="panel" id="three-panel">
             <div class="admin_wrapper_Title">
               <div>Study Title</div>
               <div>Author</div>
@@ -180,26 +169,37 @@
                     var content = "";
                     for (var i = 0; i < json.length; i++) {
                       content +=
-                      '<a class="study_link" href="review_study.html?study='+json[i].studyID+'">'+
-                        '<div class="admin_wrapper">'+
-                          '<div>'+json[i].title+'</div>'+
-                          '<div>'+json[i].author+'</div>'+
-                          '<div>'+json[i].upload_date+'</div>'+
-                          '<div>Waiting for review</div>'+
-                        '</div>'+
-                      '</a>';
+                        '<a class="study_link" href="review_study.html?study=' + json[i].studyID + '">' +
+                        '<div class="admin_wrapper">' +
+                        '<div>' + json[i].title + '</div>' +
+                        '<div>' + json[i].author + '</div>' +
+                        '<div>' + json[i].upload_date + '</div>' +
+                        '<div>Waiting for review</div>' +
+                        '</div>' +
+                        '</a>';
                     }
-                    document.getElementById("listPending").innerHTML= content;
+                    document.getElementById("listPending").innerHTML = content;
                   }
                 });
               });
             </script>
-            <div id="listPending"></div>
-  
+            <div id="listPending"></div>            
           </div>
+          
+          <div class="panel" id="three-panel">
+            <p>Eget duis at tellus at. Mattis nunc sed blandit libero volutpat sed cras.
+              Vitae congue eu consequat ac felis donec et odio pellentesque.
+              Gravida in fermentum et sollicitudin. Felis bibendum ut tristique et egestas quis ipsum suspendisse.
+              Nunc aliquet bibendum enim facilisis gravida neque. Amet est placerat in egestas erat. Auctor eu augue
+              ut lectus arcu bibendum. Tempor orci dapibus ultrices in iaculis nunc sed augue. Magna sit amet
+              purus gravida quis blandit turpis cursus in. Bibendum neque egestas congue quisque. Sodales neque
+              sodales ut etiam sit amet nisl purus in. Morbi tristique senectus et netus et malesuada fames.
+              Nullam vehicula ipsum a arcu. Viverra mauris in aliquam sem fringilla ut morbi.
+              Placerat vestibulum lectus mauris ultrices eros.</p>
+          </div> <!-- three_panel -->
+
           <div class="panel" id="four-panel">
             <div class="panel-title">Wishlist</div>
-            
           </div>
         </div>
         <!-- Category Choices END -->
