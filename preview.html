@@ -8,15 +8,14 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="stylesheet" href="jquery-ui.css">
 	<link rel="stylesheet" href="tabs.css">
-	<link rel="stylesheet" href="style-b.css">
+	<link rel="stylesheet" href="Preview.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
-	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>-->
-	<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
-	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
     $(document).ready(function () {
       $.ajax({
@@ -32,8 +31,21 @@
 							document.getElementById('purpose').innerHTML = json[1].purpose;
 							document.getElementById('responses').innerHTML = "No. of responses: " + json[1].num_responses;
 							document.getElementById('stimuli').innerHTML = "No. of stimuli: " + json[1].num_stimuli;
-							document.getElementById('categories').innerHTML = "Categories: <button class='pill'>" + json[1].categories + "</button>";
-							document.getElementById('keywords').innerHTML = "Keywords: <button class='pill'>" + json[1].keywords + "</button>";
+							var categories = "Categories: ";
+							for(i = 0; i < json[1].categories.length; i++){
+								categories += "<button class='pill'>" + json[1].categories[i] + "</button>";
+							}
+							document.getElementById('categories').innerHTML = categories;
+							var keywords = "Keywords: ";
+							for(i = 0; i < json[1].keywords.length; i++){
+								keywords += "<button class='pill'>" + json[1].keywords[i] + "</button>";
+							}
+							document.getElementById('keywords').innerHTML = keywords;
+							var stars = "Rating: "
+							for(i = 0; i < json[1].rating; i++){
+								stars += "<i class='fa fa-star' aria-hidden='true'></i>";
+							}
+							document.getElementById('stars').innerHTML = stars;
 							if(json[1].randomize){
 								document.getElementById('random').innerHTML = "Randomized the study?: Yes";
 							}
@@ -44,7 +56,6 @@
       });
     });
   </script>
-  <script src="profile.js"></script>
 </head>
 
 <body>
@@ -64,7 +75,7 @@
 				</li>
 				<li>
 					<div class="upload-btn-wrapper">
-						<button class="btn" onclick="window.location.href = 'upload.html';">Upload</button>
+						<button class="buhtan" onclick="window.location.href = 'upload.html';">Upload</button>
 					</div>
 				</li>
 				<li>
@@ -82,7 +93,7 @@
 						<div id="myDropdown" class="dropdown-content">
 							<a href="#home">Juliana Santy<br>
 								Master's Student / Researcher</a>
-								<a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
+							<a href="#about">Account Profile</a>
 							<a href="#contact">Contact Finding Five</a>
 							<a href="#contact">Logout</a>
 						</div>
@@ -141,13 +152,7 @@
 				</div><!-- pre_row_1 -->
 				<div class="pre_row_2">
 					<p id="purpose"></p>
-					<div class="review">
-						<p>Ratings: </p>
-						<i class="fa fa-star" aria-hidden="true"></i>
-						<i class="fa fa-star" aria-hidden="true"></i>
-						<i class="fa fa-star" aria-hidden="true"></i>
-						<i class="fa fa-star" aria-hidden="true"></i>
-						<i class="fa fa-star" aria-hidden="true"></i>
+					<div class="review" id="stars">
 					</div>
 					<div class="credit_buy">
 						<p id="costInCredits"></p>
