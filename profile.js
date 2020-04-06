@@ -22,9 +22,14 @@ window.onclick = function(event) {
 function bookMark(x) {
   /*x.classList.toggle("fa-bookmark");*/
   x.classList.toggle("orange_icon");
+
+  //Write the code sending Json file server here
+  /*sendData();*/
 }
 
+/*
 function sendStudy(x) {
-  /*x.classList.toggle("fa-bookmark");
-  x.classList.toggle("orange_icon");*/
+  x.classList.toggle("fa-bookmark");
+  x.classList.toggle("orange_icon");
 }
+*/
