@@ -18,7 +18,13 @@ window.onclick = function(event) {
   }
 }
 
+/* function that toggles the wishlist icon color */
 function bookMark(x) {
   /*x.classList.toggle("fa-bookmark");*/
   x.classList.toggle("orange_icon");
+}
+
+function sendStudy(x) {
+  /*x.classList.toggle("fa-bookmark");
+  x.classList.toggle("orange_icon");*/
 }
