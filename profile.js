@@ -17,3 +17,8 @@ window.onclick = function(event) {
     }
   }
 }
+
+function bookMark(x) {
+  /*x.classList.toggle("fa-bookmark");*/
+  x.classList.toggle("orange_icon");
+}
