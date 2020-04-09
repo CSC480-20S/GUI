@@ -16,46 +16,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-    $(document).ready(function () {
-      $.ajax({
-        url: 'http://pi.cs.oswego.edu:12100/studyPreview',
-        dataType: 'json',
-        success: function (json) {
-							document.getElementById('costInCredits').innerHTML = "Credits: $" +json[1].costInCredits;
-              document.getElementById('author').innerHTML = "Author: " + json[1].author;
-							document.getElementById('abst').innerHTML = json[1].abstract;
-              document.getElementById('duration').innerHTML = "Duration of the study: "+json[1].duration + " minutes.";
-              document.getElementById('institution').innerHTML = "College: " + json[1].institution;
-							document.getElementById('title').innerHTML = json[1].title;
-							document.getElementById('purpose').innerHTML = json[1].purpose;
-							document.getElementById('responses').innerHTML = "No. of responses: " + json[1].num_responses;
-							document.getElementById('stimuli').innerHTML = "No. of stimuli: " + json[1].num_stimuli;
-							var categories = "Categories: ";
-							for(i = 0; i < json[1].categories.length; i++){
-								categories += "<button class='pill'>" + json[1].categories[i] + "</button>";
-							}
-							document.getElementById('categories').innerHTML = categories;
-							var keywords = "Keywords: ";
-							for(i = 0; i < json[1].keywords.length; i++){
-								keywords += "<button class='pill'>" + json[1].keywords[i] + "</button>";
-							}
-							document.getElementById('keywords').innerHTML = keywords;
-							var stars = "Rating: "
-							for(i = 0; i < json[1].rating; i++){
-								stars += "<i class='fa fa-star' aria-hidden='true'></i>";
-							}
-							document.getElementById('stars').innerHTML = stars;
-							if(json[1].randomize){
-								document.getElementById('random').innerHTML = "Randomized the study?: Yes";
-							}
-							else{
-								document.getElementById('random').innerHTML = "Randomized the study?: No";
-							}
-        }
-      });
-    });
-  </script>
+	<script src="initPreview.js"></script>
 </head>
 
 <body>
@@ -98,7 +59,7 @@
 							<a href="#contact">Logout</a>
 						</div>
 					</div>
-			</li>
+				</li>
 				<li>
 					<div class="vl line_3"></div>
 				</li>
@@ -146,8 +107,7 @@
 					<h2 class="study_title" id="title"></h2>
 					<div class="wishlist">
 						<p>Add to wishlist</p>
-						<!--<i class="fa fa-bookmark-o" aria-hidden="true"></i>-->
-						<i onclick="bookMark(this)" class="fa fa-bookmark fa-2x wishlist_icon"  aria-hidden="true"></i>
+						<i class="fa fa-bookmark-o" aria-hidden="true"></i>
 					</div>
 				</div><!-- pre_row_1 -->
 				<div class="pre_row_2">
@@ -213,15 +173,7 @@
 				</ol>
 				<!-- Wrapper for carousel items -->
 				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="card">
-							<div class="contain">
-								<h4><b>John Doe</b></h4>
-								<p><b>Architect & Engineer<b></p>
-									<p>Le lundi matin, mon père travaille au bureau, ma mère reste à la maison, ma petite sœur va à l'école, et je vais à l'université. Le mardi, le mercredi, le jeudi, et finalement le vendredi, nous faisons la même chose. Mais le week-end, il est assez différent. Pendant le week-end, nous ne sommes pas très occupés comme les autres jours. Le samedi matin, mon père qui est très sportif fait de la natation, et ma mère fait la cuisine parce que chaque samedi, mes parents invitent ma tante à dîner avec nous. Enfin, le dimanche d'habitude nous ne faisons pas grand-chose; quelques fois, mon père fait du bricolage si nécessaire.</p>
-							</div>
-						</div>
-					</div>
+					
 					<div class="carousel-item">
 						<div class="card">
 							<div class="contain">
@@ -234,7 +186,10 @@
 						<div class="card">
 							<div class="contain">
 								<h4><b>John Doe</b></h4>
-								<p>Architect & Engineer</p>
+								<p><b>Architect & Engineer</b></p>
+								<p>Le lundi matin, mon père travaille au bureau, ma mère reste à la maison, ma petite sœur va à l'école, et je vais à l'université. Le mardi, le mercredi, le jeudi, et finalement le vendredi, nous faisons la même chose. Mais le
+									week-end, il est assez différent. Pendant le week-end, nous ne sommes pas très occupés comme les autres jours. Le samedi matin, mon père qui est très sportif fait de la natation, et ma mère fait la cuisine parce que chaque samedi,
+									mes parents invitent ma tante à dîner avec nous. Enfin, le dimanche d'habitude nous ne faisons pas grand-chose; quelques fois, mon père fait du bricolage si nécessaire.</p>
 							</div>
 						</div>
 					</div>
