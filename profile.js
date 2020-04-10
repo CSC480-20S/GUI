@@ -22,3 +22,37 @@ function bookMark(x) {
   /*x.classList.toggle("fa-bookmark");*/
   x.classList.toggle("orange_icon");
 }
+
+function getToken(user_id){
+  $.ajax({
+    url: 'http://pi.cs.oswego.edu:12100/token/generate?user_id='+user_id,
+    dataType: 'json',
+    success: function (json) {
+      console.log("Token: ", json.token);     
+      getListPendingStudies(token = json.token);
+    }
+  });
+}
+
+function getListPendingStudies(token){
+  $.ajax({
+    url: 'http://pi.cs.oswego.edu:12100/getPending?token='+token,
+    dataType: 'json',
+    success: function (json) {
+      console.log("%j", json);
+      var content = "";
+      for (var i = 0; i < json.length; i++) {
+        content +=
+          '<a class="study_link" href="review_study.html?study=' + json[i].studyID + '">' +
+          '<div class="admin_wrapper">' +
+          '<div>' + json[i].title + '</div>' +
+          '<div>' + json[i].author + '</div>' +
+          '<div>' + json[i].upload_date + '</div>' +
+          '<div>Waiting for review</div>' +
+          '</div>' +
+          '</a>';
+      }
+      document.getElementById("listPending").innerHTML = content;
+    }
+  });
+}
