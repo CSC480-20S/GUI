@@ -23,6 +23,7 @@ function bookMark(x) {
   x.classList.toggle("orange_icon");
 }
 
+
 function getToken(user_id){
   $.ajax({
     url: 'http://pi.cs.oswego.edu:12100/token/generate?user_id='+user_id,
@@ -34,7 +35,8 @@ function getToken(user_id){
   });
 }
 
-function getListPendingStudies(token){
+function getListPendingStudies(){
+  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY0ODE3OTUsImV4cCI6MTU5MDgwNTM5NSwic3ViIjoiMTIzNCJ9.bX-XS9h2-8GYocPT8OQgAMK8bNxw41Q0jd6R8Z8S3cs';
   $.ajax({
     url: 'http://pi.cs.oswego.edu:12100/getPending?token='+token,
     dataType: 'json',

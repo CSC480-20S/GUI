@@ -302,55 +302,10 @@
       //Get study_ID
       var url_string = window.location.href;
       var url = new URL(url_string);
-      var study_id = url.searchParams.get("study");
-      console.log(study_id);
+      var id_study = url.searchParams.get("study");
+      console.log(id_study);     
+      getDetailPending(id_study);
       
-      //Get information from server
-      $(document).ready(function () {
-        $.ajax({
-          url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id='+study_id+'&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODYwMjc4MTUsImV4cCI6MTU5MDM1MTQxNSwic3ViIjoiMTIzNDUifQ.63mgTcstXa20HSMJ117CI2S_MHxEyKDK5ZUqpfvbhF0',
-          dataType: 'json',
-          success: function (json) {
-            console.log("%j", json);       
-            document.getElementById("title_value").value = json.title; 
-            document.getElementById("reference_value").value = json.references; 
-            document.getElementById("purpose_value").value = json.purpose; 
-            document.getElementById("categories_value").value = json.categories; 
-            document.getElementById("subcategories_value").value = json.subcategories; 
-
-            var keywords = "";
-            for (var i = 0; i < json.keywords.length; i++){
-              if (i!=0){
-                keywords += "; ";
-              }
-              keywords += json.keywords[i];
-            }
-            document.getElementById("keywords_value").value = keywords;  
-            document.getElementById("abstract_value").innerHTML = json.abstract; 
-            document.getElementById("stimuli_value").value = json.num_stimuli; 
-            document.getElementById("duration_value").value = json.duration; 
-            document.getElementById("responses_value").value = json.num_responses; 
-            document.getElementById("trials_value").value = json.num_trials; 
-            if (json.randomize){
-              document.getElementById("randomized_yes_value").checked = true;
-            }
-            else{
-              document.getElementById("randomized_no_value").checked = true;
-            }
-
-            //View list of images and videos
-            var img = json.images;
-            var content = ""
-            for (i = 0; i < img.length; i++) {
-              content += '<div class="preview_img" style="background-image: url(\''+img[i]+'\')"></div>' 
-            }
-            document.getElementById("images_videos").innerHTML = content;
-
-            //View list of json files
-            document.getElementById("json_files").innerHTML = json.template;;
-          }
-        });
-      });   
     </script>
   </main>
 </body>
