@@ -1,3 +1,5 @@
+var token = localStorage['token'];
+
 //------------------------- IDENTIFY ID of FORM ---------------------------
 var id_input = "";
 function setInputId(x){
@@ -93,11 +95,12 @@ function nextPrevReview(n) {
 }
 
 function getDetailPending(study_id){
-    var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY0ODE3OTUsImV4cCI6MTU5MDgwNTM5NSwic3ViIjoiMTIzNCJ9.bX-XS9h2-8GYocPT8OQgAMK8bNxw41Q0jd6R8Z8S3cs';
+    //var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY0ODE3OTUsImV4cCI6MTU5MDgwNTM5NSwic3ViIjoiMTIzNCJ9.bX-XS9h2-8GYocPT8OQgAMK8bNxw41Q0jd6R8Z8S3cs';
     //Get information from server
+    console.log("Token: ", token);
     $(document).ready(function () {
         $.ajax({
-          url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id='+study_id+'&token='+token,
+          url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id='+study_id+'&token='+window.token,
           dataType: 'json',
           success: function (json) {
             console.log("%j", json);       
