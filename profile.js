@@ -1,3 +1,5 @@
+localStorage['token'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY3ODg5MzIsImV4cCI6MTU5MTExMjUzMiwic3ViIjoiMTIzNDUifQ.IxWbmRPCHiyvM8-yS2EEiE5GzHnDolB-blkhB9a9upU';
+var token = localStorage['token'];
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -36,9 +38,9 @@ function getToken(user_id){
 }
 
 function getListPendingStudies(){
-  var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY0ODE3OTUsImV4cCI6MTU5MDgwNTM5NSwic3ViIjoiMTIzNCJ9.bX-XS9h2-8GYocPT8OQgAMK8bNxw41Q0jd6R8Z8S3cs';
+  var limit='2';
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/getPending?token='+token,
+    url: 'http://pi.cs.oswego.edu:12100/getPending?token='+token+'&limit='+limit,
     dataType: 'json',
     success: function (json) {
       console.log("%j", json);
