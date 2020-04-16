@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/studyPreview',
+    url: 'http://pi.cs.oswego.edu:12100/search?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY5MDI4NjcsImV4cCI6MTU5MTIyNjQ2Nywic3ViIjoiMTIzNCJ9.PL-MpXC3kogsCozfWzzDTR1ix18ECcVf_sO2oxSmBuM',
     dataType: 'json',
     success: function(json) {
       console.log("%j", json);

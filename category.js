@@ -16,7 +16,7 @@ function dynamicdropdown(listindex)
                         document.getElementById("subcategory").options[1]=new Option("Dual-coding theories","Dual-coding theories");
                         document.getElementById("subcategory").options[2]=new Option("Media psychology","Media psychology");
                         document.getElementById("subcategory").options[3]=new Option("Mental imagery","Mental imagery");
-                        document.getElementById("subcategory").options[4]=new Option("numerical cognition","Numerical cognition");
+                        document.getElementById("subcategory").options[4]=new Option("Numerical cognition","Numerical cognition");
                         document.getElementById("subcategory").options[5]=new Option("Proposition encoding","Proposition encoding");
                         break;
 
@@ -46,7 +46,7 @@ function dynamicdropdown(listindex)
                         document.getElementById("subcategory").options[3]=new Option("Pattern recognition","Pattern recognition");
                         document.getElementById("subcategory").options[4]=new Option("Perception","Perception");
                         document.getElementById("subcategory").options[5]=new Option("Form perception","Form perception");
-                        document.getElementById("subcategory").options[6]=new Option("psychophysics","Psychophysics");
+                        document.getElementById("subcategory").options[6]=new Option("Psychophysics","Psychophysics");
                         break;
 
                     case "Cognition" :

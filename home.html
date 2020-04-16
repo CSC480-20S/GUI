@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="style-b.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script src="https://use.fontawesome.com/9595edcb50.js"></script>
@@ -26,7 +27,7 @@
     });
   </script>
 <script src="card.js"></script>
-
+<script src="wishlist.js"></script>
 </head>
 
 <body>
@@ -40,12 +41,21 @@
             <a href="home.html"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
           </section>
           <!--<a class="active" href="#home">Home</a></li>-->
+
+
+
         <li class="push">
-          <div class="search_bar">
-            <input type="text" placeholder="Search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </div>
+          <form id="searchForm">
+            <div class="search_bar">
+              <input type="text" name="keywords" onkeydown = "if (event.keyCode == 13) document.getElementById('searchButton').click()" id="searchInput" placeholder="Search for studies...">
+              <button onClick="searchFn()" type="button" method="get" id="searchButton"><i class="fa fa-search"></i></button>
+              <script src="search.js"></script>
+            </div>
+          </form>
         </li>
+
+
+
         <li>
           <div class="upload-btn-wrapper">
             <button class="btn" onclick="window.location.href = 'upload.html';">Upload</button>
@@ -62,7 +72,7 @@
         </li>
         <li>
           <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
+            <button onclick="myDropdown()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="#home">Juliana Santy<br>
                 Master's Student / Researcher</a>
@@ -84,83 +94,96 @@
 
 
     <div class="container">
-
       <div class="wrapper_one">
         <div class="box left_nav">
-          <p class="title">Categories</p>
+          <p class="title">Categories<hr></p>
 
           <div class="box category">
             <ul id="vertical-menu">
               <li>
-                <a href="#">Categorization</a>
+                <a onclick="categorySelect(this.innerHTML)">Categorization</a>
                 <ul>
-                  <li><a href="#">Induction and acquisition</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Induction and acquisition</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Judgement and classification</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Judgement and classification</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Representation and structure</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Representation and structure</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Similarity</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Similarity</a></li>
                   <div id="horizontal-line-categories"></div>
                 </ul>
               </li>
-              <li><a href="#">Knowledge Representation</a>
+              <li><a onclick="categorySelect(this.innerHTML)">Knowledge Representation</a>
                 <ul>
-                  <li><a href="#">Induction and acquisition</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Dual-coding theories</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Judgement and classification</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Media psychology</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Representation and structure</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Mental imagery</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Similarity</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Numerical cognition</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Proposition encoding</a></li>
                   <div id="horizontal-line-categories"></div>
                 </ul>
               </li>
-              <li><a href="#">Language</a>
+              <li><a onclick="categorySelect(this.innerHTML)">Language</a>
                 <ul>
-                  <li><a href="#">Induction and acquisition</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Language acquisition</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Judgement and classification</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Language processing</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Representation and structure</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Linguistic grammar</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Similarity</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Phonetics Phonology</a></li>
                   <div id="horizontal-line-categories"></div>
                 </ul>
               </li>
-              <li><a href="#">Memory</a>
+              <li><a onclick="categorySelect(this.innerHTML)">Memory</a>
                 <ul>
-                  <li><a href="#">Induction and acquisition</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Aging and memory</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Judgement and classification</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Autobiographical memory</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Representation and structure</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Childhood memory</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Similarity</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Constructive memory</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Emotion and memory</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Episodic memory</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Eyewitness memory</a></li>
                   <div id="horizontal-line-categories"></div>
                 </ul>
               </li>
-              <li><a href="#">Perception</a>
+              <li><a onclick="categorySelect(this.innerHTML)">Perception</a>
                 <ul>
-                  <li><a href="#">Induction and acquisition</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Attention</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Judgement and classification</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Object recognition</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Representation and structure</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Pattern recognition</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Similarity</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Perception</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Form perception</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Psychophysics</a></li>
                   <div id="horizontal-line-categories"></div>
                 </ul>
               </li>
-              <li><a href="#">Cognition</a>
+              <li><a onclick="categorySelect(this.innerHTML)">Cognition</a>
                 <ul>
-                  <li><a href="#">Induction and acquisition</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Choice</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Judgement and classification</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Concept formation</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Representation and structure</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Decision making</a></li>
                   <div id="horizontal-line-categories"></div>
-                  <li><a href="#">Similarity</a></li>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Logic</a></li>
+                  <div id="horizontal-line-categories"></div>
+                  <li><a onclick="subCategorySelect(this.innerHTML)">Psychology of reasoning</a></li>
                   <div id="horizontal-line-categories"></div>
                 </ul>
               </li>
@@ -174,10 +197,14 @@
         </div>
 
         <div class="box study_cards">
-          <p class="title">Top Rated Studies</p>
+          <p class="title" id="cardCategorizationTitle">Top Rated Studies<hr></p>
+          <br>
           <div id="myData"></div>
+          <p class="title" id="cardCategorizationTitle">Your Wishlist<hr></p>
+          <br>
+          <div id="myWish"></div>
         </div>
-        
+
       </div>
   </main>
 </body>
