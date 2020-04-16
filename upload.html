@@ -5,7 +5,9 @@
   <title>Upload</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="jquery-ui.css">
   <link rel="stylesheet" href="upload.css">
+  <link rel="stylesheet" href="tabs.css">
   <link rel="stylesheet" href="style-b.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -23,12 +25,15 @@
                 src="https://www.findingfive.com/images/logo-small-white.png"></a>
           </section>
           <!--<a class="active" href="#home">Home</a></li>-->
-        <li class="push">
-          <div class="search_bar">
-            <input type="text" placeholder="Search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </div>
-        </li>
+          <li class="push">
+            <form id="searchForm">
+              <div class="search_bar">
+                <input type="text" name="keywords" onkeydown = "if (event.keyCode == 13) document.getElementById('searchButton').click()" id="searchInput" placeholder="Search for studies...">
+                <button onClick="searchFn()" type="button" method="get" id="searchButton"><i class="fa fa-search"></i></button>
+                <script src="search.js"></script>
+              </div>
+            </form>
+          </li>
         <li>
           <div class="upload-btn-wrapper">
             <button class="btn" onclick="window.location.href = 'upload.html';">Upload</button>
@@ -39,25 +44,26 @@
         <li><div class="vl line_1"></div></li>
         <li><div class=" ">20 Credits</div></li>
         <li><div class="vl line_2"></div></li>
-        <li>          
+        <li>
           <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
+            <button onclick="myDropdown()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="#home">Juliana Santy<br>
-              Master's Student / Researcher</a>
-              <a href="#about">Account Profile</a>
+                Master's Student / Researcher</a>
+              <a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
               <a href="#contact">Contact Finding Five</a>
               <a href="#contact">Logout</a>
             </div>
           </div>
-          
-          
+
+
           </li>
         <li><div class="vl line_3"></div></li>
         <li><div class=" "><i class="fa fa-sign-out" aria-hidden="true"></i>
         </div></li>
       </ul>
-    </header><!-- Header end -->
+    </header>
+    <!-- Header end -->
 
 
     <div id="overlay">
@@ -69,6 +75,8 @@
     </div>
     <!----- Overlay -------->
 
+
+    <!---- Form Start ---------->
     <div class="form_wrapper">
       <form id="msform">
         <div class="instruction">
@@ -91,11 +99,11 @@
           <label for="title">Title</label><br>
 
           <!-- <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" required /> -->
-          <input type="text" oninput="this.className = ''" name="title" placeholder="Add the title" />
+          <input type="text" oninput="this.className = ''" name="title" id="title" placeholder="Add the title" required/>
           <label for="reference">Reference</label><br>
-          <input type="text" oninput="this.className = ''" name="reference" placeholder="Reference of the study" />
+          <input type="text" oninput="this.className = ''" name="references" id="references" placeholder="Reference of the study" required/>
           <label for="tags">Purpose of the study</label><br>
-          <input type="text" oninput="this.className = ''" name="tags" placeholder="Purpose" />
+          <input type="text" oninput="this.className = ''" name="purpose" id="purpose" placeholder="Purpose" required/>
           <label for="tags">Categories</label><br>
 
           <!--
@@ -134,7 +142,7 @@
 
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
-              <select name="category" class="required-entry selection_shadow" id="category"
+              <select name="categories" class="required-entry selection_shadow" id="categories"
                 onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);">
                 <option value="">Category</option>
                 <option value="Categorization">Categorization</option>
@@ -145,14 +153,14 @@
                 <option value="Cognition">Cognition</option>
               </select>
             </div>
-            <div class="sub_category_div category_wrapper_item" id="sub_category_div">
+            <div class="sub_category_div category_wrapper_item" id="subcategories">
               <script type="text/javascript" language="JavaScript">
                 document.write(
-                  '<select name="subcategory" id="subcategory" class="selection_shadow"><option value="">Subcategory</option></select>'
+                  '<select name="subcategories" id="subcategory" class="selection_shadow"><option value="">Subcategory</option></select>'
                 )
               </script>
               <noscript>
-                <select name="subcategory" id="subcategory" class="selection_shadow">
+                <select name="subcategories" id="subcategories" class="selection_shadow">
                   <option value="">Subcategory</option>
                 </select>
               </noscript>
@@ -161,7 +169,7 @@
           <!--Categoty_wrapper-->
 
           <label for="tags">Keywords</label><br>
-          <input type="text" oninput="this.className = ''" name="title" placeholder="Seperate keywords by comma" />
+          <input type="text" oninput="this.className = ''" name="keywords" id="keywords" placeholder="Seperate keywords by comma" required/>
 
         </div>
 
@@ -172,27 +180,27 @@
 
           <!--<textarea name="message" rows="10" cols="30" oninput="this.className = ''" placeholder="Abstract of the study"
           required></textarea> -->
-          <textarea name="message" rows="10" cols="30" oninput="this.className = ''"
-            placeholder="Abstract of the study"></textarea>
+          <textarea name="abstract" rows="10" cols="30" oninput="this.className = ''"
+            placeholder="Abstract of the study" id="abstractText" required></textarea>
 
           <div class="methods">
             <div class="method_item">
               <label for="stimuli">No. of Stimuli</label><br>
               <!--<input type="number" oninput="this.className = ''" name="stimuli" min="1" max="5" placeholder="No. of Stimuli"
               required />-->
-              <input type="number" oninput="this.className = ''" name="stimuli" placeholder="No. of Stimuli" />
+              <input type="number" oninput="this.className = ''" name="num_stimuli" id="num_stimuli" placeholder="No. of Stimuli" required/>
             </div>
             <div class="method_item">
               <label for="tags">Duration of Study</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="Duration of Study" />
+              <input type="number" oninput="this.className = ''" name="duration" id="duration" placeholder="Duration of Study" />
             </div>
             <div class="method_item">
               <label for="tags">No. of Responses</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Responses" />
+              <input type="number" oninput="this.className = ''" name="num_responses" id="num_responses" placeholder="No. of Responses" />
             </div>
             <div class="method_item">
               <label for="tags">No. of Trials</label><br>
-              <input type="number" oninput="this.className = ''" name="title" placeholder="No. of Trials" />
+              <input type="number" oninput="this.className = ''" name="num_trials" id="num_trials" placeholder="No. of Trials" />
             </div>
           </div>
 
@@ -200,9 +208,9 @@
           <p>Randomized?</p>
 
           <div class="radio">
-            <input type="radio" id="yes" name="option" value="yes">
+            <input type="radio" id="randomize" name="randomize" value="true">
             <label for="Yes">Yes</label>
-            <input type="radio" id="no" name="option" value="no">
+            <input type="radio" id="randomize" name="randomize" value="false">
             <label for="No">No</label>
           </div>
 
@@ -216,13 +224,13 @@
           <h3 class="fs-subtitle">Upload Document</h3>
           <div id="drop">Drag & drop
             <p>or browse your files</p>
-            <input type="file">
+            <input type="file" name="images" id="images" onchange="encodeImageFileAsURL();" />
           </div>
           <p class="instructions">You are using a multiple files uploader. If you are having any problems,
             please update your browser.<br>
             Maximum file upload limit is 2MB</p>
 
-          <!------ Image Upload Progress ----->
+          <!------ Image Upload Progress
           <div class="img_uploader">
             <div class="img_icon">
               <i class="fa fa-file-image-o fa-4x" aria-hidden="true"></i>
@@ -236,7 +244,7 @@
             <div class="spacing"></div>
             <div class="progress_perc">10% Done</div>
             <div class="file_size">300KB/sec</div>
-          </div>
+          </div>  ----->
 
 
 
@@ -263,20 +271,168 @@
         <div class="tab">
           <!------------------ Step_5 ------------------------------>
           <h2 class="fs-title">Preview</h2>
-          <div class="preview_img"></div>
+
+          <div class="preview_container_left">
+      			<div id="img_tabs">
+      				<div id="tabs-1">
+      					<img src="assets/preview_1.png" alt="icon" class="pre_1">
+      				</div>
+      				<div id="tabs-2">
+      					<img src="assets/preview_2.png" alt="icon" class="pre_1">
+      				</div>
+      				<div id="tabs-3">
+      					<img src="assets/preview_1.png" alt="icon" class="pre_1">
+      				</div>
+      				<div id="tabs-4">
+      					<img src="assets/preview_2.png" alt="icon" class="pre_1">
+      				</div>
+
+      				<ul id="tabs_container">
+      					<li><a href="#tabs-1">
+      							<img src="assets/preview_1.png" alt="icon" class="pre_1_small">
+      						</a></li>
+      					<li><a href="#tabs-2">
+      							<img src="assets/preview_2.png" alt="icon" class="pre_1_small">
+      						</a></li>
+      					<li><a href="#tabs-3">
+      							<img src="assets/preview_1.png" alt="icon" class="pre_1_small">
+      						</a></li>
+      					<li><a href="#tabs-4">
+      							<img src="assets/preview_2.png" alt="icon" class="pre_1_small">
+      						</a></li>
+      				</ul>
+      			</div><!-- Tabs -->
+
+      			<div class="preview_info">
+      				<div class="pre_row_1">
+      					<h2 class="study_title" id="outputTitle">title</h2>
+      				</div><!-- pre_row_1 -->
+      				<div class="pre_row_2">
+      					<p id="outputPurpose">purpose</p>
+
+                <!---
+                <div class="review">
+      						<p>Ratings: </p>
+      						<i class="fa fa-star" aria-hidden="true"></i>
+      						<i class="fa fa-star" aria-hidden="true"></i>
+      						<i class="fa fa-star" aria-hidden="true"></i>
+      						<i class="fa fa-star" aria-hidden="true"></i>
+      						<i class="fa fa-star" aria-hidden="true"></i>
+      					</div> --->
+
+      					<div class="credit_buy">
+      						<p>Credits: 20</p>
+      						<button class="primary_btn">Buy Now</button>
+      					</div>
+      					<p>Author: Prof. Alexander Gosline, Phd, M.D. Prof. of XYZ. </p>
+      					<p>College: State University of New York at Oswego</p>
+      					<div class="category_keywords">
+      						<p>Category: </p>
+      						<button class="pill" id="outputCategory">__</button>
+      					</div>
+
+      					<div class="category_keywords" id="keywordlist">
+      						<p>Keywords: </p>
+      					</div>
+      				</div><!-- pre_row_2 -->
+
+
+      				<div id="abstract">
+
+      					<ul>
+      						<li><a href="#tabs-1">
+      								Abstract
+      							</a></li>
+      						<li><a href="#tabs-2">
+      								Details
+      							</a></li>
+      					</ul>
+
+      					<div id="tabs-1">
+      						<p id="outputAbstract">___</p>
+      					</div>
+      					<div id="tabs-2">
+      						<p>
+      							No. of Stimuli: <span id="outputNumStim">__</span>
+      						</p>
+      						<p>
+      							No. of Responses: <span id="outputNumResp">__</span>
+      						</p>
+                  <p>
+                    No. of Trials: <span id="outputTrial">__</span>
+                  </p>
+      						<p>
+      							Duration of the study: <span id="outputDuration">__</span> min
+      						</p>
+      						<p>
+      							Randomized: <span id="outputRand">__</span>
+      						</p>
+                  <!-- Ignore this, it stores IMG data -->
+                  <p>
+                    <span id="outputImg"></span>
+                  </p>
+                  <!------------------------------------->
+      					</div>
+
+
+
+      				</div><!-- abstract -->
+
+      			</div><!-- preview_info -->
+
+
+
+
+
+
+
+      		</div><!-- preview_container -->
+
+          <script src="external/jquery/jquery.js"></script>
+      		<script src="jquery-ui.js"></script>
+      		<script>
+      			$("#img_tabs").tabs();
+
+      			// Hover states on the static widgets
+      			$("#dialog-link, #icons li").hover(
+      				function () {
+      					$(this).addClass("ui-state-hover");
+      				},
+      				function () {
+      					$(this).removeClass("ui-state-hover");
+      				}
+      			);
+      		</script>
+      		<script>
+      			$("#abstract").tabs();
+
+      			// Hover states on the static widgets
+      			$("#dialog-link, #icons li").hover(
+      				function () {
+      					$(this).addClass("ui-state-hover");
+      				},
+      				function () {
+      					$(this).removeClass("ui-state-hover");
+      				}
+      			);
+      		</script>
+
         </div>
 
         <div>
           <div class="bottom_buttons">
             <button type="button" id="prevBtn" class="orange_btn" onclick="nextPrev(-1)">Previous</button>
-            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrev(1)">Next</button>
+            <button type="button" id="nextBtn" class="orange_btn" onclick="nextPrev(1)" method="nil">Next</button>
           </div>
         </div>
+
       </form>
+
     </div>
+    <script src="upload.js"></script>
     <script src="progressbar.js"></script>
     <script src="category.js"></script>
-    <script src="pop_up.js"></script>
+    <script src="profile.js"></script>
   </main>
 </body>
 
