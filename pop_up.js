@@ -7,6 +7,7 @@ var study_id = "";
 var occupy = "";
 var token = localStorage['token'];
 
+//Creates cards for all of a users owned studies.
 $(document).ready(function () {
     $.ajax({
       url: 'http://pi.cs.oswego.edu:12100/getOwned?&token='+token,
@@ -30,11 +31,13 @@ $(document).ready(function () {
   });
 });
 
+//Toggles the overlay element to display.
 function on() {
   document.getElementById("overlay").style.display = "block";
   sendData();
 }
 
+//Toggles the overlay element to stop displaying and redirect to the home page.
 function off() {
   document.getElementById("overlay").style.display = "none";
   window.location.replace("home.html");
@@ -78,13 +81,15 @@ function sendData(){
 }
 
 
-
+//Event listener for when a star is clicked to set a rating.
 document.addEventListener('DOMContentLoaded', function(){
 	let stars = document.querySelectorAll('.star');
 	stars.forEach(function(star){
 		star.addEventListener('click', setRating);
     });
 });
+
+//Highlights the amount of stars selected.
 function setRating(ev){
 	let span = ev.currentTarget;
 	let stars = document.querySelectorAll('.star');
@@ -105,17 +110,20 @@ function setRating(ev){
 	rate = num;
 }
 
+//Transition from the rating to the comment overlay.
 function next() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("overlay2").style.display = "block";
 }
 
+//Transition from comments to the "Thank You" overlay
 function nextfinal() {
   document.getElementById("overlay2").style.display = "none";
   document.getElementById("overlay3").style.display = "block";
   comment = document.getElementById("Comments").value;
 }
 
+//Ends the rating and redirects to home.
 function off() {
   document.getElementById("overlay3").style.display = "none";
   infolist.push(study_id);
@@ -126,6 +134,7 @@ function off() {
   window.location.href="home.html";
 }
 
+//Sends rating to the server through a GET request.
 function sendRating(){
   $.ajax({
     url: 'http://pi.cs.oswego.edu:12100/rateStudy?study_id='+infolist[0]+'&user_id='+infolist[1]+'&occupation='+infolist[2]+'&rating='+infolist[3]+'&comments='+infolist[4]+'&token='+token,
