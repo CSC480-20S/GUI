@@ -45,6 +45,7 @@ $(document).ready(function() {
   });
 });
 
+//Redirects to the preview page corresponding a specific study id.
 function myFunction(id) {
   window.location.href = "preview.html?id=" + id;
 }
