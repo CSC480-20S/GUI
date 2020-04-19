@@ -1,4 +1,5 @@
-//Takes a string listindex as a parameter 
+//Takes a string listindex as a parameter, then checks to see if it's equal to a case, then the subcategories on the page change
+//in order to correspond with the selected category.
 function dynamicdropdown(listindex) {
   document.getElementById("subcategory").length = 0;
   switch (listindex) {
