@@ -1,4 +1,6 @@
 var token = localStorage['token'];
+
+//Searches the endpoint for the specific study based on the study id and stores the index of the corresponding json object into index.
 $(document).ready(function() {
   $.ajax({
     url: 'http://pi.cs.oswego.edu:12100/search?token=' + token,
@@ -14,6 +16,8 @@ $(document).ready(function() {
           break;
         }
       }
+      
+      //Constructs the page and checks if it is in the users wishlist
       checkWishlistStatus(id);
       document.getElementById('costInCredits').innerHTML = "Credits: " + json[index].costInCredits;
       document.getElementById('author').innerHTML = "Author: " + json[index].author;
