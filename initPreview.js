@@ -1,6 +1,7 @@
+var token = localStorage['token'];
 $(document).ready(function() {
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/search?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY5MDI4NjcsImV4cCI6MTU5MTIyNjQ2Nywic3ViIjoiMTIzNCJ9.PL-MpXC3kogsCozfWzzDTR1ix18ECcVf_sO2oxSmBuM',
+    url: 'http://pi.cs.oswego.edu:12100/search?token=' + token,
     dataType: 'json',
     success: function(json) {
       var params = new URLSearchParams(window.location.search.slice());
@@ -89,10 +90,10 @@ $(document).ready(function() {
 
 
 function checkWishlistStatus(id) {
-  var feedback_data = '{"user_id":"1234"}';
+  var feedback_data = '{}';
   const dataToSend = JSON.parse(feedback_data);
   dataToSend.study_id = id;
-  var urlSend = 'http://pi.cs.oswego.edu:12100/isWishlisted?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY5MDI4NjcsImV4cCI6MTU5MTIyNjQ2Nywic3ViIjoiMTIzNCJ9.PL-MpXC3kogsCozfWzzDTR1ix18ECcVf_sO2oxSmBuM';
+  var urlSend = 'http://pi.cs.oswego.edu:12100/isWishlisted?token=' + token;
   $.ajax({
     url: urlSend,
     type: 'GET',
@@ -131,10 +132,10 @@ function bookmarkWishList() {
 
 //------------------------- DATA SEND TO SERVER -----------------
 function sendData() {
-  var feedback_data = '{"user_id":"1234"}';
+  var feedback_data = '{}';
   const dataToSend = JSON.parse(feedback_data);
   dataToSend.study_id = document.getElementById("studyidPlaceholder").value;
-  var urlSend = 'http://pi.cs.oswego.edu:12100/addWishlist?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY5MDI4NjcsImV4cCI6MTU5MTIyNjQ2Nywic3ViIjoiMTIzNCJ9.PL-MpXC3kogsCozfWzzDTR1ix18ECcVf_sO2oxSmBuM';
+  var urlSend = 'http://pi.cs.oswego.edu:12100/addWishlist?token=' + token;
   $.ajax({
     url: urlSend,
     type: 'GET',
@@ -154,10 +155,10 @@ function sendData() {
 }
 
 function removeFromWishlist() {
-  var feedback_data = '{"user_id":"1234"}';
+  var feedback_data = '{}';
   const dataToSend = JSON.parse(feedback_data);
   dataToSend.study_id = document.getElementById("studyidPlaceholder").value;
-  var urlSend = 'http://pi.cs.oswego.edu:12100/removeWishlist?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY5MDI4NjcsImV4cCI6MTU5MTIyNjQ2Nywic3ViIjoiMTIzNCJ9.PL-MpXC3kogsCozfWzzDTR1ix18ECcVf_sO2oxSmBuM';
+  var urlSend = 'http://pi.cs.oswego.edu:12100/removeWishlist?token=' + token;
   $.ajax({
     url: urlSend,
     type: 'GET',
@@ -173,4 +174,32 @@ function removeFromWishlist() {
     }
 
   });
+}
+
+//Turns on the overlay when a user purchases a study
+function buyOverlay() {
+  document.getElementById("overlay_buy").style.display = "block";
+  var params = new URLSearchParams(window.location.search.slice());
+  console.log(params.get('id'));
+  var id = params.get('id');
+  var urlSend = 'http://pi.cs.oswego.edu:12100/purchase?study_id='+id+'&credits_available=1000&token=' + token;
+  $.ajax({
+    url: urlSend,
+    type: 'GET',
+    success: function(data) {
+      console.log("Study purchased.")
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(xhr.status);
+      alert(thrownError);
+    }
+
+  });
+}
+
+function off() {
+  //Removes the overlay so that it isn't displayed
+  document.getElementById("overlay_buy").style.display = "none";
+  //Redirect to home page
+  window.location.href = "home.html";
 }

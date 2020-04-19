@@ -15,8 +15,8 @@
   <script src="https://use.fontawesome.com/9595edcb50.js"></script>
   <script src="profile.js"></script>
   <script type="text/javascript">
-    $(document).ready(function () {
-      $('#vertical-menu > li > a').click(function () {
+    $(document).ready(function() {
+      $('#vertical-menu > li > a').click(function() {
         if ($(this).attr('class') != 'enable') {
           $('#vertical-menu li ul').slideUp();
           $(this).next().slideToggle();
@@ -26,8 +26,8 @@
       });
     });
   </script>
-<script src="card.js"></script>
-<script src="wishlist.js"></script>
+  <script src="card.js"></script>
+  <script src="wishlist.js"></script>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
         <li class="push">
           <form id="searchForm">
             <div class="search_bar">
-              <input type="text" name="keywords" onkeydown = "if (event.keyCode == 13) document.getElementById('searchButton').click()" id="searchInput" placeholder="Search for studies...">
+              <input type="text" name="keywords" onkeydown="if (event.keyCode == 13) document.getElementById('searchButton').click()" id="searchInput" placeholder="Search for studies...">
               <button onClick="searchFn()" type="button" method="get" id="searchButton"><i class="fa fa-search"></i></button>
               <script src="search.js"></script>
             </div>
@@ -77,7 +77,7 @@
               <a href="#home">Juliana Santy<br>
                 Master's Student / Researcher</a>
               <a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
-              <a href="#contact">Contact Finding Five</a>
+              <a href="mailto:feedback@findingfive.com">Contact Finding Five</a>
               <a href="#contact">Logout</a>
             </div>
           </div>
@@ -92,11 +92,12 @@
       </ul>
     </header><!-- Header end -->
 
-
     <div class="container">
       <div class="wrapper_one">
         <div class="box left_nav">
-          <p class="title">Categories<hr></p>
+          <p class="title">Categories
+            <hr>
+          </p>
 
           <div class="box category">
             <ul id="vertical-menu">
@@ -197,10 +198,14 @@
         </div>
 
         <div class="box study_cards">
-          <p class="title" id="cardCategorizationTitle">Top Rated Studies<hr></p>
+          <p class="title" id="cardCategorizationTitle">Top Rated Studies
+            <hr>
+          </p>
           <br>
           <div id="myData"></div>
-          <p class="title" id="cardCategorizationTitle">Your Wishlist<hr></p>
+          <p class="title" id="cardCategorizationTitle">Your Wishlist
+            <hr>
+          </p>
           <br>
           <div id="myWish"></div>
         </div>

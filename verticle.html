@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +12,11 @@
 			padding: 0;
 			overflow: hidden;
 		}
-		.ui-tabs .ui-widget-header { border: none; }
+
+		.ui-tabs .ui-widget-header {
+			border: none;
+		}
+
 		.ui-tabs .ui-tabs-nav {
 			float: left;
 			width: 10em;
@@ -19,6 +24,7 @@
 			border-radius: 4px 0 0 4px;
 			border-right: 1px solid gray;
 		}
+
 		.ui-tabs .ui-tabs-nav li {
 			width: 100%;
 			margin: 0.2em 0;
@@ -29,22 +35,27 @@
 			position: relative;
 			right: -2px;
 		}
+
 		.ui-tabs .ui-tabs-nav li a {
 			display: block;
 			width: 100%;
 			padding: 0.6em 1em;
 		}
+
 		.ui-tabs .ui-tabs-nav li a:hover {
 			cursor: pointer;
 		}
+
 		.ui-tabs .ui-tabs-nav li.ui-state-active {
 			margin-bottom: 0.2em;
 			padding-bottom: 0;
 			border-right: 1px solid white;
 		}
+
 		.ui-tabs .ui-tabs-nav li:last-child {
 			margin-bottom: 10px;
 		}
+
 		.ui-tabs .ui-tabs-panel {
 			float: left;
 			width: -webkit-calc(100% - 11em);
@@ -53,34 +64,36 @@
 		}
 	</style>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
 </head>
+
 <body>
 
-<div id="tabs">
-	<ul>
-		<li><a href="#tabs-1">One</a></li>
-		<li><a href="#tabs-2">Two</a></li>
-		<li><a href="#tabs-3">Three</a></li>
-	</ul>
-	<div id="tabs-1">
-		One Contents
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">One</a></li>
+			<li><a href="#tabs-2">Two</a></li>
+			<li><a href="#tabs-3">Three</a></li>
+		</ul>
+		<div id="tabs-1">
+			One Contents
+		</div>
+		<div id="tabs-2">
+			Two Contents
+		</div>
+		<div id="tabs-3">
+			Three Contents
+		</div>
 	</div>
-	<div id="tabs-2">
-		Two Contents
-	</div>
-	<div id="tabs-3">
-		Three Contents
-	</div>
-</div>
 
-<script src="../js/jquery.js"></script>
-<script src="../js/jquery-ui.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery-ui.js"></script>
 
-<script>
-	$( "#tabs" ).tabs();
-</script>
+	<script>
+		$("#tabs").tabs();
+	</script>
 
 </body>
+
 </html>
