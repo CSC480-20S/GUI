@@ -1,4 +1,6 @@
 var token = localStorage['token'];
+
+//Parses the getWishlist endpoint and creates cards for each study in the endpoint for a specific token.
 $(document).ready(function() {
   $.ajax({
     url: 'http://pi.cs.oswego.edu:12100/getWishlist?token=' + token,
