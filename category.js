@@ -1,3 +1,4 @@
+//Takes a string listindex as a parameter 
 function dynamicdropdown(listindex) {
   document.getElementById("subcategory").length = 0;
   switch (listindex) {
