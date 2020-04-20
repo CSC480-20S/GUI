@@ -220,15 +220,14 @@
         <!---------- tab -------->
         <div class="tab">
           <!------------------ Step_3 ------------------------------>
-          <h2 class="fs-title">Images / Videos</h2>
+          <h2 class="fs-title">Image Upload</h2>
           <h3 class="fs-subtitle">Upload Document</h3>
-          <div id="drop">Drag & drop
-            <p>or browse your files</p>
+          <div id="drop">Drag & drop an image
+            <p>or browse through your files</p>
             <input type="file" name="images" id="images" onchange="encodeImageFileAsURL();" />
           </div>
-          <p class="instructions">You are using a multiple files uploader. If you are having any problems,
-            please update your browser.<br>
-            Maximum file upload limit is 2MB</p>
+          <p class="instructions">Maximum file upload limit is 2MB</p>
+        </div>
 
           <!------ Image Upload Progress
           <div class="img_uploader">
@@ -273,35 +272,12 @@
           <h2 class="fs-title">Preview</h2>
 
           <div class="preview_container_left">
-      			<div id="img_tabs">
+            <div id="img_tabs">
       				<div id="tabs-1">
-      					<img src="assets/preview_1.png" alt="icon" class="pre_1">
+      					<img id="imagePreview" alt="icon" class="pre_1">
       				</div>
-      				<div id="tabs-2">
-      					<img src="assets/preview_2.png" alt="icon" class="pre_1">
-      				</div>
-      				<div id="tabs-3">
-      					<img src="assets/preview_1.png" alt="icon" class="pre_1">
-      				</div>
-      				<div id="tabs-4">
-      					<img src="assets/preview_2.png" alt="icon" class="pre_1">
-      				</div>
-
-      				<ul id="tabs_container">
-      					<li><a href="#tabs-1">
-      							<img src="assets/preview_1.png" alt="icon" class="pre_1_small">
-      						</a></li>
-      					<li><a href="#tabs-2">
-      							<img src="assets/preview_2.png" alt="icon" class="pre_1_small">
-      						</a></li>
-      					<li><a href="#tabs-3">
-      							<img src="assets/preview_1.png" alt="icon" class="pre_1_small">
-      						</a></li>
-      					<li><a href="#tabs-4">
-      							<img src="assets/preview_2.png" alt="icon" class="pre_1_small">
-      						</a></li>
-      				</ul>
-      			</div><!-- Tabs -->
+      			</div>
+            <!-- Tabs -->
 
       			<div class="preview_info">
       				<div class="pre_row_1">
