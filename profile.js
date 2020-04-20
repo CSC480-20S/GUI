@@ -20,23 +20,13 @@ window.onclick = function(event) {
   }
 }
 
+//Changes the color of the bookmark icon when a user clicks it.
 function bookMark(x) {
   /*x.classList.toggle("fa-bookmark");*/
   x.classList.toggle("orange_icon");
 }
 
-
-function getToken(user_id){
-  $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/token/generate?user_id='+user_id,
-    dataType: 'json',
-    success: function (json) {
-      console.log("Token: ", json.token);     
-      getListPendingStudies(token = json.token);
-    }
-  });
-}
-
+//Retrieves the pending studies that need to be reviewed for the admin and displays them under the "Admin" tab.
 function getListPendingStudies(){
   var limit='2';
   $.ajax({
