@@ -53,12 +53,6 @@ html {
 
 }
 
-
-
-
-
-
-
 /*search bar*/
 
 
@@ -207,6 +201,7 @@ html {
   transition: 2.0s;
   width: 40%;
 	right: -30%;
+	text-align: center;
 }
 
 .card:hover {
@@ -215,5 +210,79 @@ html {
 
 .contain {
   padding: 2px 16px;
+}
 
+.toCenter{
+	margin: auto;
+}
+
+/**** OVERLAY ****/
+#overlay_buy {
+ position: fixed;
+ display: none;
+ height: 100%;
+ width: 100%;
+ left: 0;
+ right: 0;
+ background-color: rgba(255, 255, 255, 0.8);
+ z-index: 1;
+}
+
+#text-main {
+	position: relative;
+	top: 20%;
+	left: 50%;
+	border-radius: 10px;
+	font-size: 36px;
+	font-family: "nunito sans";
+	font-weight: bold;
+	color: #2F4249;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+#text-desc {
+	position: relative;
+	top: 35%;
+	left: 50%;
+	border-radius: 10px;
+	font-size: 24px;
+	font-family: "nunito sans";
+	color: #2F4249;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+#text-desc2 {
+	position: relative;
+	top: 30%;
+	left: 50%;
+	border-radius: 10px;
+	width: auto;
+	height: 45px;
+	font-size: 24px;
+	font-family: "nunito sans";
+	color: #ff6600;
+	text-align: center;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	cursor: pointer;
+}
+
+.popup {
+	position: fixed;
+	background-color: #F8F8F8;
+	border-radius: 20px;
+	top: 40%;
+	left: 50%;
+	width: 580px;
+	height: 320px;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+}
+
+#outputImg{
+	display: none;
 }
