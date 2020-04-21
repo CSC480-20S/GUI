@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="pop_up.js"></script>
 </head>
 
 <body>
@@ -39,19 +40,19 @@
           <div class="vl line_1"></div>
         </li>
         <li>
-          <div class=" ">20 Credits</div>
+          <div class=" ">∞ Credits</div>
         </li>
         <li>
           <div class="vl line_2"></div>
         </li>
         <li>
           <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
+            <button onclick="myDropdown()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="#home">Juliana Santy<br>
                 Master's Student / Researcher</a>
-              <a href="#about">Account Profile</a>
-              <a href="#contact">Contact Finding Five</a>
+              <a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
+              <a href="mailto:feedback@findingfive.com">Contact Finding Five</a>
               <a href="#contact">Logout</a>
             </div>
           </div>
@@ -73,11 +74,11 @@
       <div class="popup">
         <div id="text-main">Completed!</div>
         <div id="text-desc">Congratulations, study is submitted successfully for review.</div>
-        <div id="text-desc2"><i onclick="off()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+        <div id="text-desc2"><i onclick="window.location.replace('home.html')" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
       </div>
     </div>
 
-    <div id="instruction" >
+    <div id="instruction">
       <div class="popup">
         <div id="text-main">Instruction</div>
         <div id="text-desc">To mark a section as wrong, please click on the checkmark and write in why. Review all parts at the end and submit.</div>
@@ -122,7 +123,7 @@
           </ul>
         </div>
 
-        
+
 
         <div class="tab">
           <!------------------ Step_1 ------------------------------>
@@ -130,7 +131,7 @@
           <h2 class="fs-title">Study Information</h2>
           <label for="title">Title</label><br>
           <div class="check_mark">
-            <input id="title_value" type="text" oninput="this.className = ''" name="title" readonly/>
+            <input id="title_value" type="text" oninput="this.className = ''" name="title" readonly />
             <i onclick="changeCheck(this,'title_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="title_feedback" class="string_feedback"></p>
@@ -138,7 +139,7 @@
           <!--Reference-->
           <label for="reference">Reference</label><br>
           <div class="check_mark">
-            <input id="reference_value" type="text" oninput="this.className = ''" name="reference" readonly/>
+            <input id="reference_value" type="text" oninput="this.className = ''" name="reference" readonly />
             <i onclick="changeCheck(this,'reference_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="reference_feedback" class="string_feedback"></p>
@@ -146,7 +147,7 @@
           <!--Purpose-->
           <label for="tags">Purpose of the study</label><br>
           <div class="check_mark">
-            <input id="purpose_value" type="text" oninput="this.className = ''" name="tags" readonly/>
+            <input id="purpose_value" type="text" oninput="this.className = ''" name="tags" readonly />
             <i onclick="changeCheck(this,'purpose_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="purpose_feedback" class="string_feedback"></p>
@@ -155,10 +156,10 @@
           <label for="tags">Categories</label><br>
           <div class="category_wrapper">
             <div class="category_div category_wrapper_item" id="category_div">
-              <input id="categories_value" type="text" oninput="this.className = ''" name="tags" readonly/>
+              <input id="categories_value" type="text" oninput="this.className = ''" name="tags" readonly />
             </div>
             <div class="sub_category_div category_wrapper_item" id="sub_category_div">
-              <input id="subcategories_value" type="text" oninput="this.className = ''" name="tags" readonly/>
+              <input id="subcategories_value" type="text" oninput="this.className = ''" name="tags" readonly />
             </div>
             <i onclick="changeCheck(this,'categories_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
@@ -168,7 +169,7 @@
           <!--Keywords-->
           <label for="tags">Keywords</label><br>
           <div class="check_mark">
-            <input id="keywords_value" type="text" oninput="this.className = ''" name="title" readonly/>
+            <input id="keywords_value" type="text" oninput="this.className = ''" name="title" readonly />
             <i onclick="changeCheck(this,'keywords_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="keywords_feedback" class="string_feedback"></p>
@@ -178,12 +179,11 @@
         <div class="tab">
           <!------------------ Step_2 ------------------------------>
           <h2 class="fs-title">Study Methods</h2>
-          
+
           <!--Abstract-->
           <label for="abstract">Abstract</label><br>
           <div class="check_mark">
-            <textarea id="abstract_value" name="message" rows="10" cols="30" oninput="this.className = ''"
-             readonly></textarea>
+            <textarea id="abstract_value" name="message" rows="10" cols="30" oninput="this.className = ''" readonly></textarea>
             <i onclick="changeCheck(this,'abstract_feedback')" class="fa fa-check-circle fa-2x check"></i>
           </div>
           <p id="abstract_feedback" class="string_feedback"></p>
@@ -192,36 +192,36 @@
             <!--Stimuli-->
             <div class="method_item">
               <label for="stimuli">No. of Stimuli</label><br>
-              <input id="stimuli_value" type="number" oninput="this.className = ''" name="stimuli" readonly/>
-              <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check" ></i>
-              <br/>
+              <input id="stimuli_value" type="number" oninput="this.className = ''" name="stimuli" readonly />
+              <i onclick="changeCheck(this,'stimuli_feedback')" class="fa fa-check-circle fa-2x check"></i>
+              <br />
               <p id="stimuli_feedback" class="string_feedback"></p>
             </div>
 
             <!--Duration-->
             <div class="method_item">
               <label for="tags">Duration of Study</label><br>
-              <input id="duration_value" type="number" oninput="this.className = ''" name="title" readonly/>
+              <input id="duration_value" type="number" oninput="this.className = ''" name="title" readonly />
               <i onclick="changeCheck(this,'duration_feedback')" class="fa fa-check-circle fa-2x check"></i>
-              <br/>
+              <br />
               <p id="duration_feedback" class="string_feedback"></p>
             </div>
 
             <!--Response-->
             <div class="method_item">
               <label for="tags">No. of Responses</label><br>
-              <input id="responses_value" type="number" oninput="this.className = ''" name="title" readonly/>
+              <input id="responses_value" type="number" oninput="this.className = ''" name="title" readonly />
               <i onclick="changeCheck(this,'response_feedback')" class="fa fa-check-circle fa-2x check"></i>
-              <br/>
+              <br />
               <p id="response_feedback" class="string_feedback"></p>
             </div>
-            
+
             <!--Trials-->
             <div class="method_item">
               <label for="tags">No. of Trials</label><br>
-              <input id="trials_value" type="number" oninput="this.className = ''" name="title" value="11" readonly/>
-              <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check" ></i>
-              <br/>
+              <input id="trials_value" type="number" oninput="this.className = ''" name="title" value="11" readonly />
+              <i onclick="changeCheck(this,'trials_feedback')" class="fa fa-check-circle fa-2x check"></i>
+              <br />
               <p id="trials_feedback" class="string_feedback"></p>
             </div>
           </div>
@@ -244,14 +244,14 @@
         <div class="tab">
           <!------------------ Step_3 ------------------------------>
           <h2 class="fs-title">Images / Videos</h2>
-          
-          <div id="images_videos">    
+
+          <div id="images_videos">
           </div>
           <i onclick="changeCheck(this,'image_videos_feedback')" class="fa fa-check-circle fa-2x check"></i>
-          <br/>
+          <br />
           <p id="image_videos_feedback" class="string_feedback"></p>
         </div>
-        
+
 
 
 
@@ -259,16 +259,15 @@
         <div class="tab">
           <!------------------ Step_4 ------------------------------>
           <h2 class="fs-title">File Document</h2>
-          <textarea id="json_files" name="message" rows="10" cols="30" oninput="this.className = ''"
-             readonly></textarea>
+          <textarea id="json_files" name="message" rows="10" cols="30" oninput="this.className = ''" readonly></textarea>
           <i onclick="changeCheck(this,'jsons_feedback')" class="fa fa-check-circle fa-2x check"></i>
-          <br/>
+          <br />
           <p id="jsons_feedback" class="string_feedback"></p>
-          
+
 
         </div>
 
-        
+
 
         <div class="tab">
           <!------------------ Step_5 ------------------------------>
@@ -278,7 +277,7 @@
             <h5 class="fs-subtitle">Title: This is not suitable</h5>
           </div>
 
-          
+
 
 
         </div>
@@ -291,7 +290,7 @@
         </div>
       </form>
     </div>
-    <script src="progressbar.js"></script>
+    <script src="progressbarReview.js"></script>
     <script src="category.js"></script>
     <script src="pop_up.js"></script>
     <script src="review_study.js"></script>
@@ -303,9 +302,8 @@
       var url_string = window.location.href;
       var url = new URL(url_string);
       var id_study = url.searchParams.get("study");
-      console.log(id_study);     
+      console.log(id_study);
       getDetailPending(id_study);
-      
     </script>
   </main>
 </body>
