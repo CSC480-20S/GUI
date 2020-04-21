@@ -13,7 +13,8 @@
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script src="https://use.fontawesome.com/9595edcb50.js"></script>
   <script src="profile.js"></script>
-
+  <script src="pop_up.js"></script>
+  <script src="wishlist.js"></script>
   <script type="text/javascript">
     $(document).ready(function () {
       $('#vertical-menu > li > a').click(function () {
@@ -22,29 +23,6 @@
           $(this).next().slideToggle();
           $('#vertical-menu li a').removeClass('enable');
           $(this).addClass('enable');
-        }
-      });
-    });
-  </script>
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $.ajax({
-        url: 'http://pi.cs.oswego.edu:12100/studyPreview',
-        dataType: 'json',
-        success: function (json) {
-          console.log("%j", json);
-          var mainContainer = document.getElementById("myData");
-          for (var i = 0; i < json.length; i++) {
-            var div = document.createElement("div");
-            div.innerHTML =
-              '<div class="card"><b>Name: </b>' + json[i].author +
-              '<br><b> Category: </b>' + json[i].categories +
-              '<b><br>Cost: </b>' + json[i].costInCredits +
-              '<b> <br> Duration: </b >' + json[i].duration +
-              '<b> <br> Institution: </b >' + json[i].institution;
-            mainContainer.appendChild(div);
-          }
         }
       });
     });
@@ -63,6 +41,43 @@
 <body>
   <main>
 
+    <div id="overlay">
+      <div class="review_popup">
+        <div id="text-main"style="left: 23%;">Please rate the study</div>
+		<div class="bottom_buttons">
+	<form>
+		<div class="stars" user-rating="0">
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+		</div>
+	</form>
+
+        <button type="button" class="orange_btn" onclick="next()">Next</button>
+		</div>
+      </div>
+    </div>
+
+	<div id="overlay2">
+	<div class="review_popup">
+	<div id="text-main" style="left: 18%;">Please share some feedback</div>
+	<textarea id="Comments" name="message" rows="10" cols="80" oninput="this.className = ''" placeholder="Add a comment..." style="resize: none;"></textarea>
+	<div class="bottom_buttons">
+	<button type="button" id="start" class="orange_btn" onclick="nextfinal()">Next</button>
+	</div>
+	</div>
+	</div>
+
+
+    <div id="overlay3">
+      <div class="review_popup">
+        <div id="text-main" style="left: 35%;">Thank you!</div>
+        <div id="text-desc">Your review has been submitted.</div>
+        <div id="text-desc2"><i onclick="off()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+      </div>
+    </div>
 
     <!-- Header start -->
     <header id="header" class="box-shadow-down">
@@ -72,12 +87,15 @@
             <a href="home.html"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
           </section>
           <!--<a class="active" href="#home">Home</a></li>-->
-        <li class="push">
-          <div class="search_bar">
-            <input type="text" placeholder="Search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </div>
-        </li>
+          <li class="push">
+            <form id="searchForm">
+              <div class="search_bar">
+                <input type="text" name="keywords" onkeydown = "if (event.keyCode == 13) document.getElementById('searchButton').click()" id="searchInput" placeholder="Search for studies...">
+                <button onClick="searchFn()" type="button" method="get" id="searchButton"><i class="fa fa-search"></i></button>
+                <script src="search.js"></script>
+              </div>
+            </form>
+          </li>
         <li>
           <div class="upload-btn-wrapper">
             <button class="btn" onclick="window.location.href = 'upload.html';">Upload</button>
@@ -89,22 +107,24 @@
           <div class="vl line_1"></div>
         </li>
         <li>
-          <div class=" ">20 Credits</div>
+          <div class=" ">∞ Credits</div>
         </li>
         <li>
           <div class="vl line_2"></div>
         </li>
         <li>
           <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
+            <button onclick="myDropdown()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="#home">Juliana Santy<br>
                 Master's Student / Researcher</a>
-              <a href="#about">Account Profile</a>
-              <a href="#contact">Contact Finding Five</a>
+              <a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
+              <a href="mailto:feedback@findingfive.com">Contact Finding Five</a>
               <a href="#contact">Logout</a>
             </div>
           </div>
+
+
         </li>
         <li>
           <div class="vl line_3"></div>
@@ -118,75 +138,77 @@
 
 
     <div class="container">
-
-      <div class="box study_cards">
-        <p class="title">Profile Settings</p>
-      </div>
-
-
       <div class="wrapper_one">
 
-        <input class="radio" id="one" name="group" type="radio" checked>
-        <input class="radio" id="two" name="group" type="radio">
-        <input class="radio" id="three" name="group" type="radio">
-        <input class="radio" id="four" name="group" type="radio">
-        <div class="tabs">
-          <label class="tab" id="one-tab" for="one">Notifications</label>
-          <label class="tab" id="two-tab" for="two">Admin</label>
-          <label class="tab" id="three-tab" for="three">Purchase History</label>
-          <label class="tab" id="four-tab" for="four">Wishlist</label>
-          <!--<label class="tab" id="four-tab" for="five">Logout</label>-->
-        </div>
-        <div class="panels">
-          <div class="panel" id="one-panel">
-            <div class="panel-title">Notifications</div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-              et dolore magna aliqua. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae.
-              A arcu cursus vitae congue. Vel facilisis volutpat est velit egestas dui. Morbi leo urna molestie at
-              elementum eu.
-              Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus pellentesque eu
-              tincidunt tortor.
-              Aliquam faucibus purus in massa. Tempor nec feugiat nisl pretium fusce id velit. Malesuada nunc vel risus
-              commodo
-              viverra. Erat nam at lectus urna duis convallis.</p>
-          </div>
-          <div class="panel" id="two-panel">
-            <div class="panel-title">Admin</div>
-            <div class="admin_wrapper_Title">
-              <div>Study Title</div>
-              <div>Author</div>
-              <div>Upload Date</div>
-              <div>Status</div>
+            <input class="radio" id="two" name="group" type="radio" checked>
+            <input class="radio" id="three" name="group" type="radio">
+			      <input class="radio" id="four" name="group" type="radio">
+            <input class="radio" id="five" name="group" type="radio">
+            <input class="radio" id="six" name="group" type="radio">
+            <div class="tabs">
+              <label class="tab" id="two-tab" for="two">Notifications</label>
+              <label class="tab" id="three-tab" for="three">Admin</label>
+              <label class="tab" id="four-tab" for="four">Purchase History</label>
+              <label class="tab" id="five-tab" for="five">Wishlist</label>
+              <label class="tab" id="six-tab" for="six">Logout</label>
+            </div>
+            <div class="panels">
+              <div class="panel" id="one-panel">
+                <div class="panel-title">Profile Settings</div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                  et dolore magna aliqua. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae.
+                  A arcu cursus vitae congue. Vel facilisis volutpat est velit egestas dui. Morbi leo urna molestie at elementum eu.
+                  Sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus pellentesque eu tincidunt tortor.
+                  Aliquam faucibus purus in massa. Tempor nec feugiat nisl pretium fusce id velit. Malesuada nunc vel risus commodo
+                  viverra. Erat nam at lectus urna duis convallis.</p>
+              </div>
+              <div class="panel" id="two-panel">
+                <div class="panel-title">Study Notifications</div>
+                <div class="study_wrapper_Title">
+                  <div>Subject</div>
+                  <div>Recieved</div>
+                  <div>Type</div>
+                  <div>Details</div>
+                </div>
+
+                <script type="text/javascript">
+                  getNotifications();
+                </script>
+                <div id="notificationsList"></div>
+              </div>
+              <div class="panel" id="three-panel">
+                <div class="panel-title">Approve or Disapprove User-Submitted Studies</div>
+                <div class="admin_wrapper_Title">
+                  <div>Study Title</div>
+                  <div>Author</div>
+                  <div>Upload Date</div>
+                  <div>Status</div>
+                </div>
+
+                <script type="text/javascript">
+                  getListPendingStudies();
+                </script>
+                <div id="listPending"></div>
+              </div>
+
+              <div class="panel" id="four-panel">
+                <div class="panel-title">Your Purchased Studies</div>
+                <div id="myPurchases"></div>
+              </div>
+
+              <div class="panel" id="five-panel">
+            <div class="panel-title">Wishlist</div>
+          <div id="myWish"></div>
             </div>
 
-            <script type="text/javascript">
-              getListPendingStudies();
-            </script>
-            <div id="listPending"></div>            
-          </div>
-
-          <div class="panel" id="three-panel">
-            <div class="panel-title">Purchase History</div>
-            <p>Eget duis at tellus at. Mattis nunc sed blandit libero volutpat sed cras.
-              Vitae congue eu consequat ac felis donec et odio pellentesque.
-              Gravida in fermentum et sollicitudin. Felis bibendum ut tristique et egestas quis ipsum suspendisse.
-              Nunc aliquet bibendum enim facilisis gravida neque. Amet est placerat in egestas erat. Auctor eu augue
-              ut lectus arcu bibendum. Tempor orci dapibus ultrices in iaculis nunc sed augue. Magna sit amet
-              purus gravida quis blandit turpis cursus in. Bibendum neque egestas congue quisque. Sodales neque
-              sodales ut etiam sit amet nisl purus in. Morbi tristique senectus et netus et malesuada fames.
-              Nullam vehicula ipsum a arcu. Viverra mauris in aliquam sem fringilla ut morbi.
-              Placerat vestibulum lectus mauris ultrices eros.</p>
-          </div> <!-- three_panel -->
-
-          <div class="panel" id="four-panel">
-            <div class="panel-title">Wishlist</div>
-          </div>
-        </div>
-        <!-- Category Choices END -->
-
-
+              </div>
+            </div>
 
       </div>
+
+
+
+
   </main>
 </body>
 
