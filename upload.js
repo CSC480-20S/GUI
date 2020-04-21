@@ -32,9 +32,9 @@ function encodeImageFileAsURL() {
       newImage.src = srcData;
 
       document.getElementById("outputImg").innerHTML = srcData;
-      console.log("Converted Base64 version is " + srcData);
       document.getElementById("imagePreview").src = srcData;
-
+      console.log(srcData);
+      document.getElementById("imgUploadNotification").style.display = "block";
     }
     var base64result = fileReader.readAsDataURL(fileToLoad);
   }
@@ -54,6 +54,19 @@ function upload() {
     !document.getElementById("randomize").value ||
     !document.getElementById("outputImg").innerHTML ||
     !document.getElementById("user_json_document").value) {
+    /*  console.log("sub: %j", document.getElementById("subcategory").value);
+      console.log("title: " + document.getElementById("title").value);
+      console.log("ref: " + document.getElementById("references").value);
+      console.log("purpose: " + document.getElementById("purpose").value);
+      console.log("keywords " + document.getElementById("keywords").value);
+      console.log("abstract " + document.getElementById("abstractText").value);
+      console.log("num_stim: " + document.getElementById("num_stimuli").value);
+      console.log("duration " + document.getElementById("duration").value);
+      console.log("num_resp " + document.getElementById("num_responses").value);
+      console.log("trials " + document.getElementById("num_trials").value);
+      console.log("random " + document.getElementById("randomize").value);
+      console.log("image " + document.getElementById("outputImg").innerHTML);
+      console.log("json " + document.getElementById("user_json_document").value); */
     document.getElementById("overlay_error").style.display = "block";
     return;
   }
