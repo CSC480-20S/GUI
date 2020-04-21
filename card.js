@@ -1,6 +1,4 @@
 var token = localStorage['token'];
-
-//Constructs the cards by parsing the search endpoint with only the token as a query string. Then places the cards on the home page.
 $(document).ready(function() {
   $.ajax({
     url: 'http://pi.cs.oswego.edu:12100/search?token=' + token,
@@ -26,7 +24,6 @@ $(document).ready(function() {
   });
 });
 
-//Takes a study id as the parameter and then redirects to a preview page for that specific study.
 function myFunction(id) {
   window.location.href = "preview.html?id=" + id;
 }
