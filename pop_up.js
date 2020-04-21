@@ -8,6 +8,7 @@ var occupy = "Researcher";
 var token = localStorage['token'];
 var username = localStorage['username'];
 
+//Prints each study purchased by a user in the Purchased Studies tab on profile.html so they can review them.
 $(document).ready(function () {
     $.ajax({
       url: 'http://pi.cs.oswego.edu:12100/getOwned?&token='+token,
@@ -31,28 +32,29 @@ $(document).ready(function () {
   });
 });
 
+//Turns on the overlay for the admin study review and sends the data to the server.
 function on() {
   document.getElementById("overlay").style.display = "block";
-  //sendData();
+  sendData();
 }
 
+//Stores the id of the study into a variable that is going to be admin reviewed. This is so the study_id can be referrenced in sendData().
 function reviewOption(id) {
   study_id = id;
 }
-/*
-function off() {
-  document.getElementById("overlay").style.display = "none";
-  window.location.replace("home.html");
-}*/
+
 
 var feedback_data = {token:token};
 //------------------------- DATA SEND TO SERVER -----------------
+
+//Sends data from the admin study review to the server to either approve/disapprove a study.
 function sendData(){
   var feedback = ["title_feedback","reference_feedback","purpose_feedback","categories_feedback","keywords_feedback","abstract_feedback","stimuli_feedback","duration_feedback","response_feedback","trials_feedback","randomized_feedback","image_videos_feedback","jsons_feedback"];
   var field = ["title","references","purpose","categories","keywords","abstract","num_stimuli","duration","num_responses","num_trials","randomize","images","template"];
   var accept = true;
   for (i = 0; i < feedback.length; i++) {
     var value = document.getElementById(feedback[i]).innerHTML;
+//If any field isn't approved by the admin, set accept=false so that the JSON sent does not approve the study.
     if (value){
       feedback_data[field[i]]=value;
       accept = false;
@@ -68,7 +70,7 @@ function sendData(){
 
   //send to server
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/reviewPending&token=' + token,
+    url: 'http://pi.cs.oswego.edu:12100/reviewPending?&token=' + token,
     type: 'GET',
     data: feedback_data,
     success: function (data) {
