@@ -41,8 +41,9 @@ body {
 }
 
 .wishlist>p {
-	margin-right: 1rem;
-	font-size: 1.2rem;
+	margin-right: .5rem;
+	margin-top: 1rem;
+  margin-bottom: .5rem;
 }
 
 /*
@@ -189,7 +190,10 @@ select {
 #abstract {
 	border: none;
 	background-color: rgb(244, 244, 244);
-	height: 16rem;
+	height: auto;
+	bottom: 1rem;
+	max-width: 40rem;
+
 }
 
 #abstract>ul {
