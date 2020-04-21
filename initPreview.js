@@ -1,9 +1,7 @@
 var token = localStorage['token'];
 $(document).ready(function() {
   var params = new URLSearchParams(window.location.search.slice());
-  console.log(params.get('id'));
   var study_id = params.get('id');
-
   //Calls the endpoint for the specific study based on the study id and returns it's json data.
   $.ajax({
     url: 'http://pi.cs.oswego.edu:12100/getPreview?study_id=' + study_id + '&token=' + token,
@@ -23,7 +21,6 @@ $(document).ready(function() {
       document.getElementById('studyidPlaceholder').value = study_id;
 
       var img = json.images;
-      console.log(img);
       document.getElementById('imagePreview').src = img;
 
       var categories = "Categories: ";
@@ -53,7 +50,7 @@ $(document).ready(function() {
       } else {
         document.getElementById('random').innerHTML = "Randomized the study?: No";
       }
-      if (json.reviews.length > 1) {
+      if (json.reviews.length >= 1) {
         var reviews = '<div class="carousel-item active">' +
           '<div class="card">' +
           '<div class="contain">' +
