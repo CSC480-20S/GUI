@@ -1,3 +1,4 @@
+//Basically the same thing as progreessbar.js
 var currentTab = 0;
 showTab(currentTab);
 //when button is pushed tab is updated.
