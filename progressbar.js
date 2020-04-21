@@ -23,7 +23,7 @@ function showTab(n) {
 
   if (n == (x.length - 4)) {
 
-    //Split keywords and display keywords on preview page
+    //Split keywords by ',' and display keywords on preview page
     var keywordsPrev = document.getElementById("keywords").value;
     var array = keywordsPrev.split(",");
 
@@ -38,8 +38,9 @@ function showTab(n) {
     }
 
   }
-
+  
   if (n == (x.length - 1)) {
+    //If on the last page on upload (preview), change the next button to Submit.
     document.getElementById("nextBtn").innerHTML = "Submit";
     var pb = document.getElementById("nextBtn");
     pb.id = "publishBtn";
@@ -76,7 +77,7 @@ function showTab(n) {
   indicator(n)
 }
 
-//If user goes back to change information, revert "Publish" button back to "Next"
+//If user goes back to change information, revert "Submit" button back to "Next"
 function buttonChange() {
   nextPrev(-1);
   document.getElementById("publishBtn").innerHTML = "Next";
@@ -86,6 +87,7 @@ function buttonChange() {
   document.getElementById("prevBtn").setAttribute("onClick", "nextPrev(-1)");
 }
 
+// Updates the value n based on which section of the upload they're on. 
 function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
   if (n == 1 && !validateForm()) return false;
@@ -121,7 +123,7 @@ function validateForm() {
   }
   return valid;
 }
-//This is for the progressbar
+//This is for the progressbar. Based on the value n, either highlight or remove the highlight of the progress bar.
 function indicator(n) {
   var x = document.getElementsByClassName("step");
   for (i = x.length - 1; i >= n; i--) {
