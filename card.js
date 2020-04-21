@@ -1,3 +1,4 @@
+//Creates study cards by parsing the search endpoint for every study. 
 var token = localStorage['token'];
 $(document).ready(function() {
   $.ajax({
