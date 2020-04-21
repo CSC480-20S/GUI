@@ -274,6 +274,12 @@ body {
   grid-gap: 1rem;
 }
 
+#myPurchases {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
+
 .card
 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -482,6 +488,19 @@ body {
 	z-index: 1;
   }
 
+  .review_popup {
+  position: fixed;
+  background-color: #F8F8F8;
+  border-radius: 20px;
+  top: 40%;
+  left: 50%;
+  width: 560px;
+  height: 104px;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  z-index: 1;
+  }
+
 
 /** RATING SYSTEM **/
 .rating_main {
@@ -572,4 +591,31 @@ body {
 }
 .star.rated{
 	counter-increment: rateme 1;
+}
+
+
+/* Study Wrapper */
+.study_wrapper_Title{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  width:100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: rgb(253, 202, 167);
+  border-bottom: 1px solid #DCDCDC;
+}
+.study_wrapper{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  width:100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: white;
+  border-bottom: 1px solid #DCDCDC;
+}
+.admin_wrapper:hover{
+  background: silver;
+  color:#000;
 }
