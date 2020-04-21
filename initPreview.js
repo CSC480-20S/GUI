@@ -1,3 +1,4 @@
+//Constructs the preview page from the getPreview endpoint by parsing the study and populating the html page. 
 var token = localStorage['token'];
 $(document).ready(function() {
   var params = new URLSearchParams(window.location.search.slice());
