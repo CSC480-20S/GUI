@@ -48,6 +48,7 @@ function getListPendingStudies() {
   });
 }
 
+//Gets all of the notifications for a user and displays them on the page via the notifications panel.
 function getNotifications() {
   var limit = '2';
   $.ajax({
