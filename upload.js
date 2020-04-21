@@ -41,6 +41,7 @@ function encodeImageFileAsURL() {
 }
 
 function upload() {
+  //This if statement determines if the user has any missing fields in the upload form. If so, don't allow the user to submit the unfinished study.
   if (!document.getElementById("subcategory").value ||
     !document.getElementById("title").value ||
     !document.getElementById("references").value ||
@@ -54,19 +55,6 @@ function upload() {
     !document.getElementById("randomize").value ||
     !document.getElementById("outputImg").innerHTML ||
     !document.getElementById("user_json_document").value) {
-    /*  console.log("sub: %j", document.getElementById("subcategory").value);
-      console.log("title: " + document.getElementById("title").value);
-      console.log("ref: " + document.getElementById("references").value);
-      console.log("purpose: " + document.getElementById("purpose").value);
-      console.log("keywords " + document.getElementById("keywords").value);
-      console.log("abstract " + document.getElementById("abstractText").value);
-      console.log("num_stim: " + document.getElementById("num_stimuli").value);
-      console.log("duration " + document.getElementById("duration").value);
-      console.log("num_resp " + document.getElementById("num_responses").value);
-      console.log("trials " + document.getElementById("num_trials").value);
-      console.log("random " + document.getElementById("randomize").value);
-      console.log("image " + document.getElementById("outputImg").innerHTML);
-      console.log("json " + document.getElementById("user_json_document").value); */
     document.getElementById("overlay_error").style.display = "block";
     return;
   }
@@ -105,6 +93,7 @@ function upload() {
   });
 }
 
+//Removes the "Congratulations! Study has been uploaded" overlay after study upload and redirets user to home.
 function off() {
   //Removes the overlay so that it isn't displayed
   document.getElementById("overlay").style.display = "none";
@@ -112,6 +101,7 @@ function off() {
   window.location.href = "home.html";
 }
 
+//Removes the "Fields missing" overlay after a user tries to submit an unfinished study
 function off_error() {
   //Removes the overlay so that it isn't displayed
   document.getElementById("overlay_error").style.display = "none";
