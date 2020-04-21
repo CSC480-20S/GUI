@@ -3,11 +3,11 @@ var infolist = [];
 var rate = 0;
 var url_string = window.location.href;
 var url = new URL(url_string);
-var study_id = "";
-var occupy = "";
+var study_id = 1;
+var occupy = "Researcher";
 var token = localStorage['token'];
+var username = localStorage['username'];
 
-//Creates cards for all of a users owned studies.
 $(document).ready(function () {
     $.ajax({
       url: 'http://pi.cs.oswego.edu:12100/getOwned?&token='+token,
@@ -16,32 +16,34 @@ $(document).ready(function () {
         var content = "";
     for(var i = 0; i<json.length;i++){
       content += '<div class="card"><div class="card_info">'+
-        '<p id="study_title">'+json[i].title+'</p>'+
-        '<p id="study_description">'+json[i].purpose+'</p>'+
+        '<p class="study_title">'+json[i].title+'</p>'+
+        '<p class="study_description">'+json[i].purpose+'</p>'+
       '<div class="author">'+
           '<img class="author_icon" src="assets/school.svg" alt="author icon">'+
-          '<p id="author_name">'+json[i].author+'</p>'+
+          '<p class="author_name">'+json[i].author+'</p>'+
        '</div>'+
         '<div class="university">'+
           '<img class="university_icon" src="assets/university.svg" alt="university icon">'+
-          '<p id="university_name">'+json[i].institution+'</p></div></div><button class="review" id="reviewbtn" onclick="on()">Review</button></div>';
+          '<p class="university_name">'+json[i].institution+'</p></div></div><button class="review" id="credits" onclick="on(); reviewOption('+json[i].studyID+');">Review</button></div>';
     }
-      document.getElementById("four-panel").innerHTML = content;
+      document.getElementById("myPurchases").innerHTML = content;
     }
   });
 });
 
-//Toggles the overlay element to display.
 function on() {
   document.getElementById("overlay").style.display = "block";
-  sendData();
+  //sendData();
 }
 
-//Toggles the overlay element to stop displaying and redirect to the home page.
+function reviewOption(id) {
+  study_id = id;
+}
+/*
 function off() {
   document.getElementById("overlay").style.display = "none";
   window.location.replace("home.html");
-}
+}*/
 
 var feedback_data = {token:token};
 //------------------------- DATA SEND TO SERVER -----------------
@@ -81,15 +83,13 @@ function sendData(){
 }
 
 
-//Event listener for when a star is clicked to set a rating.
+
 document.addEventListener('DOMContentLoaded', function(){
 	let stars = document.querySelectorAll('.star');
 	stars.forEach(function(star){
 		star.addEventListener('click', setRating);
     });
 });
-
-//Highlights the amount of stars selected.
 function setRating(ev){
 	let span = ev.currentTarget;
 	let stars = document.querySelectorAll('.star');
@@ -110,41 +110,30 @@ function setRating(ev){
 	rate = num;
 }
 
-//Transition from the rating to the comment overlay.
 function next() {
   document.getElementById("overlay").style.display = "none";
   document.getElementById("overlay2").style.display = "block";
 }
 
-//Transition from comments to the "Thank You" overlay
 function nextfinal() {
   document.getElementById("overlay2").style.display = "none";
   document.getElementById("overlay3").style.display = "block";
   comment = document.getElementById("Comments").value;
 }
 
-//Ends the rating and redirects to home.
 function off() {
   document.getElementById("overlay3").style.display = "none";
   infolist.push(study_id);
-  infolist.push(user_id);
   infolist.push(occupy);
   infolist.push(rate);
   infolist.push(comment);
-  window.location.href="home.html";
+  console.log(infolist);
+  sendRating(infolist);
 }
 
-//Sends rating to the server through a GET request.
-function sendRating(){
+function sendRating(infolist){
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/rateStudy?study_id='+infolist[0]+'&user_id='+infolist[1]+'&occupation='+infolist[2]+'&rating='+infolist[3]+'&comments='+infolist[4]+'&token='+token,
-    type: 'GET',
-    data: infolist,
-    success: function (data) {
-		alert(data);
-    },
-    error: function (error) {
-		alert(error);
-    }
+    url: 'http://pi.cs.oswego.edu:12100/rateStudy?study_id='+infolist[0]+'&name='+username+'&occupation='+infolist[1]+'&rating='+infolist[2]+'&comment='+infolist[3]+'&token='+token,
+    type: 'post',
   });
 }
