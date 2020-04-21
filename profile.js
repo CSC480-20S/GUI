@@ -1,8 +1,7 @@
-localStorage['token'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY3ODg5MzIsImV4cCI6MTU5MTExMjUzMiwic3ViIjoiMTIzNDUifQ.IxWbmRPCHiyvM8-yS2EEiE5GzHnDolB-blkhB9a9upU';
 var token = localStorage['token'];
-/* When the user clicks on the button, 
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction() {
+function myDropdown() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
@@ -20,19 +19,17 @@ window.onclick = function(event) {
   }
 }
 
-//Changes the color of the bookmark icon when a user clicks it.
 function bookMark(x) {
   /*x.classList.toggle("fa-bookmark");*/
   x.classList.toggle("orange_icon");
 }
 
-//Retrieves the pending studies that need to be reviewed for the admin and displays them under the "Admin" tab.
-function getListPendingStudies(){
-  var limit='2';
+function getListPendingStudies() {
+  var limit = '2';
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/getPending?token='+token+'&limit='+limit,
+    url: 'http://pi.cs.oswego.edu:12100/getPending?token=' + token + '&limit=' + limit,
     dataType: 'json',
-    success: function (json) {
+    success: function(json) {
       console.log("%j", json);
       var content = "";
       for (var i = 0; i < json.length; i++) {
@@ -47,6 +44,36 @@ function getListPendingStudies(){
           '</a>';
       }
       document.getElementById("listPending").innerHTML = content;
+    }
+  });
+}
+
+function getNotifications() {
+  var limit = '2';
+  $.ajax({
+    url: 'http://pi.cs.oswego.edu:12100/getNotifications?token=' + token,
+    dataType: 'json',
+    success: function(json) {
+      console.log("%j", json);
+      var content = "";
+      for (var i = 0; i < json.length; i++) {
+        content +=
+          '<a class="study_link">' +
+          '<div class="study_wrapper">' +
+          '<div>' + json[i].title + '</div>' +
+          '<div>' + json[i].timestamp + '</div>';
+        if (json[i].type == "Approval") {
+          content += '<div>Approved</div>';
+        } else if(json[i].type == "Denial"){
+          content += '<div>Denied</div>';
+        }else{
+          content += '<div>'+  json[i].type +'</div>';
+        }
+        content += '<div>' + json[i].body + '</div>';
+        content += '</div>' +
+          '</a>';
+      }
+      document.getElementById("notificationsList").innerHTML = content;
     }
   });
 }
