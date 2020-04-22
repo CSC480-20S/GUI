@@ -24,6 +24,7 @@ function bookMark(x) {
   x.classList.toggle("orange_icon");
 }
 
+//Function to get the list pending studies from server
 function getListPendingStudies() {
   var limit = '2';
   $.ajax({
