@@ -2,7 +2,8 @@ var token = localStorage['token'];
 //Parses the getWishlist endpoint and creates cards for each study in the endpoint for a specific token.
 $(document).ready(function() {
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/getWishlist?token=' + token,
+    url: 'http://pi.cs.oswego.edu:12100/getWishlist',
+    headers: { 'token': token },
     dataType: 'json',
     success: function(json) {
       var mainContainer = document.getElementById("myWish");
@@ -19,9 +20,25 @@ $(document).ready(function() {
           '<div class="university"><img class="university_icon" src="assets/university.svg" alt="university icon">' +
           '<p class="university_name">' + json[i].institution + '</p>' +
           '</div>' + '</div>' +
+          /*'<b>Name: </b>' + json[i].author +
+            '<br><b> Category: </b>' + json[i].categories +
+
+            '<b> <br> Duration: </b >' + json[i].duration +
+            '<b> <br> Institution: </b >' + json[i].institution +
+*/
           '<p class="credits">' + json[i].costInCredits + ' Credits' + '</p>' +
           '</div>';
         mainContainer.appendChild(div);
+
+        /*
+        str += '<div class="item-details">' +
+         'Title is = ' + json[i].title + '<br />' +
+         'Author: ' + json[i].author + '<br />' +
+         'Categories = ' + json[i].categories + '<br />' +
+                     '</div>';
+                     */
+
+
 
       }
     }

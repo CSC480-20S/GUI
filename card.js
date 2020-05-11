@@ -1,8 +1,8 @@
-//Creates study cards by parsing the search endpoint for every study. 
 var token = localStorage['token'];
 $(document).ready(function() {
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/search?token=' + token,
+    url: 'http://pi.cs.oswego.edu:12100/search',
+    headers: { 'token': token },
     dataType: 'json',
     success: function(json) {
       console.log("%j", json);

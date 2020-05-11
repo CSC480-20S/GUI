@@ -1,4 +1,5 @@
 var token = localStorage['token'];
+var username = localStorage['username'];
 //Retireve user-entered information from the form and convert it to a JSON.
 $.fn.serializeObject = function() {
   var o = {};
@@ -33,7 +34,6 @@ function encodeImageFileAsURL() {
 
       document.getElementById("outputImg").innerHTML = srcData;
       document.getElementById("imagePreview").src = srcData;
-      console.log(srcData);
       document.getElementById("imgUploadNotification").style.display = "block";
     }
     var base64result = fileReader.readAsDataURL(fileToLoad);
@@ -41,23 +41,6 @@ function encodeImageFileAsURL() {
 }
 
 function upload() {
-  //This if statement determines if the user has any missing fields in the upload form. If so, don't allow the user to submit the unfinished study.
-  if (!document.getElementById("subcategory").value ||
-    !document.getElementById("title").value ||
-    !document.getElementById("references").value ||
-    !document.getElementById("purpose").value ||
-    !document.getElementById("keywords").value ||
-    !document.getElementById("abstractText").value ||
-    !document.getElementById("num_stimuli").value ||
-    !document.getElementById("duration").value ||
-    !document.getElementById("num_responses").value ||
-    !document.getElementById("num_trials").value ||
-    !document.getElementById("randomize").value ||
-    !document.getElementById("outputImg").innerHTML ||
-    !document.getElementById("user_json_document").value) {
-    document.getElementById("overlay_error").style.display = "block";
-    return;
-  }
   //Toggle the overlay ("Congratulations, study uploaded.")
   document.getElementById("overlay").style.display = "block";
 
@@ -67,11 +50,11 @@ function upload() {
   var keywordString = document.getElementById("keywords").value;
   var keywordArray = keywordString.split(",");
   jsonToUpload.keywords = keywordArray;
-  jsonToUpload.author = "null";
-  jsonToUpload.author_id = "null";
+  jsonToUpload.author = username;
+  jsonToUpload.author_id = "1234";
   jsonToUpload.images = document.getElementById("outputImg").innerHTML;
   jsonToUpload.template = document.getElementById("user_json_document").value;
-  jsonToUpload.institution = "null";
+  jsonToUpload.institution = "SUNY Oswego Test Center";
   jsonToUpload.costInCredits = 20;
   jsonToUpload.num_stimuli = Number(jsonToUpload.num_stimuli);
   jsonToUpload.num_trials = Number(jsonToUpload.num_trials);
@@ -81,19 +64,19 @@ function upload() {
   console.log(jsonToUpload);
 
   //Send the JSON to the database
-  $('form').submit(function() {
     $.ajax({
-      url: 'http://pi.cs.oswego.edu:12100/upload?token=' + token,
+      url: 'http://pi.cs.oswego.edu:12100/upload',
+      headers: { 'token': token },
       type: 'POST',
       data: JSON.stringify(jsonToUpload),
       contentType: 'application/json; charset=utf-8',
       dataType: 'json',
-      success: function(data) {},
+      success: function(data) {
+        console.log("Study uploaded.");
+      }
     });
-  });
 }
 
-//Removes the "Congratulations! Study has been uploaded" overlay after study upload and redirets user to home.
 function off() {
   //Removes the overlay so that it isn't displayed
   document.getElementById("overlay").style.display = "none";
@@ -101,8 +84,12 @@ function off() {
   window.location.href = "home.html";
 }
 
-//Removes the "Fields missing" overlay after a user tries to submit an unfinished study
 function off_error() {
   //Removes the overlay so that it isn't displayed
   document.getElementById("overlay_error").style.display = "none";
+}
+
+function off_error_img() {
+  //Removes the overlay so that it isn't displayed
+  document.getElementById("overlay_error_img").style.display = "none";
 }

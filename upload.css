@@ -233,32 +233,42 @@ body {
 
 /********************************* Step_3 *************************************************/
 #drop {
-  background-color: #FAFAFA;
   width: 50%;
   margin: auto;
   text-align: center;
-  padding-top: 3rem;
-  border: #707070;
-  border-style: dashed;
-  border-width: 0.1rem;
-  border-radius: 0.5rem;
-  color: black;
   font-size: 1.2rem;
 }
 
-#drop input[type=file] {
+input[type=file] {
+  cursor: pointer;
+  display:none;
+}
+
+input[type=file]::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+.fa-upload:before {
   background-color: #FAFAFA;
-  width: 100%;
-  margin: auto;
+  display: block;
   text-align: center;
+  margin: auto;
   padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
   border: #707070;
   border-style: dashed;
   border-width: 0.1rem;
   border-radius: 0.5rem;
-  color: black;
-  font-size: 1.2rem;
-  opacity: 0;
+  color: #f60;
+  cursor: pointer;
+}
+
+.instructions {
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 250%;
 }
 
 .instructions {
@@ -345,7 +355,7 @@ body {
 
 /*********** OVERLAY ******/
 #overlay {
-  position: fixed;
+  position: absolute;
   display: none;
   height: 100%;
   width: 100%;
@@ -356,14 +366,33 @@ body {
 }
 
 #overlay_error {
+  position: absolute;
+  display: none;
+  height: 125%;
+  width: 100%;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
+
+#overlay_error_img {
   position: fixed;
   display: none;
+  border-style: solid;
+  border-color: #2f4249;
+  border-width: 2px;
   height: 100%;
   width: 100%;
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 1;
+}
+
+#close-icon {
+  transform: translate(90%, -190%);
+  -ms-transform: translate(90%, -190%);
 }
 
 #text-main {
@@ -380,9 +409,37 @@ body {
   -ms-transform: translate(-50%, -50%);
 }
 
-#text-desc {
+#text-main2 {
+  position: relative;
+  top: 20%;
+  left: 50%;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "nunito sans";
+  font-weight: bold;
+  color: #2F4249;
+  text-align: right;
+  transform: translate(-58%, -450%);
+  -ms-transform: translate(-58%, -450%);
+}
+
+#text-main3 {
   position: relative;
   top: 35%;
+  left: 50%;
+  border-radius: 10px;
+  font-size: 36px;
+  font-family: "nunito sans";
+  font-weight: bold;
+  color: #2F4249;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+#text-desc {
+  position: relative;
+  top: 15%;
   left: 50%;
   border-radius: 10px;
   font-size: 24px;
@@ -411,6 +468,9 @@ body {
 
 .popup {
   position: fixed;
+  border-style: solid;
+  border-color: #2f4249;
+  border-width: 2px;
   background-color: #F8F8F8;
   border-radius: 20px;
   top: 40%;
@@ -453,9 +513,9 @@ body {
 
 /* ******************* Comment ****************************** */
 #comment {
-  position: fixed;
+  position: absolute;
   display: none;
-  height: 100%;
+  height: 1000rem;
   width: 100%;
   left: 0;
   right: 0;
@@ -503,9 +563,9 @@ body {
 }
 
 #cancel {
-  position: fixed;
+  position: absolute;
   display: none;
-  height: 100%;
+  height: 1000rem;
   width: 100%;
   left: 0;
   right: 0;

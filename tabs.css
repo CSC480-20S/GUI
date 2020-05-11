@@ -2,6 +2,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
 }
 
 html {
@@ -9,7 +10,7 @@ html {
 }
 
 body {
-	font-family: nunito sans, Arial, sans-serif;
+	font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
 }
 
 #tabs {

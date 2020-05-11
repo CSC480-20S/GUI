@@ -1,7 +1,9 @@
 var token = localStorage['token'];
 
-//Displays the search results for whatever the user has typed into the search bar.
 $(document).ready(function() {
+  $.ajaxSetup({
+    headers: { 'token': token }
+  });
   var retrievedData = localStorage.getItem('searchResultsStored');
   var data = JSON.parse(retrievedData);
   console.log("LocalStorage JSON: %j", data);
@@ -13,11 +15,10 @@ $(document).ready(function() {
   }
 });
 
-//Brings up results based on category selection and prints them.
 function categorySelectSP(category) {
   var feedback_data = '{"category":"' + category + '"}';
   const dataToSend = JSON.parse(feedback_data);
-  var urlSend = 'http://pi.cs.oswego.edu:12100/search?token=' + token;
+  var urlSend = 'http://pi.cs.oswego.edu:12100/search';
   $.ajax({
     url: urlSend,
     type: 'GET',
@@ -32,11 +33,10 @@ function categorySelectSP(category) {
   });
 }
 
-//Brings up results based on subcategory selection and prints them.
 function subCategorySelectSP(subcategory) {
   var feedback_data = '{"sub_category":"' + subcategory + '"}';
   const dataToSend = JSON.parse(feedback_data);
-  var urlSend = 'http://pi.cs.oswego.edu:12100/search?token=' + token;
+  var urlSend = 'http://pi.cs.oswego.edu:12100/search';
   $.ajax({
     url: urlSend,
     type: 'GET',
@@ -51,13 +51,10 @@ function subCategorySelectSP(subcategory) {
   });
 }
 
-//Removes old studies when a user goes to do a new search
 function removeCurrentStudies() {
   $("#myData").empty();
 }
 
-//Gets the study id number and adds it to the url. This is used to create a dynamic preview page. Thee preview page refers
-//to the url to get the study id and consequently fills the page with its associated json data.
 function myFunction(id) {
   window.location.href = "preview.html?id=" + id;
 }
@@ -69,7 +66,6 @@ function filterSearch(field, option) {
   var searchReturnSize = localRes.length;
   removeCurrentStudies();
 
-  //Filters based on study duration
   if (field == "duration") {
     console.log("option: ", option);
     var minMaxValue = option.split("-");
@@ -85,7 +81,6 @@ function filterSearch(field, option) {
     }
   }
 
-  //Filters based off of study price
   if (field == "price") {
     console.log("option: ", option);
     var minMaxValue = option.split("-");
@@ -102,7 +97,6 @@ function filterSearch(field, option) {
     }
   }
 
-  //Filters based off study rating
   if (field == "rating") {
     console.log("option: ", option);
     var ratingSelection = Number(option);
@@ -116,8 +110,7 @@ function filterSearch(field, option) {
       }
     }
   }
-  
-  //Filters based off of upload date
+
   if (field == "uploaddate") {
     console.log("option: ", option);
 
@@ -144,7 +137,7 @@ function filterSearch(field, option) {
   }
 
 }
-//Displays the results in study card form
+
 function displayStudyCards(data) {
   var mainContainer = document.getElementById("myData");
   var div = document.createElement("div");
@@ -161,7 +154,6 @@ function displayStudyCards(data) {
   mainContainer.appendChild(div);
 }
 
-//Return this if no studies found during search
 function noStudiesFound() {
   var mainContainer = document.getElementById("myData");
   var div = document.createElement("div");
@@ -170,8 +162,6 @@ function noStudiesFound() {
   mainContainer.appendChild(div);
 }
 
-
-/*
 function getDates(startDate, stopDate) {
   var currentDate = startDate;
   while (currentDate <= stopDate) {
@@ -179,7 +169,7 @@ function getDates(startDate, stopDate) {
   }
 }
 
-//Not working yet, supposed to display the chosen filters
+/*
 function displayAppliedFilter(value) {
   if (value == null) {
   if (!document.getElementById("applyFilterText")) {

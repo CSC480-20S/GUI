@@ -14,15 +14,22 @@
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
   <script src="https://use.fontawesome.com/9595edcb50.js"></script>
   <script src="profile.js"></script>
+  <script src="help.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
       $('#vertical-menu > li > a').click(function() {
         if ($(this).attr('class') != 'enable') {
           $('#vertical-menu li ul').slideUp();
           $(this).next().slideToggle();
-          $('#vertical-menu li a').removeClass('enable');
+          $('#vertical-menu li a').removeClass('disable');
           $(this).addClass('enable');
+        }else{
+           $('#vertical-menu li ul').slideUp();
+           $(this).next().slideUp();
+           $('#vertical-menu li a').removeClass('enable');
+           $(this).addClass('disable');
         }
+         e.preventDefault();
       });
     });
   </script>
@@ -33,14 +40,22 @@
 <body>
   <main>
 
+    <div id="helpModal" class="helpmodal">
+    <span class="helpclose" onclick="helpClose();"><i onclick="off()" class="fa fa-check-circle fa-2x check fa-times-circle-o orange_close"></i></span>
+    <img class="helpmodal-content" id="helpImg">
+    <div id="helpcaption"></div>
+  </div>
+
     <!-- Header start -->
     <header id="header" class="box-shadow-down">
       <ul class="menu">
         <li>
           <section id="logo" class="push">
-            <a href="home.html"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
+            <a href="https://www.findingfive.com/"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
           </section>
-          <!--<a class="active" href="#home">Home</a></li>-->
+          <li>
+            <div class="ss_text" onclick="window.location.href = 'home.html';">Study Store</div>
+          </li>
 
 
 
@@ -71,22 +86,13 @@
           <div class="vl line_2"></div>
         </li>
         <li>
-          <div class="dropdown">
-            <button onclick="myDropdown()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="#home">Juliana Santy<br>
-                Master's Student / Researcher</a>
-              <a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
-              <a href="mailto:feedback@findingfive.com">Contact Finding Five</a>
-              <a href="#contact">Logout</a>
-            </div>
-          </div>
+            <button onclick="window.location.href = 'profile.html';" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
         </li>
         <li>
           <div class="vl line_3"></div>
         </li>
         <li>
-          <div class=" "><i class="fa fa-sign-out" aria-hidden="true"></i>
+          <button onclick="help();"class="dropbtn" id="help">Help</button>
           </div>
         </li>
       </ul>
@@ -114,7 +120,7 @@
                   <div id="horizontal-line-categories"></div>
                 </ul>
               </li>
-              <li><a onclick="categorySelect(this.innerHTML)">Knowledge Representation</a>
+              <li><a onclick="categorySelect(this.innerHTML)">Knowledge representation</a>
                 <ul>
                   <li><a onclick="subCategorySelect(this.innerHTML)">Dual-coding theories</a></li>
                   <div id="horizontal-line-categories"></div>
@@ -198,7 +204,7 @@
         </div>
 
         <div class="box study_cards">
-          <p class="title" id="cardCategorizationTitle">Top Rated Studies
+          <p class="title" id="cardCategorizationTitle">All Studies
             <hr>
           </p>
           <br>

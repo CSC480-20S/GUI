@@ -23,7 +23,7 @@ function showTab(n) {
 
   if (n == (x.length - 4)) {
 
-    //Split keywords by ',' and display keywords on preview page
+    //Split keywords and display keywords on preview page
     var keywordsPrev = document.getElementById("keywords").value;
     var array = keywordsPrev.split(",");
 
@@ -38,9 +38,8 @@ function showTab(n) {
     }
 
   }
-  
+
   if (n == (x.length - 1)) {
-    //If on the last page on upload (preview), change the next button to Submit.
     document.getElementById("nextBtn").innerHTML = "Submit";
     var pb = document.getElementById("nextBtn");
     pb.id = "publishBtn";
@@ -77,7 +76,7 @@ function showTab(n) {
   indicator(n)
 }
 
-//If user goes back to change information, revert "Submit" button back to "Next"
+//If user goes back to change information, revert "Publish" button back to "Next"
 function buttonChange() {
   nextPrev(-1);
   document.getElementById("publishBtn").innerHTML = "Next";
@@ -87,12 +86,52 @@ function buttonChange() {
   document.getElementById("prevBtn").setAttribute("onClick", "nextPrev(-1)");
 }
 
-// Updates the value n based on which section of the upload they're on. 
 function nextPrev(n) {
   var x = document.getElementsByClassName("tab");
+
+  /* The following is used to prevent a user from proceeding with the upload if they don't fill out all fields. */
+  if (currentTab==0) {
+    if (!document.getElementById("subcategory").value ||
+      !document.getElementById("title").value ||
+      !document.getElementById("references").value ||
+      !document.getElementById("purpose").value ||
+      !document.getElementById("keywords").value) {
+      document.getElementById("overlay_error").style.display = "block";
+      return;
+    }
+  }
+
+  if (currentTab==1) {
+    if (!document.getElementById("abstractText").value ||
+    !document.getElementById("num_stimuli").value ||
+    !document.getElementById("duration").value ||
+    !document.getElementById("num_responses").value ||
+    !document.getElementById("num_trials").value ||
+    !document.getElementById("randomize").value) {
+      document.getElementById("overlay_error").style.display = "block";
+      return;
+    }
+  }
+
+  if (currentTab==2) {
+    if (!document.getElementById("outputImg").innerHTML) {
+      document.getElementById("overlay_error_img").style.display = "block";
+      return;
+    }
+  }
+
+  if (currentTab==3) {
+    if (!document.getElementById("user_json_document").value) {
+      document.getElementById("overlay_error").style.display = "block";
+      return;
+    }
+  }
+
   if (n == 1 && !validateForm()) return false;
   x[currentTab].style.display = "none";
   currentTab = currentTab + n;
+
+
   if (currentTab >= x.length) {
     document.getElementById("msform").submit();
     return false;
@@ -123,7 +162,7 @@ function validateForm() {
   }
   return valid;
 }
-//This is for the progressbar. Based on the value n, either highlight or remove the highlight of the progress bar.
+//This is for the progressbar
 function indicator(n) {
   var x = document.getElementsByClassName("step");
   for (i = x.length - 1; i >= n; i--) {

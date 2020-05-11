@@ -8,10 +8,10 @@ var occupy = "Researcher";
 var token = localStorage['token'];
 var username = localStorage['username'];
 
-//Prints each study purchased by a user in the Purchased Studies tab on profile.html so they can review them.
 $(document).ready(function () {
     $.ajax({
-      url: 'http://pi.cs.oswego.edu:12100/getOwned?&token='+token,
+      url: 'http://pi.cs.oswego.edu:12100/getOwned',
+      headers: { 'token': token },
       dataType: 'json',
       success: function (json) {
         var content = "";
@@ -32,29 +32,28 @@ $(document).ready(function () {
   });
 });
 
-//Turns on the overlay for the admin study review and sends the data to the server.
+function submitReview() {
+  document.getElementById("overlay").style.display = "none";
+  window.location.replace("home.html");
+}
+
 function on() {
   document.getElementById("overlay").style.display = "block";
   sendData();
 }
 
-//Stores the id of the study into a variable that is going to be admin reviewed. This is so the study_id can be referrenced in sendData().
 function reviewOption(id) {
   study_id = id;
 }
 
-
 var feedback_data = {token:token};
 //------------------------- DATA SEND TO SERVER -----------------
-
-//Sends data from the admin study review to the server to either approve/disapprove a study.
 function sendData(){
   var feedback = ["title_feedback","reference_feedback","purpose_feedback","categories_feedback","keywords_feedback","abstract_feedback","stimuli_feedback","duration_feedback","response_feedback","trials_feedback","randomized_feedback","image_videos_feedback","jsons_feedback"];
   var field = ["title","references","purpose","categories","keywords","abstract","num_stimuli","duration","num_responses","num_trials","randomize","images","template"];
   var accept = true;
   for (i = 0; i < feedback.length; i++) {
     var value = document.getElementById(feedback[i]).innerHTML;
-//If any field isn't approved by the admin, set accept=false so that the JSON sent does not approve the study.
     if (value){
       feedback_data[field[i]]=value;
       accept = false;
@@ -65,23 +64,19 @@ function sendData(){
   var study_id = url.searchParams.get("study");
   feedback_data["study_id"]=study_id;
   if (accept){
-    feedback_data["approved"]="True";
+    feedback_data["approved"]="true";
   }
 
+  console.log("%j", feedback_data);
   //send to server
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/reviewPending?&token=' + token,
+    url: 'http://pi.cs.oswego.edu:12100/reviewPending',
+    headers: { 'token': token },
     type: 'GET',
     data: feedback_data,
     success: function (data) {
-      //alert(data);
     },
-    error: function (error) {
-      //alert(error);
-    }
   });
-
-  console.log("%j", feedback_data);
 }
 
 
@@ -135,7 +130,8 @@ function off() {
 
 function sendRating(infolist){
   $.ajax({
-    url: 'http://pi.cs.oswego.edu:12100/rateStudy?study_id='+infolist[0]+'&name='+username+'&occupation='+infolist[1]+'&rating='+infolist[2]+'&comment='+infolist[3]+'&token='+token,
+    url: 'http://pi.cs.oswego.edu:12100/rateStudy?study_id='+infolist[0]+'&name='+username+'&occupation='+infolist[1]+'&rating='+infolist[2]+'&comment='+infolist[3],
+    headers: { 'token': token },
     type: 'post',
   });
 }

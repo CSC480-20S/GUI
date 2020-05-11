@@ -20,8 +20,11 @@
       <ul class="menu">
         <li>
           <section id="logo" class="push">
-            <a href="home.html"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
+            <a href="https://www.findingfive.com/"><img src="https://www.findingfive.com/images/logo-small-white.png"></a>
           </section>
+          <li>
+            <div class="ss_text" onclick="window.location.href = 'home.html';">Study Store</div>
+          </li>
           <!--<a class="active" href="#home">Home</a></li>-->
         <li class="push">
           <div class="search_bar">
@@ -46,25 +49,7 @@
           <div class="vl line_2"></div>
         </li>
         <li>
-          <div class="dropdown">
-            <button onclick="myDropdown()" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="#home">Juliana Santy<br>
-                Master's Student / Researcher</a>
-              <a href="#profile" onclick="window.location.href = 'profile.html';">Account Profile</a>
-              <a href="mailto:feedback@findingfive.com">Contact Finding Five</a>
-              <a href="#contact">Logout</a>
-            </div>
-          </div>
-
-
-        </li>
-        <li>
-          <div class="vl line_3"></div>
-        </li>
-        <li>
-          <div class=" "><i class="fa fa-sign-out" aria-hidden="true"></i>
-          </div>
+          <button onclick="window.location.href = 'profile.html';" class="dropbtn"><i class="fa fa-user-circle"></i>Profile</button>
         </li>
       </ul>
     </header><!-- Header end -->
@@ -73,15 +58,17 @@
     <div id="overlay">
       <div class="popup">
         <div id="text-main">Completed!</div>
-        <div id="text-desc">Congratulations, study is submitted successfully for review.</div>
-        <div id="text-desc2"><i onclick="window.location.replace('home.html')" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
+        <div id="text-main2">Close</div><div id="close-icon"><i onclick="submitReview()" class="fa fa-check-circle fa-2x check fa-times-circle-o orange_close"></i></div>
+        <div id="text-desc">The study has been reviewed.</div>
+        <div id="text-desc2"><button type="button" class="orange_btn" onclick="submitReview()">Okay</button></div>
       </div>
     </div>
 
     <div id="instruction">
       <div class="popup">
-        <div id="text-main">Instruction</div>
-        <div id="text-desc">To mark a section as wrong, please click on the checkmark and write in why. Review all parts at the end and submit.</div>
+        <div id="text-main">Instructions</div>
+        <div id="text-main2">Close</div><div id="close-icon"><i onclick="off_instruction()" class="fa fa-check-circle fa-2x check fa-times-circle-o orange_close"></i></div>
+        <div id="text-desc">Review the study by marking which sections are incorrect and describing why.</div>
         <div id="text-desc2"><i onclick="off_instruction()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
       </div>
     </div>
@@ -90,7 +77,7 @@
       <form class="popup">
         <div id="text-main">Provide a comment</div>
         <div id="input-comment-container">
-          <textarea id="input-comment" type="text" oninput="this.className = ''" name="title" placeholder="Add comment ..." required></textarea>
+          <textarea id="input-comment" type="text" oninput="this.className = ''" name="title" placeholder="Tell the user why this is not valid..." required></textarea>
         </div>
         <p id="message-comment"></p>
         <div id="text-desc2"><i onclick="off_comment()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
@@ -99,7 +86,8 @@
 
     <div id="cancel">
       <form class="popup">
-        <div id="text-main">The section is marked right.</div>
+        <div id="text-main3">This section is now approved.</div>
+        <div id="text-main2">Close</div><div id="close-icon"><i onclick="off_cancel()" class="fa fa-check-circle fa-2x check fa-times-circle-o orange_close"></i></div>
         <p id="message-comment"></p>
         <div id="text-desc2"><i onclick="off_cancel()" class="fa fa-check-circle fa-3x" aria-hidden="true"></i></div>
       </form>
@@ -302,7 +290,6 @@
       var url_string = window.location.href;
       var url = new URL(url_string);
       var id_study = url.searchParams.get("study");
-      console.log(id_study);
       getDetailPending(id_study);
     </script>
   </main>

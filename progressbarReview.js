@@ -1,4 +1,3 @@
-//Basically the same thing as progreessbar.js
 var currentTab = 0;
 showTab(currentTab);
 //when button is pushed tab is updated.
@@ -25,8 +24,11 @@ function showTab(n) {
     var pb = document.getElementById("nextBtn");
     pb.id = "publishBtn";
     document.getElementById("publishBtn").setAttribute("onClick", "on()");
-  } else {
-    document.getElementById("nextBtn").innerHTML = "Next";
+  } else if(document.getElementById("publishBtn")) {
+    document.getElementById("publishBtn").innerHTML = "Next";
+    document.getElementById("publishBtn").setAttribute("onClick", "nextPrev(1)");
+    var nextToPb = document.getElementById("publishBtn");
+    nextToPb.id = "nextBtn";
   }
   //update progress bar
   indicator(n)
@@ -67,6 +69,7 @@ function validateForm() {
   }
   return valid;
 }
+
 //This is for the progressbar
 function indicator(n) {
   var x = document.getElementsByClassName("step");

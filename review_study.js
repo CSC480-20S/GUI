@@ -1,31 +1,27 @@
-//Get token from local storage
 var token = localStorage['token'];
 
 //------------------------- IDENTIFY ID of FORM ---------------------------
-//ID of current study
 var id_input = "";
-//Function to set value for variable id_input
+
 function setInputId(x) {
   window.id_input = x;
 }
-//Function to get value for variable id_input
+
 function getInputId() {
   return window.id_input;
 }
 //------------------------- INSTRUCTION FORM ---------------------------
-//Function to open the instruction form to guide admins how to Approve or Disapprove User-Submitted Studies
 function openInstruction() {
   document.getElementById("instruction").style.display = "block";
 }
-//Function to close the instruction form to guide admins how to Approve or Disapprove User-Submitted Studies
+
 function off_instruction() {
   document.getElementById("instruction").style.display = "none";
 }
 
-//Function to toggle the comment of each field
-//If there is no comment set, the system will display comment form allowing admins to add their comment to announce users that why this field is not suitable
-//If the comment is set before, the system will display the form announcing that comment is deleted
+//------------------------- COMMENT FORM ---------------------------
 function changeCheck(x, y) {
+  //console.log("changeCheck:"+y);
   x.classList.toggle("fa-times-circle-o");
   x.classList.toggle("orange_close");
   if (document.getElementById(y).innerHTML) {
@@ -34,13 +30,12 @@ function changeCheck(x, y) {
     openCommentForm(y);
   }
 }
-//------------------------- COMMENT FORM ---------------------------
-//Function to open Comment form allowing admins to add their comment
+
 function openCommentForm(y) {
   setInputId(y);
   document.getElementById("comment").style.display = "block";
 }
-//Function to close Comment form
+
 function off_comment() {
   if (!document.getElementById("input-comment").value) {
     document.getElementById("message-comment").innerHTML = "Comment is required";
@@ -55,12 +50,11 @@ function off_comment() {
 }
 
 //------------------------- CANCEL FORM ---------------------------
-//Function to open Cancel form announcing that the comment is removed
 function openCancelForm(y) {
   setInputId(y);
   document.getElementById("cancel").style.display = "block";
 }
-//Function to close Cancel form
+
 function off_cancel() {
   var x = getInputId();
   setInputId("");
@@ -69,7 +63,6 @@ function off_cancel() {
 }
 
 //------------------------- PREVIEW ---------------------------
-//Function to update the preview the review information in last stage before submitting
 function updatePreview() {
   var fields_id = ["title_feedback", "reference_feedback", "purpose_feedback", "categories_feedback", "keywords_feedback", "abstract_feedback", "stimuli_feedback", "duration_feedback", "response_feedback", "trials_feedback", "randomized_feedback", "image_videos_feedback", "jsons_feedback"];
   var fields_name = ["Title", "Reference", "Purpose", "Categories", "Keywords", "Abstract", "Stimuli", "Duration", "Response", "Trials", "Randomized", "Images/Videos", "JSON"];
@@ -83,13 +76,12 @@ function updatePreview() {
     }
   }
   if (accept) {
-    document.getElementById("preview").innerHTML = '<h5 class="fs-subtitle">No any comment</h5>';
+    document.getElementById("preview").innerHTML = '<br><hr><br><h5 class="fs-title">No comments have been made.</h5><h5 class="fs-subtitle">Press <b>Submit</b> to approve the study or <b>Previous</b> to go back and review the study.</h5><hr><br>';
   } else {
     document.getElementById("preview").innerHTML = preview;
   }
 }
 
-//Function to move to the next Review page (we have 5 stages)
 function nextPrevReview(n) {
   var x = document.getElementsByClassName("tab");
   if (n == 1 && !validateForm()) return false;
@@ -104,12 +96,13 @@ function nextPrevReview(n) {
   updatePreview();
 }
 
-//Function to get the detail information of individual pending study from the server
 function getDetailPending(study_id) {
-  console.log("Token: ", token);
+  //var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY0ODE3OTUsImV4cCI6MTU5MDgwNTM5NSwic3ViIjoiMTIzNCJ9.bX-XS9h2-8GYocPT8OQgAMK8bNxw41Q0jd6R8Z8S3cs';
+  //Get information from server
   $(document).ready(function() {
     $.ajax({
-      url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id=' + study_id + '&token=' + window.token,
+      url: 'http://pi.cs.oswego.edu:12100/getAdminDetails?study_id=' + study_id,
+      headers: { 'token': token },
       dataType: 'json',
       success: function(json) {
         console.log("%j", json);
